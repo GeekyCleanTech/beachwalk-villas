@@ -23,25 +23,26 @@ const {
 } = Astro.props;
 
 const typeLabels: Record<string, string> = {
-  'ocean-front':     'Ocean Front',
-  'ocean-view':      'Ocean View',
-  'avenue-view':     'Avenue View',
-  'garden-view':     'Garden View',
-  'poolside-studio': 'Poolside Studio',
+  "ocean-front": "Ocean Front",
+  "ocean-view": "Ocean View",
+  "avenue-view": "Avenue View",
+  "garden-view": "Garden View",
+  "poolside-studio": "Poolside Studio",
 };
 
 const typeLabel = typeLabels[type] ?? type;
-const bedroomLabel = bedrooms === 0 ? 'Studio' : `${bedrooms} BR`;
+const bedroomLabel = bedrooms === 0 ? "Studio" : `${bedrooms} BR`;
 ---
 
-<article class="group bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
-
+<article
+  class="villa-card-reveal group bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
+>
   <!-- Image -->
   <a href={`/villas/${slug}/`} class="block overflow-hidden aspect-[3/2]">
     <img
       src={thumbnailImage}
       alt={title}
-      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
       loading="lazy"
     />
   </a>
@@ -49,13 +50,18 @@ const bedroomLabel = bedrooms === 0 ? 'Studio' : `${bedrooms} BR`;
   <!-- Content -->
   <div class="p-5">
     <!-- Type badge -->
-    <span class="inline-block text-xs font-body font-semibold uppercase tracking-widest text-brand-teal mb-2">
+    <span
+      class="inline-block text-xs font-body font-semibold uppercase tracking-widest text-brand-teal mb-2"
+    >
       {typeLabel}
     </span>
 
     <!-- Title -->
     <h3 class="font-display text-h3 text-brand-navy mb-3">
-      <a href={`/villas/${slug}/`} class="hover:text-brand-teal transition-colors">
+      <a
+        href={`/villas/${slug}/`}
+        class="hover:text-brand-teal transition-colors"
+      >
         {title}
       </a>
     </h3>
@@ -65,24 +71,30 @@ const bedroomLabel = bedrooms === 0 ? 'Studio' : `${bedrooms} BR`;
       <span>{bedroomLabel}</span>
       <span class="w-1 h-1 rounded-full bg-gray-300"></span>
       <span>{bathrooms} Bath</span>
-      {nightlyRate && (
-        <>
-          <span class="w-1 h-1 rounded-full bg-gray-300"></span>
-          <span class="text-brand-teal font-semibold">From ${nightlyRate}/night</span>
-        </>
-      )}
+      {
+        nightlyRate && (
+          <>
+            <span class="w-1 h-1 rounded-full bg-gray-300" />
+            <span class="text-brand-teal font-semibold">
+              From ${nightlyRate}/night
+            </span>
+          </>
+        )
+      }
     </div>
 
     <!-- Amenity pills (first 3) -->
-    {unitAmenities.length > 0 && (
-      <div class="flex flex-wrap gap-1.5 mb-5">
-        {unitAmenities.slice(0, 3).map(a => (
-          <span class="text-xs bg-brand-sand text-brand-navy px-2.5 py-1 rounded-full font-body">
-            {a}
-          </span>
-        ))}
-      </div>
-    )}
+    {
+      unitAmenities.length > 0 && (
+        <div class="flex flex-wrap gap-1.5 mb-5">
+          {unitAmenities.slice(0, 3).map((a) => (
+            <span class="text-xs bg-brand-sand text-brand-navy px-2.5 py-1 rounded-full font-body">
+              {a}
+            </span>
+          ))}
+        </div>
+      )
+    }
 
     <a href={`/villas/${slug}/`} class="btn-outline text-sm px-5 py-2">
       View Villa
