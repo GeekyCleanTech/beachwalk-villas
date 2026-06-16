@@ -1,11 +1,11 @@
 ---
 // src/pages/index.astro
-import SiteLayout from '../layouts/SiteLayout.astro';
-import Hero from '../components/Hero.astro';
-import VillaCard from '../components/VillaCard.astro';
-import { getCollection } from 'astro:content';
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Hero from "../components/Hero.astro";
+import VillaCard from "../components/VillaCard.astro";
+import { getCollection } from "astro:content";
 
-const allVillas = await getCollection('villas');
+const allVillas = await getCollection("villas");
 const featuredVillas = allVillas
   .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
   .slice(0, 3);
@@ -29,22 +29,26 @@ const featuredVillas = allVillas
   />
 
   <!-- Welcome section -->
-  <section class="section-pad bg-white">
+  <section class="section-pad bg-white reveal">
     <div class="container-site">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm mb-3">
+          <p
+            class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm mb-3"
+          >
             Welcome to Beachwalk Villas
           </p>
           <h2 class="section-heading">Carlsbad's Premier Beachside Retreat</h2>
           <p class="section-subheading mb-6">
-            Nestled along the stunning Carlsbad coastline, Beachwalk Villas offers a collection of
-            beautifully appointed vacation villas — from cozy poolside studios to stunning oceanfront suites.
+            Nestled along the stunning Carlsbad coastline, Beachwalk Villas
+            offers a collection of beautifully appointed vacation villas — from
+            cozy poolside studios to stunning oceanfront suites.
           </p>
           <p class="text-gray-600 mb-8 leading-relaxed">
-            Each villa is fully furnished with modern amenities, a full kitchen, and coastal-inspired décor.
-            Whether you're planning a romantic getaway, a family vacation, or an extended stay,
-            Beachwalk Villas is your home away from home on the Pacific coast.
+            Each villa is fully furnished with modern amenities, a full kitchen,
+            and coastal-inspired décor. Whether you're planning a romantic
+            getaway, a family vacation, or an extended stay, Beachwalk Villas is
+            your home away from home on the Pacific coast.
           </p>
           <a href="/villas/" class="btn-primary">Explore All Villas</a>
         </div>
@@ -79,31 +83,36 @@ const featuredVillas = allVillas
   </section>
 
   <!-- Featured Villas -->
-  <section class="section-pad bg-brand-sand">
+  <section class="section-pad bg-brand-sand reveal">
     <div class="container-site">
       <div class="text-center mb-12">
-        <p class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm mb-3">
+        <p
+          class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm mb-3"
+        >
           Our Properties
         </p>
         <h2 class="section-heading">Featured Villas</h2>
         <p class="section-subheading mx-auto">
-          From oceanfront suites to garden retreats, find the perfect villa for your stay.
+          From oceanfront suites to garden retreats, find the perfect villa for
+          your stay.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-        {featuredVillas.map(villa => (
-          <VillaCard
-            title={villa.data.title}
-            slug={villa.data.slug}
-            type={villa.data.type}
-            thumbnailImage={villa.data.thumbnailImage}
-            bedrooms={villa.data.bedrooms}
-            bathrooms={villa.data.bathrooms}
-            unitAmenities={villa.data.unitAmenities}
-            nightlyRate={villa.data.nightlyRate}
-          />
-        ))}
+        {
+          featuredVillas.map((villa) => (
+            <VillaCard
+              title={villa.data.title}
+              slug={villa.data.slug}
+              type={villa.data.type}
+              thumbnailImage={villa.data.thumbnailImage}
+              bedrooms={villa.data.bedrooms}
+              bathrooms={villa.data.bathrooms}
+              unitAmenities={villa.data.unitAmenities}
+              nightlyRate={villa.data.nightlyRate}
+            />
+          ))
+        }
       </div>
 
       <div class="text-center">
@@ -113,64 +122,150 @@ const featuredVillas = allVillas
   </section>
 
   <!-- Property highlights / amenities strip -->
-  <section class="section-pad bg-brand-navy text-white">
+  <section
+    id="stats-section"
+    class="section-pad bg-brand-navy text-white reveal"
+  >
     <div class="container-site">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        {[
-          { stat: '10',  label: 'Unique Villas' },
-          { stat: '100ft', label: 'From the Beach' },
-          { stat: '5★',  label: 'Guest Rating' },
-          { stat: '∞',   label: 'Memories Made' },
-        ].map(item => (
-          <div>
-            <p class="font-display text-5xl text-brand-gold mb-2">{item.stat}</p>
-            <p class="font-body text-sm uppercase tracking-widest text-gray-300">{item.label}</p>
-          </div>
-        ))}
+        <div>
+          <p
+            class="font-display text-5xl text-brand-gold mb-2"
+            data-count="10"
+            data-suffix=""
+          >
+            10
+          </p>
+          <p class="font-body text-sm uppercase tracking-widest text-gray-300">
+            Unique Villas
+          </p>
+        </div>
+        <div>
+          <p class="font-display text-5xl text-brand-gold mb-2">
+            <span data-count="100" data-suffix="ft">100</span>ft
+          </p>
+          <p class="font-body text-sm uppercase tracking-widest text-gray-300">
+            From the Beach
+          </p>
+        </div>
+        <div>
+          <p class="font-display text-5xl text-brand-gold mb-2">5★</p>
+          <p class="font-body text-sm uppercase tracking-widest text-gray-300">
+            Guest Rating
+          </p>
+        </div>
+        <div>
+          <p class="font-display text-5xl text-brand-gold mb-2">∞</p>
+          <p class="font-body text-sm uppercase tracking-widest text-gray-300">
+            Memories Made
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Property photos -->
-  <section class="section-pad bg-white">
+  <section class="section-pad bg-white reveal">
     <div class="container-site">
       <div class="text-center mb-10">
         <h2 class="section-heading">Life at Beachwalk</h2>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-        {[
-          '/images/Beachwalk-Villas-Beachside.png',
-          '/images/Beachwalk-Pool-area.png',
-          '/images/DSC09391.jpg',
-          '/images/DSC09395.jpg',
-          '/images/DSC09406-HDR.jpg',
-          '/images/DSC09410.jpg',
-          '/images/DSC09413.jpg',
-          '/images/DSC09425.jpg',
-        ].map((src, i) => (
-          <div class="aspect-square overflow-hidden">
-            <img
-              src={src}
-              alt={`Beachwalk Villas photo ${i + 1}`}
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              loading="lazy"
-            />
-          </div>
-        ))}
+        {
+          [
+            "/images/Beachwalk-Villas-Beachside.png",
+            "/images/Beachwalk-Pool-area.png",
+            "/images/DSC09391.jpg",
+            "/images/DSC09395.jpg",
+            "/images/DSC09406-HDR.jpg",
+            "/images/DSC09410.jpg",
+            "/images/DSC09413.jpg",
+            "/images/DSC09425.jpg",
+          ].map((src, i) => (
+            <div class="aspect-square overflow-hidden">
+              <img
+                src={src}
+                alt={`Beachwalk Villas photo ${i + 1}`}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
   <!-- CTA banner -->
-  <section class="py-16 bg-brand-teal text-white text-center">
+  <section class="py-16 bg-brand-teal text-white text-center reveal">
     <div class="container-site">
       <h2 class="font-display text-h1 mb-4">Ready to Book Your Stay?</h2>
       <p class="font-body text-lg text-white/90 max-w-xl mx-auto mb-8">
         Contact us today to check availability and reserve your Beachwalk Villa.
       </p>
-      <a href="/contact-us/" class="btn-primary bg-white text-brand-teal hover:bg-brand-navy hover:text-white">
+      <a
+        href="/contact-us/"
+        class="btn-primary bg-white text-brand-teal hover:bg-brand-navy hover:text-white"
+      >
         Contact Us
       </a>
     </div>
   </section>
 </SiteLayout>
+
+<script>
+  // Stats count-up animation
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (!prefersReducedMotion) {
+    const statsSection = document.getElementById("stats-section");
+    const countElements = document.querySelectorAll("[data-count]");
+
+    const countUp = (
+      element: HTMLElement,
+      target: number,
+      duration: number = 1500,
+    ) => {
+      const startTime = performance.now();
+      const suffix = element.getAttribute("data-suffix") || "";
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Ease out quad
+        const easeProgress = 1 - (1 - progress) * (1 - progress);
+        const current = Math.round(easeProgress * target);
+
+        element.textContent = current + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+
+      requestAnimationFrame(animate);
+    };
+
+    const statsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            countElements.forEach((el) => {
+              const target = parseInt(el.getAttribute("data-count") || "0", 10);
+              countUp(el as HTMLElement, target, 1500);
+            });
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+  }
+</script>
