@@ -1,6 +1,6 @@
 ---
 import VillaLayout from "../../layouts/VillaLayout.astro";
-import ImageGallery from "../../components/ImageGallery.astro";
+import GalleryIsland from "../../components/GalleryIsland";
 import ContactForm from "../../components/ContactForm.astro";
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
@@ -9,7 +9,7 @@ import { typeLabels, site } from "../../data/site";
 export const getStaticPaths = (async () => {
   const villas = await getCollection("villas");
   return villas.map((villa) => ({
-    params: { slug: villa.data.slug },
+    params: { slug: villa.id },
     props: { villa },
   }));
 }) satisfies GetStaticPaths;
@@ -18,21 +18,22 @@ const { villa } = Astro.props;
 const { Content } = await render(villa);
 
 const {
-  title,
-  type,
-  thumbnailImage,
-  galleryImages,
-  bedrooms,
-  bathrooms,
-  maxGuests,
-  sqft,
+  name: title,
+  category,
+  viewType,
+  image: thumbnailImageObj,
+  galleryImages: galleryImagesObjs,
+  specs: { bedrooms, bathrooms, maxGuests, sqft },
   layout,
   tagline,
   unitAmenities,
   metaDescription,
 } = villa.data;
 
-const typeLabel = typeLabels[type] ?? type;
+const typeLabel = `${viewType} ${category}`;
+
+const thumbnailImage = thumbnailImageObj?.src || '';
+const galleryImages = galleryImagesObjs?.map(img => img.src) || [];
 
 const allImages = [
   thumbnailImage,
@@ -57,7 +58,7 @@ const chips = [
 
 // Structured data for this specific rental unit + breadcrumb trail
 const siteUrl = "https://beachwalkvillas.net";
-const villaUrl = `${siteUrl}/villas/${villa.data.slug}/`;
+const villaUrl = `${siteUrl}/villas/${villa.id}/`;
 const accommodationLd = {
   "@context": "https://schema.org",
   "@type": "Accommodation",
@@ -98,22 +99,22 @@ const breadcrumbLd = {
   jsonLd={[accommodationLd, breadcrumbLd]}
 >
   <!-- Breadcrumb -->
-  <div class="bg-brand-sand border-b border-brand-border">
+  <div class="bg-sand border-b border-brand-border">
     <div class="container-site py-3 text-sm text-brand-muted">
-      <a href="/" class="hover:text-brand-teal">Home</a>
+      <a href="/" class="hover:text-seafoam">Home</a>
       <span class="mx-2">/</span>
-      <a href="/villas/" class="hover:text-brand-teal">Villas</a>
+      <a href="/villas/" class="hover:text-seafoam">Villas</a>
       <span class="mx-2">/</span>
-      <span class="text-brand-navy font-medium">{title}</span>
+      <span class="text-navy font-medium">{title}</span>
     </div>
   </div>
 
-  <section class="section-pad bg-brand-sand reveal !pt-12">
+  <section class="section-pad bg-sand reveal !pt-12">
     <div class="container-site">
       <!-- Title block -->
       <div class="mb-8 max-w-3xl">
         <span class="eyebrow">{typeLabel}</span>
-        <h1 class="font-display text-h1 mt-2 mb-3">{title}</h1>
+        <h1 class="font-serif text-h1 mt-2 mb-3">{title}</h1>
         {tagline && <p class="text-lg text-brand-muted">{tagline}</p>}
         <div class="flex flex-wrap gap-2 mt-5">
           {chips.map((c) => <span class="chip">{c}</span>)}
@@ -123,7 +124,7 @@ const breadcrumbLd = {
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
         <!-- Gallery + body -->
         <div class="lg:col-span-2">
-          <ImageGallery images={allImages} title={title} />
+          <GalleryIsland client:load images={allImages} title={title} />
 
           <div class="prose-coastal mt-10">
             <Content />
@@ -132,12 +133,12 @@ const breadcrumbLd = {
           {
             unitAmenities.length > 0 && (
               <div class="mt-10 pt-8 border-t border-brand-border">
-                <h2 class="font-display text-h3 mb-5">Villa Features</h2>
+                <h2 class="font-serif text-h3 mb-5">Villa Features</h2>
                 <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                   {unitAmenities.map((a) => (
-                    <li class="flex items-center gap-3 text-brand-navy">
-                      <span class="flex items-center justify-center w-7 h-7 rounded-full bg-brand-teal/10 flex-shrink-0">
-                        <svg class="w-4 h-4 text-brand-teal" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <li class="flex items-center gap-3 text-navy">
+                      <span class="flex items-center justify-center w-7 h-7 rounded-full bg-seafoam/10 flex-shrink-0">
+                        <svg class="w-4 h-4 text-seafoam" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                         </svg>
                       </span>
@@ -154,7 +155,7 @@ const breadcrumbLd = {
         <aside class="lg:col-span-1">
           <div class="lg:sticky lg:top-28 space-y-5">
             <div class="card p-7">
-              <h2 class="font-display text-h3 mb-1">Plan your stay</h2>
+              <h2 class="font-serif text-h3 mb-1">Plan your stay</h2>
               <p class="text-sm text-brand-muted mb-5">{typeLabel} · {site.location}</p>
 
               <dl class="space-y-3 text-sm border-t border-brand-border pt-5">
@@ -162,7 +163,7 @@ const breadcrumbLd = {
                   facts.map((f) => (
                     <div class="flex justify-between gap-4">
                       <dt class="text-brand-muted">{f.label}</dt>
-                      <dd class="font-semibold text-brand-navy text-right">{f.value}</dd>
+                      <dd class="font-semibold text-navy text-right">{f.value}</dd>
                     </div>
                   ))
                 }
@@ -175,11 +176,11 @@ const breadcrumbLd = {
             </div>
 
             <div class="card p-7">
-              <h3 class="font-display text-lg mb-3">Good to know</h3>
+              <h3 class="font-serif text-lg mb-3">Good to know</h3>
               <ul class="space-y-2.5 text-sm">
-                <li><a href="/amenities/" class="text-brand-teal hover:underline">Property amenities</a></li>
-                <li><a href="/reservation-policies/" class="text-brand-teal hover:underline">Reservation &amp; booking policies</a></li>
-                <li><a href="/attractions/" class="text-brand-teal hover:underline">Things to do in Carlsbad</a></li>
+                <li><a href="/amenities/" class="text-seafoam hover:underline">Property amenities</a></li>
+                <li><a href="/reservation-policies/" class="text-seafoam hover:underline">Reservation &amp; booking policies</a></li>
+                <li><a href="/attractions/" class="text-seafoam hover:underline">Things to do in Carlsbad</a></li>
               </ul>
             </div>
           </div>
@@ -199,9 +200,9 @@ const breadcrumbLd = {
     </div>
   </section>
 
-  <div class="bg-brand-sand border-t border-brand-border py-6">
+  <div class="bg-sand border-t border-brand-border py-6">
     <div class="container-site">
-      <a href="/villas/" class="text-brand-teal font-semibold hover:underline text-sm">
+      <a href="/villas/" class="text-seafoam font-semibold hover:underline text-sm">
         ← Back to all villas
       </a>
     </div>

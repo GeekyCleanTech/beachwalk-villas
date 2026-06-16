@@ -1,20 +1,26 @@
 ---
-title: "Ocean View Penthouse #5"
-slug: "ocean-view-villa-5"
-unit: 5
-type: "ocean-view"
+name: "Ocean View Penthouse #5"
+unitNumber: 5
+category: "Three Bedroom Penthouse"
+viewType: "Ocean View"
 status: "available"
-thumbnailImage: "/images/1-min-1-1568x1045-1.jpg"
+image: "../../src/assets/images/1-min-1-1568x1045-1.jpg"
 galleryImages:
-  - "/images/1-min-1-1568x1045-1.jpg"
-  - "/images/2_-min-1568x1045-1.jpg"
-  - "/images/3.5-min-1568x1046-1.jpg"
-  - "/images/3-min-2-1568x1045-1.jpg"
-  - "/images/4-min-2-1568x1045-1.jpg"
-bedrooms: 3
-bathrooms: 2
-maxGuests: 6
-sqft: 1800
+  - "../../src/assets/images/1-min-1-1568x1045-1.jpg"
+  - "../../src/assets/images/2_-min-1568x1045-1.jpg"
+  - "../../src/assets/images/3.5-min-1568x1046-1.jpg"
+  - "../../src/assets/images/3-min-2-1568x1045-1.jpg"
+  - "../../src/assets/images/4-min-2-1568x1045-1.jpg"
+specs:
+  bedrooms: 3
+  bathrooms: 2
+  maxGuests: 6
+  sqft: 1800
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "Penthouse"
 tagline: "An 1,800 sq ft penthouse with an oversized balcony and unobstructed ocean views."
 featured: true

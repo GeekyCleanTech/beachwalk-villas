@@ -18,7 +18,7 @@ import { site } from "../data/site";
     size="medium"
   />
 
-  <section class="section-pad bg-brand-sand reveal">
+  <section class="section-pad bg-sand reveal">
     <div class="container-site">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <!-- Contact info sidebar -->
@@ -27,7 +27,7 @@ import { site } from "../data/site";
             <span class="eyebrow">Call us</span>
             <a
               href={site.phoneHref}
-              class="block font-display text-2xl text-brand-navy hover:text-brand-teal transition-colors mt-1 mb-1"
+              class="block font-serif text-2xl text-navy hover:text-seafoam transition-colors mt-1 mb-1"
             >
               {site.phone}
             </a>
@@ -35,22 +35,22 @@ import { site } from "../data/site";
           </div>
 
           <div class="card p-7">
-            <h2 class="font-display text-h3 mb-4">Get in touch</h2>
+            <h2 class="font-serif text-h3 mb-4">Get in touch</h2>
             <dl class="space-y-4 text-sm text-brand-muted">
               <div>
-                <dt class="font-semibold text-brand-navy mb-0.5">Email</dt>
+                <dt class="font-semibold text-navy mb-0.5">Email</dt>
                 <dd>
-                  <a href={site.emailHref} class="text-brand-teal hover:underline">{site.email}</a>
+                  <a href={site.emailHref} class="text-seafoam hover:underline">{site.email}</a>
                 </dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-0.5">Address</dt>
+                <dt class="font-semibold text-navy mb-0.5">Address</dt>
                 <dd>
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapsQuery)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="hover:text-brand-teal"
+                    class="hover:text-seafoam"
                   >
                     {site.address}
                   </a>
@@ -58,23 +58,23 @@ import { site } from "../data/site";
                 </dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-0.5">Check-In</dt>
+                <dt class="font-semibold text-navy mb-0.5">Check-In</dt>
                 <dd>4:00 PM</dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-0.5">Check-Out</dt>
+                <dt class="font-semibold text-navy mb-0.5">Check-Out</dt>
                 <dd>11:00 AM</dd>
               </div>
             </dl>
           </div>
 
           <div class="card p-7">
-            <h3 class="font-display text-lg mb-3">Helpful links</h3>
+            <h3 class="font-serif text-lg mb-3">Helpful links</h3>
             <ul class="space-y-2.5 text-sm">
-              <li><a href="/villas/" class="text-brand-teal hover:underline">Browse all villas</a></li>
-              <li><a href="/amenities/" class="text-brand-teal hover:underline">Property amenities</a></li>
-              <li><a href="/reservation-policies/" class="text-brand-teal hover:underline">Reservation policies</a></li>
-              <li><a href="/promotions/" class="text-brand-teal hover:underline">Current promotions</a></li>
+              <li><a href="/villas/" class="text-seafoam hover:underline">Browse all villas</a></li>
+              <li><a href="/amenities/" class="text-seafoam hover:underline">Property amenities</a></li>
+              <li><a href="/reservation-policies/" class="text-seafoam hover:underline">Reservation policies</a></li>
+              <li><a href="/promotions/" class="text-seafoam hover:underline">Current promotions</a></li>
             </ul>
           </div>
         </div>

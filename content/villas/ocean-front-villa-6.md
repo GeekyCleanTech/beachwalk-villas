@@ -1,23 +1,30 @@
 ---
-title: "Ocean Front Villa #6"
-slug: "ocean-front-villa-6"
-unit: 6
-type: "ocean-front"
+name: "Ocean Front Villa #6"
+unitNumber: 6
+category: "Two Bedroom"
+viewType: "Ocean Front"
 status: "available"
-thumbnailImage: "/images/0.5-1568x1046-1.jpeg"
+image: "../../src/assets/images/0.5-1568x1046-1.jpeg"
 galleryImages:
-  - "/images/0.5-1568x1046-1.jpeg"
-  - "/images/0-1568x1046-1.jpeg"
-  - "/images/1.5-1568x1045-1.jpg"
-  - "/images/2-1-1-1568x1045-1.jpeg"
-  - "/images/3-.PLS-LIGHTEN-THIS-PICTURE_-1568x1045-1.jpg"
-  - "/images/4-1-1568x1045-1.jpeg"
-  - "/images/5-1-1568x1045-1.jpeg"
-  - "/images/6-1-1568x1045-1.jpeg"
-  - "/images/8-1568x1045-1.jpeg"
-bedrooms: 2
-bathrooms: 2
-maxGuests: 5
+  - "../../src/assets/images/0.5-1568x1046-1.jpeg"
+  - "../../src/assets/images/0-1568x1046-1.jpeg"
+  - "../../src/assets/images/1.5-1568x1045-1.jpg"
+  - "../../src/assets/images/2-1-1-1568x1045-1.jpeg"
+  - "../../src/assets/images/3-.PLS-LIGHTEN-THIS-PICTURE_-1568x1045-1.jpg"
+  - "../../src/assets/images/4-1-1568x1045-1.jpeg"
+  - "../../src/assets/images/5-1-1568x1045-1.jpeg"
+  - "../../src/assets/images/6-1-1568x1045-1.jpeg"
+  - "../../src/assets/images/8-1568x1045-1.jpeg"
+specs:
+  bedrooms: 2
+  bathrooms: 2
+  maxGuests: 5
+  sqft: 500
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "Two-level"
 tagline: "Unobstructed Pacific views from the living area and balcony."
 featured: true

@@ -1,22 +1,29 @@
 ---
-title: "Avenue View Villa #2"
-slug: "avenue-view-villa-2"
-unit: 2
-type: "avenue-view"
+name: "Avenue View Villa #2"
+unitNumber: 2
+category: "Two Bedroom"
+viewType: "Avenue View"
 status: "available"
-thumbnailImage: "/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg"
+image: "../../src/assets/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg"
 galleryImages:
-  - "/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg"
-  - "/images/1-8-1568x1045-1.jpg"
-  - "/images/3-2-1568x1045-1.jpg"
-  - "/images/4-2-1568x1045-1.jpg"
-  - "/images/5-2-1568x1045-1.jpg"
-  - "/images/6-1-1-1568x1045-1.jpg"
-  - "/images/7-1568x1045-1.jpg"
-  - "/images/8-1568x1045-1.jpg"
-bedrooms: 2
-bathrooms: 2
-maxGuests: 8
+  - "../../src/assets/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg"
+  - "../../src/assets/images/1-8-1568x1045-1.jpg"
+  - "../../src/assets/images/3-2-1568x1045-1.jpg"
+  - "../../src/assets/images/4-2-1568x1045-1.jpg"
+  - "../../src/assets/images/5-2-1568x1045-1.jpg"
+  - "../../src/assets/images/6-1-1-1568x1045-1.jpg"
+  - "../../src/assets/images/7-1568x1045-1.jpg"
+  - "../../src/assets/images/8-1568x1045-1.jpg"
+specs:
+  bedrooms: 2
+  bathrooms: 2
+  maxGuests: 8
+  sqft: 500
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "2nd floor"
 tagline: "An open floor plan ideal for family gatherings."
 featured: false

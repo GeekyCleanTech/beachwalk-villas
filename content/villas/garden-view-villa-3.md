@@ -1,19 +1,26 @@
 ---
-title: "Garden View Villa #3"
-slug: "garden-view-villa-3"
-unit: 3
-type: "garden-view"
+name: "Garden View Villa #3"
+unitNumber: 3
+category: "One Bedroom"
+viewType: "Garden View"
 status: "available"
-thumbnailImage: "/images/3-1st-pic-1568x1045-1.jpg"
+image: "../../src/assets/images/3-1st-pic-1568x1045-1.jpg"
 galleryImages:
-  - "/images/3-1st-pic-1568x1045-1.jpg"
-  - "/images/1_-2-1568x1045-1.jpg"
-  - "/images/3-1568x1045-1.jpg"
-  - "/images/4-1-1-1568x1045-1.jpg"
-  - "/images/Unit-3-picture-to-add-1568x1045-1.jpg"
-bedrooms: 1
-bathrooms: 1
-maxGuests: 2
+  - "../../src/assets/images/3-1st-pic-1568x1045-1.jpg"
+  - "../../src/assets/images/1_-2-1568x1045-1.jpg"
+  - "../../src/assets/images/3-1568x1045-1.jpg"
+  - "../../src/assets/images/4-1-1-1568x1045-1.jpg"
+  - "../../src/assets/images/Unit-3-picture-to-add-1568x1045-1.jpg"
+specs:
+  bedrooms: 1
+  bathrooms: 1
+  maxGuests: 2
+  sqft: 500
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "Garden view"
 tagline: "A spacious garden-view villa for the perfect beach getaway."
 featured: false

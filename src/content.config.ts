@@ -3,25 +3,32 @@ import { glob } from 'astro/loaders';
 
 const villas = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './content/villas' }),
-  schema: z.object({
-    title: z.string(),
-    slug: z.string(),
-    unit: z.number(),
-    type: z.enum(['ocean-front', 'ocean-view', 'avenue-view', 'garden-view', 'poolside-studio']),
+  schema: ({ image }) => z.object({
+    name: z.string(),
+    unitNumber: z.number(),
+    category: z.enum(['Studio', 'One Bedroom', 'Two Bedroom', 'Three Bedroom Penthouse']),
+    viewType: z.string(),
     status: z.enum(['available', 'occupied', 'maintenance']).default('available'),
-    thumbnailImage: z.string(),
-    galleryImages: z.array(z.string()),
-    bedrooms: z.number(),
-    bathrooms: z.number(),
-    maxGuests: z.number().optional(),
-    sqft: z.number().optional(),
-    layout: z.string().optional(), // e.g. "Split-level", "2nd floor", "Two-level penthouse"
-    tagline: z.string().optional(), // short one-line description for cards
+    image: image().refine((img) => img.width >= 800, {
+      message: "Villa images must be at least 800px wide for high-res displays.",
+    }),
+    galleryImages: z.array(image()).default([]),
+    specs: z.object({
+      bedrooms: z.number(),
+      bathrooms: z.number(),
+      maxGuests: z.number(),
+      sqft: z.number(),
+    }),
+    rates: z.object({
+      winter: z.number(),
+      springHoliday: z.number(),
+      summer: z.number(),
+    }),
+    guestyUrl: z.string().url(),
+    layout: z.string().optional(),
+    tagline: z.string().optional(),
     featured: z.boolean().default(false),
     unitAmenities: z.array(z.string()).default([]),
-    nightlyRate: z.number().optional(),
-    weeklyRate: z.number().optional(),
-    monthlyRate: z.number().optional(),
     metaDescription: z.string().optional(),
     sortOrder: z.number().default(0),
   }),
