@@ -44,8 +44,18 @@ import { site } from "../data/site";
                 </dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-0.5">Location</dt>
-                <dd>Carlsbad, CA 92008 — near Downtown Carlsbad</dd>
+                <dt class="font-semibold text-brand-navy mb-0.5">Address</dt>
+                <dd>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapsQuery)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-brand-teal"
+                  >
+                    {site.address}
+                  </a>
+                  <span class="block text-brand-muted/80">Near Downtown Carlsbad</span>
+                </dd>
               </div>
               <div>
                 <dt class="font-semibold text-brand-navy mb-0.5">Check-In</dt>
@@ -82,8 +92,8 @@ import { site } from "../data/site";
     <div class="container-site">
       <div class="overflow-hidden rounded-card shadow-[var(--shadow-soft)] border border-brand-border">
         <iframe
-          title="Map of Beachwalk Villas, Carlsbad, CA"
-          src="https://www.google.com/maps?q=Carlsbad+State+Beach,+Carlsbad,+CA&output=embed"
+          title="Map of Beachwalk Villas — 3100 Ocean St, Carlsbad, CA"
+          src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&output=embed`}
           width="100%"
           height="420"
           style="border:0;"

@@ -4,6 +4,8 @@ export const site = {
   name: "Beachwalk Villas",
   tagline: "Welcome to our beachfront escape",
   location: "Carlsbad, CA",
+  address: "3100 Ocean St, Carlsbad, CA 92008",
+  mapsQuery: "Beachwalk Villas, 3100 Ocean St, Carlsbad, CA 92008",
   phone: "760-720-1400 ext. 1",
   phoneHref: "tel:+17607201400", // ext. dialed after connection
   email: "info@beachwalkvillas.net",
@@ -58,18 +60,23 @@ export const categoryLabels: { key: string; label: string }[] = [
   { key: "three-bedroom-penthouse", label: "Three Bedroom Penthouse" },
 ];
 
-// Sister properties (kept as an "Other Properties" row)
+// Sister properties (kept as an "Other Properties" row).
+// All three are part of the Redwood La Jolla family of vacation rentals.
 export const sisterProperties = [
   {
+    name: "Redwood Hollow Cottages",
+    blurb: "Historic garden cottages steps from La Jolla Village and the sea.",
+    url: "https://redwoodhollow-lajolla.com/accommodations/",
+  },
+  {
     name: "Monte Vista",
-    blurb: "Boutique apartment living in a classic San Diego setting.",
+    blurb:
+      "An ocean-view townhome in La Jolla — room for the whole family, with a pool and hot tub.",
+    url: "https://redwoodhollow-lajolla.com/astra-portfolio/monte-vista-ocean-view-townhome/",
   },
   {
     name: "La Jolla Scenic",
-    blurb: "Stylish stays among the hills and coves of La Jolla.",
-  },
-  {
-    name: "Redwood Hollow Cottages",
-    blurb: "Garden cottages tucked into the heart of La Jolla.",
+    blurb: "A mid-century modern home tucked into the hills above La Jolla.",
+    url: "https://redwoodhollow-lajolla.com/la-jolla-scenic-mid-century-modern-home/",
   },
 ];

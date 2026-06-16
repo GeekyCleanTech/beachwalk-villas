@@ -52,7 +52,16 @@ const year = new Date().getFullYear();
         <ul class="space-y-2.5 text-sm">
           {
             sisterProperties.map((p) => (
-              <li class="text-white/70">{p.name}</li>
+              <li>
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-white/70 hover:text-white transition-colors"
+                >
+                  {p.name}
+                </a>
+              </li>
             ))
           }
           <li>

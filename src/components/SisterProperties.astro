@@ -17,11 +17,22 @@ import { sisterProperties } from "../data/site";
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {
         sisterProperties.map((p) => (
-          <div class="card p-8 text-center flex flex-col items-center">
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card group p-8 text-center flex flex-col items-center transition-shadow duration-300 hover:shadow-[var(--shadow-lift)]"
+          >
             <span class="eyebrow mb-3">Sister Property</span>
-            <h3 class="font-display text-h3 mb-3">{p.name}</h3>
+            <h3 class="font-display text-h3 mb-3 transition-colors group-hover:text-brand-teal">
+              {p.name}
+            </h3>
             <p class="text-sm text-brand-muted leading-relaxed">{p.blurb}</p>
-          </div>
+            <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-teal">
+              Visit site
+              <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
+            </span>
+          </a>
         ))
       }
     </div>

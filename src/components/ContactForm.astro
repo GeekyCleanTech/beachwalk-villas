@@ -13,6 +13,11 @@ const {
   preselectVilla,
 } = Astro.props;
 
+// Web3Forms access key — static-site friendly form delivery.
+// Set PUBLIC_WEB3FORMS_KEY in your env (see .env.example). When unset, the
+// form gracefully falls back to opening the visitor's email client.
+const formKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
+
 const villas = [
   "Poolside Studio #9",
   "Poolside Studio #10",
@@ -38,8 +43,20 @@ const labelClass = "block text-sm font-semibold text-brand-navy mb-1.5";
     <a href={site.phoneHref} class="text-brand-teal font-semibold hover:underline">{site.phone}</a>.
   </p>
 
-  <form name="contact" method="POST" data-netlify="true" class="space-y-5">
-    <input type="hidden" name="form-name" value="contact" />
+  <form
+    id="contact-form"
+    method="POST"
+    action="https://api.web3forms.com/submit"
+    class="space-y-5"
+    data-form-key={formKey}
+    data-fallback-email={site.email}
+  >
+    <!-- Web3Forms config -->
+    <input type="hidden" name="access_key" value={formKey} />
+    <input type="hidden" name="subject" value="New inquiry from the Beachwalk Villas website" />
+    <input type="hidden" name="from_name" value="Beachwalk Villas Website" />
+    <!-- Honeypot (hidden from real users) -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" aria-hidden="true" />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
       <div>
@@ -103,6 +120,72 @@ const labelClass = "block text-sm font-semibold text-brand-navy mb-1.5";
       )
     }
 
-    <button type="submit" class="btn btn-primary w-full sm:w-auto">Send Message</button>
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+      <button type="submit" class="btn btn-primary w-full sm:w-auto">Send Message</button>
+      <p id="form-status" role="status" aria-live="polite" class="hidden text-sm font-medium"></p>
+    </div>
   </form>
 </div>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const statusEl = document.getElementById("form-status");
+
+  if (form && statusEl) {
+    const key = form.dataset.formKey || "";
+    const fallbackEmail = form.dataset.fallbackEmail || "";
+    const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+    const setStatus = (msg: string, kind: "ok" | "err" | "info") => {
+      statusEl.textContent = msg;
+      statusEl.classList.remove("hidden", "text-brand-teal", "text-brand-coral", "text-brand-muted");
+      statusEl.classList.add(
+        kind === "ok" ? "text-brand-teal" : kind === "err" ? "text-brand-coral" : "text-brand-muted",
+      );
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      // Honeypot — silently drop bot submissions
+      if (data.get("botcheck")) return;
+
+      // No form provider configured → fall back to the visitor's email client
+      if (!key) {
+        const lines: string[] = [];
+        for (const [k, v] of data.entries()) {
+          if (["access_key", "botcheck", "subject", "from_name"].includes(k)) continue;
+          if (typeof v === "string" && v.trim()) lines.push(`${k}: ${v}`);
+        }
+        const subject = encodeURIComponent("Beachwalk Villas inquiry");
+        const body = encodeURIComponent(lines.join("\n"));
+        window.location.href = `mailto:${fallbackEmail}?subject=${subject}&body=${body}`;
+        setStatus("Opening your email app…", "info");
+        return;
+      }
+
+      submitBtn?.setAttribute("disabled", "true");
+      setStatus("Sending…", "info");
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: data,
+        });
+        const json = await res.json();
+        if (res.ok && json.success) {
+          form.reset();
+          setStatus("Thanks! Your message has been sent — we'll be in touch shortly.", "ok");
+        } else {
+          setStatus("Something went wrong. Please call us or email directly.", "err");
+        }
+      } catch {
+        setStatus("Network error. Please call us or email directly.", "err");
+      } finally {
+        submitBtn?.removeAttribute("disabled");
+      }
+    });
+  }
+</script>

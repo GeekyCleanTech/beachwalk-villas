@@ -160,14 +160,22 @@ Typography: **Fraunces** (serif display) + **Inter** (body/UI), loaded in `BaseL
 
 Shared site data (phone, nav, sister properties, type labels) lives in `src/data/site.ts`.
 
+### Contact form
+The contact / inquiry form (`src/components/ContactForm.astro`) submits to
+[Web3Forms](https://web3forms.com), which works on a fully static site.
+Create a free access key (point it at the destination inbox) and set
+`PUBLIC_WEB3FORMS_KEY` (see `.env.example`). With a key set, submissions post via
+fetch with inline success/error feedback; without one, the form falls back to
+opening the visitor's email client so nothing breaks in dev/preview.
+
 ## TODO Before Launch
 - [x] Confirm exact brand hex colors (sand/teal/coral palette applied)
 - [x] Add phone number — `760-720-1400 ext. 1` (see `src/data/site.ts`)
-- [x] Add Google Maps embed to Contact page
-- [ ] Confirm/replace the placeholder map location (currently Carlsbad State Beach)
-- [ ] Replace sister-property blurbs / link them to live sites when URLs are confirmed
+- [x] Add Google Maps embed to Contact page (3100 Ocean St, Carlsbad, CA 92008)
+- [x] Link sister properties to their live Redwood La Jolla pages
+- [x] Wire up form handling (Web3Forms — add `PUBLIC_WEB3FORMS_KEY`)
+- [ ] Create the Web3Forms access key and set it in the deploy env
 - [ ] Confirm the `info@beachwalkvillas.net` email address
 - [ ] Verify all villa gallery image assignments match actual photos
-- [ ] Set up form handling (Cloudflare Forms, Formspark, or Resend)
 - [ ] Test all redirects from old WP URLs
 - [ ] Submit sitemap to Google Search Console after launch
