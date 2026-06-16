@@ -1,123 +1,108 @@
 ---
 // src/components/ContactForm.astro
+import { site } from "../data/site";
+
 interface Props {
   title?: string;
   showVillaSelect?: boolean;
+  preselectVilla?: string;
 }
-const { title = 'Contact Us', showVillaSelect = false } = Astro.props;
+const {
+  title = "Send Us a Message",
+  showVillaSelect = false,
+  preselectVilla,
+} = Astro.props;
 
 const villas = [
-  'Avenue View Villa #1',
-  'Avenue View Villa #2',
-  'Garden View Villa #3',
-  'Ocean View Villa #4',
-  'Ocean View Villa #5',
-  'Ocean Front Villa #6',
-  'Ocean Front Villa #7',
-  'Ocean Front Villa #8',
-  'Poolside Studio #9',
-  'Poolside Studio #10',
+  "Poolside Studio #9",
+  "Poolside Studio #10",
+  "Garden View Villa #3",
+  "Ocean Front Villa #7",
+  "Avenue View Villa #1",
+  "Avenue View Villa #2",
+  "Ocean View Villa #4",
+  "Ocean Front Villa #6",
+  "Ocean Front Villa #8",
+  "Ocean View Penthouse #5",
 ];
+
+const fieldClass =
+  "w-full rounded-xl border border-brand-border bg-brand-sand/40 px-4 py-3 text-sm text-brand-navy placeholder:text-brand-muted/70 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-brand-teal transition";
+const labelClass = "block text-sm font-semibold text-brand-navy mb-1.5";
 ---
 
-<div class="bg-white shadow-sm border border-gray-100 p-8 md:p-10">
-  <h2 class="font-display text-h2 text-brand-navy mb-6">{title}</h2>
+<div class="card p-8 md:p-10">
+  <h2 class="font-display text-h2 mb-2">{title}</h2>
+  <p class="text-sm text-brand-muted mb-7">
+    Prefer to talk? Call us at
+    <a href={site.phoneHref} class="text-brand-teal font-semibold hover:underline">{site.phone}</a>.
+  </p>
 
-  <!-- Cloudflare Forms or replace with your preferred form handler -->
-  <form
-    name="contact"
-    method="POST"
-    data-netlify="true"
-    class="space-y-5"
-  >
+  <form name="contact" method="POST" data-netlify="true" class="space-y-5">
     <input type="hidden" name="form-name" value="contact" />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
       <div>
-        <label for="name" class="block text-sm font-semibold text-gray-700 mb-1.5">Full Name *</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          class="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal"
-          placeholder="Jane Smith"
-        />
+        <label for="name" class={labelClass}>Full Name *</label>
+        <input id="name" name="name" type="text" required class={fieldClass} placeholder="Jane Smith" />
       </div>
       <div>
-        <label for="email" class="block text-sm font-semibold text-gray-700 mb-1.5">Email *</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          class="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal"
-          placeholder="jane@email.com"
-        />
+        <label for="email" class={labelClass}>Email *</label>
+        <input id="email" name="email" type="email" required class={fieldClass} placeholder="jane@email.com" />
       </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
       <div>
-        <label for="phone" class="block text-sm font-semibold text-gray-700 mb-1.5">Phone</label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          class="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal"
-          placeholder="(760) 555-0100"
-        />
+        <label for="phone" class={labelClass}>Phone</label>
+        <input id="phone" name="phone" type="tel" class={fieldClass} placeholder="(760) 555-0100" />
       </div>
 
-      {showVillaSelect && (
-        <div>
-          <label for="villa" class="block text-sm font-semibold text-gray-700 mb-1.5">Villa of Interest</label>
-          <select
-            id="villa"
-            name="villa"
-            class="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal bg-white"
-          >
-            <option value="">Select a villa...</option>
-            {villas.map(v => <option value={v}>{v}</option>)}
-          </select>
-        </div>
-      )}
+      {
+        showVillaSelect && (
+          <div>
+            <label for="villa" class={labelClass}>Villa of Interest</label>
+            <select id="villa" name="villa" class={fieldClass}>
+              <option value="">Select a villa…</option>
+              {villas.map((v) => (
+                <option value={v} selected={v === preselectVilla}>
+                  {v}
+                </option>
+              ))}
+            </select>
+          </div>
+        )
+      }
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
       <div>
-        <label for="checkin" class="block text-sm font-semibold text-gray-700 mb-1.5">Check-In Date</label>
-        <input
-          id="checkin"
-          name="checkin"
-          type="date"
-          class="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal"
-        />
+        <label for="checkin" class={labelClass}>Check-In Date</label>
+        <input id="checkin" name="checkin" type="date" class={fieldClass} />
       </div>
       <div>
-        <label for="checkout" class="block text-sm font-semibold text-gray-700 mb-1.5">Check-Out Date</label>
-        <input
-          id="checkout"
-          name="checkout"
-          type="date"
-          class="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal"
-        />
+        <label for="checkout" class={labelClass}>Check-Out Date</label>
+        <input id="checkout" name="checkout" type="date" class={fieldClass} />
       </div>
     </div>
 
     <div>
-      <label for="message" class="block text-sm font-semibold text-gray-700 mb-1.5">Message</label>
+      <label for="message" class={labelClass}>Message</label>
       <textarea
         id="message"
         name="message"
         rows={5}
-        class="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none"
-        placeholder="Tell us about your stay, questions, or special requests..."
+        class={`${fieldClass} resize-none`}
+        placeholder="Tell us about your stay, questions, or special requests…"
       ></textarea>
     </div>
 
-    <button type="submit" class="btn-primary w-full sm:w-auto">
-      Send Message
-    </button>
+    {
+      preselectVilla && !showVillaSelect && (
+        <input type="hidden" name="villa" value={preselectVilla} />
+      )
+    }
+
+    <button type="submit" class="btn btn-primary w-full sm:w-auto">Send Message</button>
   </form>
 </div>

@@ -1,6 +1,7 @@
 ---
 // src/components/Hero.astro
 interface Props {
+  eyebrow?: string;
   headline: string;
   subheadline?: string;
   ctaLabel?: string;
@@ -9,34 +10,41 @@ interface Props {
   ctaSecondaryHref?: string;
   bgVideo?: string;
   bgImage?: string;
-  overlay?: boolean;
+  align?: "center" | "left";
   size?: "full" | "large" | "medium";
 }
 
 const {
+  eyebrow,
   headline,
   subheadline,
   ctaLabel,
   ctaHref = "/villas/",
   ctaSecondaryLabel,
   ctaSecondaryHref,
-  bgVideo = "/images/BG_VIDEO1.mp4",
+  bgVideo,
   bgImage = "/images/beachwalk-featured-images.jpg",
-  overlay = true,
+  align = "center",
   size = "full",
 } = Astro.props;
 
 const sizeClasses = {
-  full: "min-h-screen",
-  large: "min-h-[70vh]",
-  medium: "min-h-[50vh]",
+  full: "min-h-[88vh]",
+  large: "min-h-[62vh]",
+  medium: "min-h-[44vh]",
 };
+
+const alignClasses =
+  align === "center"
+    ? "items-center text-center"
+    : "items-center text-left";
+const contentAlign = align === "center" ? "mx-auto" : "mr-auto";
 ---
 
 <section
-  class={`relative flex items-center justify-center ${sizeClasses[size]} overflow-hidden`}
+  class={`relative flex ${alignClasses} ${sizeClasses[size]} overflow-hidden`}
 >
-  <!-- Background video (falls back to image) -->
+  <!-- Background -->
   {
     bgVideo ? (
       <video
@@ -61,49 +69,63 @@ const sizeClasses = {
     )
   }
 
-  <!-- Overlay -->
-  {overlay && <div class="absolute inset-0 bg-brand-navy/50" />}
+  <!-- Gradient scrim (always, for legibility over imagery) -->
+  <div class="absolute inset-0 scrim"></div>
 
   <!-- Content -->
-  <div class="relative z-10 container-site text-center text-white px-4">
-    <h1
-      class="font-display text-hero text-balance mb-4 drop-shadow-lg hero-animate-headline"
-    >
-      {headline}
-    </h1>
+  <div class={`relative z-10 container-site text-white py-24 ${align === "center" ? "" : ""}`}>
+    <div class={`max-w-3xl ${contentAlign}`}>
+      {
+        eyebrow && (
+          <p class="hero-animate-headline font-body font-semibold tracking-[0.18em] uppercase text-sm text-white/85 mb-4">
+            {eyebrow}
+          </p>
+        )
+      }
+      <h1
+        class="font-display text-hero text-balance mb-5 drop-shadow-md hero-animate-headline"
+      >
+        {headline}
+      </h1>
 
-    {
-      subheadline && (
-        <p class="font-body text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 text-balance hero-animate-subheadline">
-          {subheadline}
-        </p>
-      )
-    }
+      {
+        subheadline && (
+          <p
+            class={`font-body text-lg md:text-xl text-white/90 mb-9 text-balance hero-animate-subheadline ${
+              align === "center" ? "max-w-2xl mx-auto" : "max-w-xl"
+            }`}
+          >
+            {subheadline}
+          </p>
+        )
+      }
 
-    {
-      (ctaLabel || ctaSecondaryLabel) && (
-        <div class="flex flex-col sm:flex-row gap-4 justify-center hero-animate-cta">
-          {ctaLabel && (
-            <a href={ctaHref} class="btn-primary shadow-lg">
-              {ctaLabel}
-            </a>
-          )}
-          {ctaSecondaryLabel && ctaSecondaryHref && (
-            <a
-              href={ctaSecondaryHref}
-              class="btn-outline border-white text-white hover:bg-white hover:text-brand-navy"
-            >
-              {ctaSecondaryLabel}
-            </a>
-          )}
-        </div>
-      )
-    }
+      {
+        (ctaLabel || ctaSecondaryLabel) && (
+          <div
+            class={`flex flex-col sm:flex-row gap-4 hero-animate-cta ${
+              align === "center" ? "justify-center" : "justify-start"
+            }`}
+          >
+            {ctaLabel && (
+              <a href={ctaHref} class="btn btn-coral">
+                {ctaLabel}
+              </a>
+            )}
+            {ctaSecondaryLabel && ctaSecondaryHref && (
+              <a href={ctaSecondaryHref} class="btn btn-white">
+                {ctaSecondaryLabel}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
   </div>
 </section>
 
 <script>
-  // Parallax scroll effect on hero background
+  // Gentle parallax on the hero background
   const heroBg = document.getElementById("hero-bg");
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
@@ -111,18 +133,15 @@ const sizeClasses = {
 
   if (heroBg && !prefersReducedMotion) {
     let ticking = false;
-
-    const updateParallax = () => {
-      const scrollY = window.scrollY;
-      heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+    const update = () => {
+      heroBg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
       ticking = false;
     };
-
     window.addEventListener(
       "scroll",
       () => {
         if (!ticking) {
-          requestAnimationFrame(updateParallax);
+          requestAnimationFrame(update);
           ticking = true;
         }
       },

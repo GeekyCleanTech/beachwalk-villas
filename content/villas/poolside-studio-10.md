@@ -1,5 +1,5 @@
 ---
-title: "Poolside Studio, #10"
+title: "Poolside Studio #10"
 slug: "poolside-studio-10"
 unit: 10
 type: "poolside-studio"
@@ -12,14 +12,17 @@ galleryImages:
   - "/images/3-min-1568x1045-1.jpg"
 bedrooms: 0
 bathrooms: 1
-maxGuests: 2
+maxGuests: 3
+layout: "Poolside studio"
+tagline: "Most recently remodeled, with modern Southern California beach decor."
+featured: false
 unitAmenities:
   - "Pool Access"
-  - "Poolside Location"
-  - "Updated Kitchen"
+  - "Fully Equipped Kitchen"
+  - "Recently Remodeled"
   - "Patio"
-metaDescription: "Poolside Studio #10 at Beachwalk Villas in Carlsbad, CA. Updated studio unit with pool access and modern kitchen."
+metaDescription: "Poolside Studio #10 at Beachwalk Villas in Carlsbad, CA. Most recently remodeled studio with a fully equipped kitchen and pool access — sleeps 3."
 sortOrder: 10
 ---
 
-Poolside Studio #10 features a recently updated kitchen and direct access to the community pool. A great value option for guests who want modern amenities in a relaxed, resort-style setting.
+Our most recently remodeled unit, Poolside Studio #10 is dressed in fresh, modern Southern California beach decor. The studio sleeps up to three guests and features a fully equipped kitchen, so you can settle in and feel right at home from the moment you arrive — just steps from the pool and the shore.

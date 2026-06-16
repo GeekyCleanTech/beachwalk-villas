@@ -1,5 +1,5 @@
 ---
-title: "Ocean Front Villa, #7"
+title: "Ocean Front Villa #7"
 slug: "ocean-front-villa-7"
 unit: 7
 type: "ocean-front"
@@ -16,13 +16,16 @@ galleryImages:
 bedrooms: 1
 bathrooms: 1
 maxGuests: 2
+layout: "2nd floor"
+tagline: "Spectacular ocean views from the living room, dining, kitchen and private balcony."
+featured: true
 unitAmenities:
-  - "Oceanfront"
-  - "Unobstructed Ocean Views"
+  - "Ocean Front"
+  - "Private Balcony"
   - "Full Kitchen"
-  - "Private Deck"
-metaDescription: "Ocean Front Villa #7 at Beachwalk Villas in Carlsbad, CA. Stunning oceanfront villa with panoramic Pacific Ocean views."
+  - "2nd Floor Views"
+metaDescription: "Ocean Front Villa #7 at Beachwalk Villas in Carlsbad, CA. Second-floor oceanfront one-bedroom with spectacular Pacific views from every room — sleeps 2."
 sortOrder: 7
 ---
 
-Ocean Front Villa #7 puts you front and center on the Pacific. Panoramic ocean views, a fully equipped kitchen, and Beachwalk's signature coastal design make this one of the most sought-after units on the property.
+Perched on the second floor, Ocean Front Villa #7 frames spectacular Pacific views from the living room, dining area, kitchen, and private balcony. Wake to the sound of the surf and take in the horizon over morning coffee — this is oceanfront living at its most effortless.

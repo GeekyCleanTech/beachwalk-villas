@@ -3,78 +3,101 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import Hero from "../components/Hero.astro";
 import VillaCard from "../components/VillaCard.astro";
+import SisterProperties from "../components/SisterProperties.astro";
 import { getCollection } from "astro:content";
+import { site } from "../data/site";
 
 const allVillas = await getCollection("villas");
 const featuredVillas = allVillas
+  .filter((v) => v.data.featured)
   .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
   .slice(0, 3);
+
+const amenities = [
+  { label: "Steps to the Shore", icon: "wave" },
+  { label: "Sparkling Pool", icon: "pool" },
+  { label: "Fully Equipped Kitchens", icon: "kitchen" },
+  { label: "Free Parking", icon: "car" },
+  { label: "Fast Wi-Fi", icon: "wifi" },
+  { label: "Near Downtown Carlsbad", icon: "pin" },
+];
+
+const attractions = [
+  {
+    name: "Carlsbad State Beach",
+    distance: "Steps away",
+    image: "/images/Beachwalk-Villas-Beachside.png",
+  },
+  {
+    name: "Carlsbad Village",
+    distance: "5 min",
+    image: "/images/carlsbad-sign-pic.jpg",
+  },
+  {
+    name: "The Flower Fields",
+    distance: "8 min",
+    image: "/images/activities-img-04.jpg",
+  },
+  {
+    name: "LEGOLAND California",
+    distance: "10 min",
+    image: "/images/activities-img-02.jpg",
+  },
+];
 ---
 
 <SiteLayout
-  title="Beachside Vacation Villas in Carlsbad, CA"
-  description="Beachwalk Villas offers luxury oceanfront and ocean view vacation rentals in Carlsbad, California — steps from the Pacific."
+  title="Oceanfront Vacation Villas in Carlsbad, CA"
+  description="Beachwalk Villas — contemporary oceanfront vacation rentals in Carlsbad, California, steps from the shore and near Downtown Carlsbad. Welcome to our beachfront escape."
 >
-  <!-- Hero with background video -->
+  <!-- Hero -->
   <Hero
-    headline="Your Private Escape on the California Coast"
-    subheadline="Luxury villas steps from the Pacific — in beautiful Carlsbad, California."
-    ctaLabel="View Our Villas"
+    eyebrow="Carlsbad, California"
+    headline="Welcome to our beachfront escape"
+    subheadline="Contemporary, elegantly decorated villas steps from the shore — feel right at home on the Southern California coast."
+    ctaLabel="Explore Villas"
     ctaHref="/villas/"
-    ctaSecondaryLabel="Contact Us"
+    ctaSecondaryLabel="Book Now"
     ctaSecondaryHref="/contact-us/"
-    bgVideo="/images/BG_VIDEO1.mp4"
-    bgImage="/images/beachwalk-featured-images.jpg"
+    bgImage="/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg"
     size="full"
   />
 
-  <!-- Welcome section -->
-  <section class="section-pad bg-white reveal">
+  <!-- Welcome / Feel right at home -->
+  <section class="section-pad bg-brand-sand reveal">
     <div class="container-site">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
-          <p
-            class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm mb-3"
-          >
-            Welcome to Beachwalk Villas
+          <span class="eyebrow">Welcome to Beachwalk Villas</span>
+          <h2 class="section-heading mb-5">Feel right at home, right on the coast</h2>
+          <p class="text-brand-muted leading-relaxed mb-5">
+            Tucked along the Carlsbad shoreline and just minutes from Downtown
+            Carlsbad, Beachwalk Villas is a collection of contemporary,
+            residential-style retreats — from sunny poolside studios to
+            unobstructed oceanfront escapes.
           </p>
-          <h2 class="section-heading">Carlsbad's Premier Beachside Retreat</h2>
-          <p class="section-subheading mb-6">
-            Nestled along the stunning Carlsbad coastline, Beachwalk Villas
-            offers a collection of beautifully appointed vacation villas — from
-            cozy poolside studios to stunning oceanfront suites.
+          <p class="text-brand-muted leading-relaxed mb-8">
+            Every villa is thoughtfully decorated and fully equipped, so you can
+            slip off your shoes, open the balcony doors, and let the sound of the
+            Pacific do the rest.
           </p>
-          <p class="text-gray-600 mb-8 leading-relaxed">
-            Each villa is fully furnished with modern amenities, a full kitchen,
-            and coastal-inspired décor. Whether you're planning a romantic
-            getaway, a family vacation, or an extended stay, Beachwalk Villas is
-            your home away from home on the Pacific coast.
-          </p>
-          <a href="/villas/" class="btn-primary">Explore All Villas</a>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/villas/" class="btn btn-primary">Explore Villas</a>
+            <a href="/contact-us/" class="btn btn-outline">Book Now</a>
+          </div>
         </div>
-        <div class="grid grid-cols-2 gap-3">
+
+        <div class="grid grid-cols-2 gap-4">
           <img
-            src="/images/modern-inspired-vila-home-img-1.jpg"
-            alt="Beachwalk Villas exterior"
-            class="w-full aspect-square object-cover"
+            src="/images/DSC09431-1024x683.jpg"
+            alt="Sun-washed Beachwalk Villas interior"
+            class="rounded-card w-full aspect-[3/4] object-cover shadow-[var(--shadow-soft)]"
             loading="lazy"
           />
           <img
-            src="/images/bottom-img1.jpg"
-            alt="Beachwalk Villas interior"
-            class="w-full aspect-square object-cover mt-6"
-            loading="lazy"
-          />
-          <img
-            src="/images/bottom-img2.jpg"
-            alt="Beachwalk Villas amenities"
-            class="w-full aspect-square object-cover -mt-6"
-            loading="lazy"
-          />
-          <img
-            src="/images/bottom-img3-1.jpg"
-            alt="Beachwalk Villas ocean view"
-            class="w-full aspect-square object-cover"
+            src="/images/DSC09464-300x200.jpg"
+            alt="Oceanfront balcony view"
+            class="rounded-card w-full aspect-[3/4] object-cover shadow-[var(--shadow-soft)] mt-8"
             loading="lazy"
           />
         </div>
@@ -82,23 +105,55 @@ const featuredVillas = allVillas
     </div>
   </section>
 
-  <!-- Featured Villas -->
+  <!-- Amenities strip -->
+  <section class="bg-brand-teal text-white reveal">
+    <div class="container-site py-12 md:py-14">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-4">
+        {
+          amenities.map((a) => (
+            <div class="flex flex-col items-center text-center gap-3">
+              <span class="flex items-center justify-center w-12 h-12 rounded-full bg-white/12">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+                  {a.icon === "wave" && (
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2 13c2 0 2-1.5 4-1.5S8 13 10 13s2-1.5 4-1.5S16 13 18 13s2-1.5 4-1.5M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5S16 18 18 18s2-1.5 4-1.5" />
+                  )}
+                  {a.icon === "pool" && (
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 18c1.5 0 1.5-1 3-1s1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1M7 16V6a2 2 0 1 1 4 0M13 16V6a2 2 0 1 1 4 0M7 9h4m2 0h4" />
+                  )}
+                  {a.icon === "kitchen" && (
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v8m0 0a2 2 0 0 0 2-2V3M5 11v10M19 3c-1.5 0-3 2-3 5s1 4 3 4m0 0v9" />
+                  )}
+                  {a.icon === "car" && (
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v3m16-3v3M5 16l1.5-5A2 2 0 0 1 8.4 9.7h7.2a2 2 0 0 1 1.9 1.3L19 16M5 16h14M7 13h2m6 0h2M5 16a1.5 1.5 0 1 0 0 .01M19 16a1.5 1.5 0 1 0 0 .01" />
+                  )}
+                  {a.icon === "wifi" && (
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.5 9a14 14 0 0 1 19 0M6 12.5a9 9 0 0 1 12 0M9.5 16a4 4 0 0 1 5 0M12 19.5h.01" />
+                  )}
+                  {a.icon === "pin" && (
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                  )}
+                </svg>
+              </span>
+              <span class="text-sm font-medium text-white/90">{a.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured villas -->
   <section class="section-pad bg-brand-sand reveal">
     <div class="container-site">
-      <div class="text-center mb-12">
-        <p
-          class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm mb-3"
-        >
-          Our Properties
-        </p>
-        <h2 class="section-heading">Featured Villas</h2>
-        <p class="section-subheading mx-auto">
-          From oceanfront suites to garden retreats, find the perfect villa for
-          your stay.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
+        <div>
+          <span class="eyebrow">Our Villas</span>
+          <h2 class="section-heading">Featured stays by the sea</h2>
+        </div>
+        <a href="/villas/" class="btn btn-outline self-start md:self-auto">View all 10 villas</a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         {
           featuredVillas.map((villa) => (
             <VillaCard
@@ -108,164 +163,79 @@ const featuredVillas = allVillas
               thumbnailImage={villa.data.thumbnailImage}
               bedrooms={villa.data.bedrooms}
               bathrooms={villa.data.bathrooms}
-              unitAmenities={villa.data.unitAmenities}
-              nightlyRate={villa.data.nightlyRate}
+              maxGuests={villa.data.maxGuests}
+              sqft={villa.data.sqft}
+              tagline={villa.data.tagline}
             />
           ))
         }
       </div>
-
-      <div class="text-center">
-        <a href="/villas/" class="btn-primary">View All 10 Villas</a>
-      </div>
     </div>
   </section>
 
-  <!-- Property highlights / amenities strip -->
-  <section
-    id="stats-section"
-    class="section-pad bg-brand-navy text-white reveal"
-  >
+  <!-- Carlsbad attractions teaser -->
+  <section class="section-pad bg-brand-surface reveal">
     <div class="container-site">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div>
-          <p
-            class="font-display text-5xl text-brand-gold mb-2"
-            data-count="10"
-            data-suffix=""
-          >
-            10
-          </p>
-          <p class="font-body text-sm uppercase tracking-widest text-gray-300">
-            Unique Villas
-          </p>
-        </div>
-        <div>
-          <p class="font-display text-5xl text-brand-gold mb-2">
-            <span data-count="100" data-suffix="ft">100</span>ft
-          </p>
-          <p class="font-body text-sm uppercase tracking-widest text-gray-300">
-            From the Beach
-          </p>
-        </div>
-        <div>
-          <p class="font-display text-5xl text-brand-gold mb-2">5★</p>
-          <p class="font-body text-sm uppercase tracking-widest text-gray-300">
-            Guest Rating
-          </p>
-        </div>
-        <div>
-          <p class="font-display text-5xl text-brand-gold mb-2">∞</p>
-          <p class="font-body text-sm uppercase tracking-widest text-gray-300">
-            Memories Made
-          </p>
-        </div>
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="eyebrow">Explore Carlsbad</span>
+        <h2 class="section-heading mx-auto">A coastal town with everything close by</h2>
+        <p class="section-subheading mx-auto mt-3">
+          Wide sandy beaches, the charm of Carlsbad Village, world-famous
+          flower fields, and family favorites — all just minutes from your door.
+        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- Property photos -->
-  <section class="section-pad bg-white reveal">
-    <div class="container-site">
-      <div class="text-center mb-10">
-        <h2 class="section-heading">Life at Beachwalk</h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
         {
-          [
-            "/images/Beachwalk-Villas-Beachside.png",
-            "/images/Beachwalk-Pool-area.png",
-            "/images/DSC09391.jpg",
-            "/images/DSC09395.jpg",
-            "/images/DSC09406-HDR.jpg",
-            "/images/DSC09410.jpg",
-            "/images/DSC09413.jpg",
-            "/images/DSC09425.jpg",
-          ].map((src, i) => (
-            <div class="aspect-square overflow-hidden">
+          attractions.map((a) => (
+            <a href="/attractions/" class="group relative block overflow-hidden rounded-card aspect-[3/4] shadow-[var(--shadow-soft)]">
               <img
-                src={src}
-                alt={`Beachwalk Villas photo ${i + 1}`}
-                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                src={a.image}
+                alt={a.name}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-            </div>
+              <div class="absolute inset-0 scrim" />
+              <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+                <span class="badge badge-coral mb-2">{a.distance}</span>
+                <h3 class="font-display text-lg leading-tight">{a.name}</h3>
+              </div>
+            </a>
           ))
         }
       </div>
+
+      <div class="text-center mt-10">
+        <a href="/attractions/" class="btn btn-outline">See all attractions</a>
+      </div>
     </div>
   </section>
 
-  <!-- CTA banner -->
-  <section class="py-16 bg-brand-teal text-white text-center reveal">
-    <div class="container-site">
-      <h2 class="font-display text-h1 mb-4">Ready to Book Your Stay?</h2>
-      <p class="font-body text-lg text-white/90 max-w-xl mx-auto mb-8">
-        Contact us today to check availability and reserve your Beachwalk Villa.
+  <!-- Sister properties -->
+  <SisterProperties />
+
+  <!-- Contact band with phone number -->
+  <section class="relative overflow-hidden reveal">
+    <img
+      src="/images/DSC09464-2048x1365.jpg"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-brand-navy/72"></div>
+    <div class="relative container-site py-20 md:py-28 text-center text-white">
+      <span class="eyebrow !text-brand-coral">Ready when you are</span>
+      <h2 class="font-display text-h1 mb-4 mt-2">Reserve your beachfront escape</h2>
+      <p class="text-white/85 text-lg max-w-xl mx-auto mb-8">
+        Check availability, ask a question, or book your stay. We'd love to help
+        you plan the perfect Carlsbad getaway.
       </p>
-      <a
-        href="/contact-us/"
-        class="btn-primary bg-white text-brand-teal hover:bg-brand-navy hover:text-white"
-      >
-        Contact Us
-      </a>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/contact-us/" class="btn btn-coral">Book Now</a>
+        <a href={site.phoneHref} class="btn btn-white">
+          Call {site.phone}
+        </a>
+      </div>
     </div>
   </section>
 </SiteLayout>
-
-<script>
-  // Stats count-up animation
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-
-  if (!prefersReducedMotion) {
-    const statsSection = document.getElementById("stats-section");
-    const countElements = document.querySelectorAll("[data-count]");
-
-    const countUp = (
-      element: HTMLElement,
-      target: number,
-      duration: number = 1500,
-    ) => {
-      const startTime = performance.now();
-      const suffix = element.getAttribute("data-suffix") || "";
-
-      const animate = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Ease out quad
-        const easeProgress = 1 - (1 - progress) * (1 - progress);
-        const current = Math.round(easeProgress * target);
-
-        element.textContent = current + suffix;
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
-      };
-
-      requestAnimationFrame(animate);
-    };
-
-    const statsObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            countElements.forEach((el) => {
-              const target = parseInt(el.getAttribute("data-count") || "0", 10);
-              countUp(el as HTMLElement, target, 1500);
-            });
-            statsObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
-
-    if (statsSection) {
-      statsObserver.observe(statsSection);
-    }
-  }
-</script>

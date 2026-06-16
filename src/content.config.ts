@@ -15,6 +15,9 @@ const villas = defineCollection({
     bathrooms: z.number(),
     maxGuests: z.number().optional(),
     sqft: z.number().optional(),
+    layout: z.string().optional(), // e.g. "Split-level", "2nd floor", "Two-level penthouse"
+    tagline: z.string().optional(), // short one-line description for cards
+    featured: z.boolean().default(false),
     unitAmenities: z.array(z.string()).default([]),
     nightlyRate: z.number().optional(),
     weeklyRate: z.number().optional(),

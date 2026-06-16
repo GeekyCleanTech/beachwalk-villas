@@ -1,35 +1,293 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Beachwalk Villas — Design Tokens
+   Airy, sun-washed, upscale-but-relaxed coastal brand.
+   ============================================================ */
 @theme {
-  --color-brand-navy: #1a2e44;
-  --color-brand-teal: #2a7f8f;
-  --color-brand-sand: #f5f0e8;
-  --color-brand-gold: #c9a84c;
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "Source Sans 3", system-ui, sans-serif;
+  /* Surfaces & backgrounds */
+  --color-brand-sand: #f7f3ec;
+  --color-brand-surface: #ffffff;
+
+  /* Primary — ocean teal */
+  --color-brand-teal: #1f6f78;
+  --color-brand-teal-dark: #16555c;
+
+  /* Accent — refined sunset coral (use sparingly) */
+  --color-brand-coral: #e0763c;
+  --color-brand-coral-dark: #c8632d;
+
+  /* Text */
+  --color-brand-navy: #1c2b33;
+  --color-brand-muted: #5c6b72;
+  --color-brand-border: #e7dfd2;
+
+  /* Typography */
+  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", "Hanken Grotesk", system-ui, sans-serif;
+
+  /* Fluid type scale */
+  --text-hero: clamp(2.5rem, 6vw, 4.5rem);
+  --text-hero--line-height: 1.05;
+  --text-h1: clamp(2rem, 4vw, 3.25rem);
+  --text-h1--line-height: 1.12;
+  --text-h2: clamp(1.625rem, 3vw, 2.5rem);
+  --text-h2--line-height: 1.2;
+  --text-h3: clamp(1.25rem, 2vw, 1.6rem);
+  --text-h3--line-height: 1.3;
+
+  /* Layout */
+  --radius-card: 16px;
+
+  /* Soft warm shadows */
+  --shadow-soft: 0 10px 30px -14px rgba(28, 43, 51, 0.22);
+  --shadow-lift: 0 22px 50px -20px rgba(28, 43, 51, 0.32);
 }
 
+/* ============================================================
+   Base
+   ============================================================ */
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
     font-family: var(--font-body);
-    color: #1c1c1c;
+    color: var(--color-brand-navy);
+    background-color: var(--color-brand-sand);
+    font-size: 1.0625rem;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-brand-navy);
   }
   img {
     max-width: 100%;
     height: auto;
   }
+  ::selection {
+    background-color: var(--color-brand-coral);
+    color: #fff;
+  }
 }
 
+/* ============================================================
+   Components / utilities
+   ============================================================ */
+@layer components {
+  .container-site {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .container-site {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* 96–128px section padding */
+  .section-pad {
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  /* Eyebrow / kicker label */
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-brand-teal);
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    line-height: 1.15;
+    color: var(--color-brand-navy);
+    margin-top: 0.5rem;
+  }
+
+  .section-subheading {
+    max-width: 42rem;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-brand-muted);
+  }
+
+  /* ---- Buttons: pill shaped, soft shadow ----
+     Base styles apply to `.btn` and to every variant so the variant
+     classes work standalone (e.g. `btn-primary`) or with `.btn`. */
+  .btn,
+  .btn-primary,
+  .btn-coral,
+  .btn-outline,
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0.95rem 1.9rem;
+    border-radius: 9999px;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn:hover,
+  .btn-primary:hover,
+  .btn-coral:hover,
+  .btn-outline:hover,
+  .btn-white:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Primary — ocean teal */
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-brand-teal);
+    color: #fff;
+    box-shadow: var(--shadow-soft);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-brand-teal-dark);
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* Accent — sunset coral (sparingly) */
+  .btn-coral {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-brand-coral);
+    color: #fff;
+    box-shadow: var(--shadow-soft);
+  }
+  .btn-coral:hover {
+    background-color: var(--color-brand-coral-dark);
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* Outline */
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-brand-teal);
+    border: 1.5px solid var(--color-brand-teal);
+  }
+  .btn-outline:hover {
+    background-color: var(--color-brand-teal);
+    color: #fff;
+  }
+
+  /* White (over imagery) */
+  .btn-white {
+    background-color: #fff;
+    color: var(--color-brand-navy);
+    box-shadow: var(--shadow-soft);
+  }
+  .btn-white:hover {
+    background-color: var(--color-brand-sand);
+  }
+
+  /* ---- Cards ---- */
+  .card {
+    background-color: var(--color-brand-surface);
+    border: 1px solid var(--color-brand-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+  }
+
+  /* ---- Pill chips & badges ---- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-brand-navy);
+    background-color: var(--color-brand-sand);
+    border: 1px solid var(--color-brand-border);
+    border-radius: 9999px;
+    padding: 0.3rem 0.7rem;
+    white-space: nowrap;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    padding: 0.35rem 0.75rem;
+    backdrop-filter: blur(6px);
+  }
+  .badge-ocean {
+    background-color: rgba(31, 111, 120, 0.92);
+    color: #fff;
+  }
+  .badge-coral {
+    background-color: rgba(224, 118, 60, 0.95);
+    color: #fff;
+  }
+
+  /* Image scrim for text-over-photo */
+  .scrim {
+    background: linear-gradient(
+      to top,
+      rgba(22, 42, 50, 0.78) 0%,
+      rgba(22, 42, 50, 0.32) 42%,
+      rgba(22, 42, 50, 0.08) 70%,
+      rgba(22, 42, 50, 0.18) 100%
+    );
+  }
+
+  /* Prose tuning for MDX bodies */
+  .prose-coastal {
+    color: var(--color-brand-muted);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+  .prose-coastal :where(p) {
+    margin-bottom: 1.1rem;
+  }
+  .prose-coastal :where(h2, h3) {
+    color: var(--color-brand-navy);
+    margin-top: 1.8rem;
+    margin-bottom: 0.6rem;
+  }
+}
+
+/* ============================================================
+   Motion
+   ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
-  /* Shimmer effect for CTA buttons */
   @keyframes shimmer {
     0% {
       transform: translateX(-100%);
@@ -39,105 +297,96 @@
     }
   }
 
-  .btn-primary {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-primary::before {
-    content: '';
+  .btn-primary::before,
+  .btn-coral::before {
+    content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.22) 50%,
       transparent 100%
     );
     transform: translateX(-100%);
     pointer-events: none;
   }
-
-  .btn-primary:hover::before {
-    animation: shimmer 0.6s ease-out;
+  .btn-primary:hover::before,
+  .btn-coral:hover::before {
+    animation: shimmer 0.7s ease-out;
   }
 
-  /* Reveal animation - elements start visible, JS adds .js-enabled then hides */
+  /* Scroll reveal */
   .js-enabled .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s ease-out;
     will-change: opacity, transform;
   }
-
   .js-enabled .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Hero load-in animations */
+  /* Hero load-in */
   @keyframes hero-fade-up {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(22px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-
   .hero-animate-headline {
-    animation: hero-fade-up 0.8s ease-out forwards;
+    animation: hero-fade-up 0.9s ease-out forwards;
   }
-
   .hero-animate-subheadline {
     opacity: 0;
-    animation: hero-fade-up 0.8s ease-out 0.15s forwards;
+    animation: hero-fade-up 0.9s ease-out 0.15s forwards;
   }
-
   .hero-animate-cta {
     opacity: 0;
-    animation: hero-fade-up 0.8s ease-out 0.3s forwards;
+    animation: hero-fade-up 0.9s ease-out 0.3s forwards;
   }
 
   /* Villa card staggered reveal */
   .villa-card-reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(26px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
     will-change: opacity, transform;
   }
-
   .villa-card-reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
-
-  /* Stagger delays based on nth-child */
   .villa-card-reveal:nth-child(1) { transition-delay: 0ms; }
   .villa-card-reveal:nth-child(2) { transition-delay: 80ms; }
   .villa-card-reveal:nth-child(3) { transition-delay: 160ms; }
   .villa-card-reveal:nth-child(4) { transition-delay: 240ms; }
   .villa-card-reveal:nth-child(5) { transition-delay: 320ms; }
   .villa-card-reveal:nth-child(6) { transition-delay: 400ms; }
-  .villa-card-reveal:nth-child(7) { transition-delay: 480ms; }
-  .villa-card-reveal:nth-child(8) { transition-delay: 560ms; }
-  .villa-card-reveal:nth-child(9) { transition-delay: 640ms; }
-  .villa-card-reveal:nth-child(10) { transition-delay: 720ms; }
+  .villa-card-reveal:nth-child(7) { transition-delay: 80ms; }
+  .villa-card-reveal:nth-child(8) { transition-delay: 160ms; }
+  .villa-card-reveal:nth-child(9) { transition-delay: 240ms; }
+  .villa-card-reveal:nth-child(10) { transition-delay: 320ms; }
 
   /* Nav scroll state */
   .nav-scrolled {
     backdrop-filter: blur(12px);
-    background-color: rgba(26, 46, 68, 0.92) !important;
-    transition: backdrop-filter 0.3s ease-out, background-color 0.3s ease-out;
+    background-color: rgba(247, 243, 236, 0.92) !important;
+    box-shadow: 0 1px 0 0 var(--color-brand-border);
   }
 
-  /* Image gallery crossfade */
   .gallery-main {
     transition: opacity 0.2s ease-out;
   }
-
   .gallery-main.fading-out {
     opacity: 0;
   }

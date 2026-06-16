@@ -1,5 +1,5 @@
 ---
-title: "Ocean Front Villa, #8"
+title: "Ocean Front Villa #8"
 slug: "ocean-front-villa-8"
 unit: 8
 type: "ocean-front"
@@ -14,16 +14,20 @@ galleryImages:
   - "/images/8.5-1568x1046-1.jpg"
   - "/images/11-1568x1046-1.jpeg"
   - "/images/12-1568x1046-1.jpeg"
-bedrooms: 1
-bathrooms: 1
-maxGuests: 2
+bedrooms: 2
+bathrooms: 2
+maxGuests: 4
+sqft: 1160
+layout: "Split-level"
+tagline: "Room to spread out — a roomy 1,160 sq ft split-level oceanfront villa."
+featured: true
 unitAmenities:
-  - "Oceanfront"
-  - "Unobstructed Ocean Views"
+  - "Ocean Front"
+  - "1,160 sq ft"
+  - "Split-Level Layout"
   - "Full Kitchen"
-  - "Private Deck"
-metaDescription: "Ocean Front Villa #8 at Beachwalk Villas in Carlsbad, CA. Premium oceanfront villa with sweeping Pacific views."
+metaDescription: "Ocean Front Villa #8 at Beachwalk Villas in Carlsbad, CA. A 1,160 sq ft split-level, two-bedroom oceanfront villa with room to spread out — sleeps 4."
 sortOrder: 8
 ---
 
-Ocean Front Villa #8 is a premium oceanfront escape with sweeping Pacific views from every angle. The spacious layout, gourmet kitchen, and private deck make this ideal for extended stays.
+At 1,160 square feet, Ocean Front Villa #8 gives you room to truly spread out. This split-level, two-bedroom oceanfront villa pairs sweeping Pacific views with a full kitchen and generous living space — ideal for families and longer coastal stays.

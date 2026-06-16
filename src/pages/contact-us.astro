@@ -3,91 +3,94 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import Hero from "../components/Hero.astro";
 import ContactForm from "../components/ContactForm.astro";
+import { site } from "../data/site";
 ---
 
 <SiteLayout
   title="Contact Us"
-  description="Get in touch with Beachwalk Villas in Carlsbad, CA. Check villa availability, ask questions, or make a reservation inquiry."
+  description="Get in touch with Beachwalk Villas in Carlsbad, CA. Check villa availability, ask questions, or make a reservation inquiry. Call 760-720-1400 ext. 1."
 >
   <Hero
+    eyebrow="We're here to help"
     headline="Contact Us"
-    subheadline="We'd love to hear from you — reach out to check availability or ask any questions."
+    subheadline="Reach out to check availability, ask a question, or book your beachfront escape."
     bgImage="/images/beachwalk-featured-images.jpg"
     size="medium"
-    ctaLabel={undefined}
   />
 
   <section class="section-pad bg-brand-sand reveal">
     <div class="container-site">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <!-- Contact info sidebar -->
-        <div class="lg:col-span-1 space-y-6">
-          <div class="bg-white p-6 shadow-sm">
-            <h2 class="font-display text-xl text-brand-navy mb-4">
-              Get In Touch
-            </h2>
-            <dl class="space-y-4 text-sm text-gray-600">
+        <div class="lg:col-span-1 space-y-5">
+          <div class="card p-7">
+            <span class="eyebrow">Call us</span>
+            <a
+              href={site.phoneHref}
+              class="block font-display text-2xl text-brand-navy hover:text-brand-teal transition-colors mt-1 mb-1"
+            >
+              {site.phone}
+            </a>
+            <p class="text-sm text-brand-muted">We'd love to hear from you.</p>
+          </div>
+
+          <div class="card p-7">
+            <h2 class="font-display text-h3 mb-4">Get in touch</h2>
+            <dl class="space-y-4 text-sm text-brand-muted">
               <div>
-                <dt class="font-semibold text-brand-navy mb-1">Email</dt>
+                <dt class="font-semibold text-brand-navy mb-0.5">Email</dt>
                 <dd>
-                  <a
-                    href="mailto:info@beachwalkvillas.net"
-                    class="text-brand-teal hover:underline"
-                  >
-                    info@beachwalkvillas.net
-                  </a>
+                  <a href={site.emailHref} class="text-brand-teal hover:underline">{site.email}</a>
                 </dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-1">Location</dt>
-                <dd>Carlsbad, CA 92008</dd>
+                <dt class="font-semibold text-brand-navy mb-0.5">Location</dt>
+                <dd>Carlsbad, CA 92008 — near Downtown Carlsbad</dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-1">
-                  Check-In Time
-                </dt>
+                <dt class="font-semibold text-brand-navy mb-0.5">Check-In</dt>
                 <dd>4:00 PM</dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-1">
-                  Check-Out Time
-                </dt>
+                <dt class="font-semibold text-brand-navy mb-0.5">Check-Out</dt>
                 <dd>11:00 AM</dd>
               </div>
             </dl>
           </div>
 
-          <div class="bg-white p-6 shadow-sm">
-            <h3 class="font-display text-lg text-brand-navy mb-3">
-              Helpful Links
-            </h3>
-            <ul class="space-y-2 text-sm">
-              <li>
-                <a href="/villas/" class="text-brand-teal hover:underline"
-                  >Browse All Villas</a>
-              </li>
-              <li>
-                <a href="/amenities/" class="text-brand-teal hover:underline"
-                  >Property Amenities</a>
-              </li>
-              <li>
-                <a
-                  href="/reservation-policies/"
-                  class="text-brand-teal hover:underline"
-                  >Reservation Policies</a>
-              </li>
-              <li>
-                <a href="/promotions/" class="text-brand-teal hover:underline"
-                  >Current Promotions</a>
-              </li>
+          <div class="card p-7">
+            <h3 class="font-display text-lg mb-3">Helpful links</h3>
+            <ul class="space-y-2.5 text-sm">
+              <li><a href="/villas/" class="text-brand-teal hover:underline">Browse all villas</a></li>
+              <li><a href="/amenities/" class="text-brand-teal hover:underline">Property amenities</a></li>
+              <li><a href="/reservation-policies/" class="text-brand-teal hover:underline">Reservation policies</a></li>
+              <li><a href="/promotions/" class="text-brand-teal hover:underline">Current promotions</a></li>
             </ul>
           </div>
         </div>
 
         <!-- Contact form -->
         <div class="lg:col-span-2">
-          <ContactForm title="Send Us a Message" showVillaSelect={true} />
+          <ContactForm title="Send us a message" showVillaSelect={true} />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rounded map embed -->
+  <section class="bg-brand-surface pb-20 reveal">
+    <div class="container-site">
+      <div class="overflow-hidden rounded-card shadow-[var(--shadow-soft)] border border-brand-border">
+        <iframe
+          title="Map of Beachwalk Villas, Carlsbad, CA"
+          src="https://www.google.com/maps?q=Carlsbad+State+Beach,+Carlsbad,+CA&output=embed"
+          width="100%"
+          height="420"
+          style="border:0;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </section>

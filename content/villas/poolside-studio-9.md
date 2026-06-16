@@ -1,10 +1,10 @@
 ---
-title: "Poolside Studio, #9"
+title: "Poolside Studio #9"
 slug: "poolside-studio-9"
 unit: 9
 type: "poolside-studio"
 status: "available"
-thumbnailImage: "/images/unit-1-temp-pic-to-use-as-Villa-front-pages-2-452x306-1.jpeg"
+thumbnailImage: "/images/4-min-1-1568x1045-1.jpg"
 galleryImages:
   - "/images/4-min-1-1568x1045-1.jpg"
   - "/images/6-min-1-1568x1045-1.jpg"
@@ -16,14 +16,17 @@ galleryImages:
   - "/images/11-min-1568x1045-1.jpg"
 bedrooms: 0
 bathrooms: 1
-maxGuests: 2
+maxGuests: 3
+layout: "Poolside studio"
+tagline: "A tastefully decorated poolside studio with a fully equipped kitchen."
+featured: false
 unitAmenities:
   - "Pool Access"
+  - "Fully Equipped Kitchen"
   - "Poolside Location"
-  - "Kitchenette"
   - "Patio"
-metaDescription: "Poolside Studio #9 at Beachwalk Villas in Carlsbad, CA. Cozy studio with direct pool access and outdoor patio."
+metaDescription: "Poolside Studio #9 at Beachwalk Villas in Carlsbad, CA. Tastefully decorated studio with a fully equipped kitchen and direct pool access — sleeps 3."
 sortOrder: 9
 ---
 
-Poolside Studio #9 is steps from the sparkling community pool. Perfect for solo travelers or couples who want an affordable, well-located Carlsbad retreat with direct pool access and a relaxing patio setting.
+Poolside Studio #9 is a tastefully decorated retreat steps from the sparkling community pool. With a fully equipped kitchen and comfortable space for up to three guests, it's an easy, relaxed base for your Carlsbad beach getaway.

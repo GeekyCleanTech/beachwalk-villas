@@ -1,5 +1,7 @@
 ---
 // src/components/VillaCard.astro
+import { typeLabels, typeBadge } from "../data/site";
+
 interface Props {
   title: string;
   slug: string;
@@ -7,8 +9,10 @@ interface Props {
   thumbnailImage: string;
   bedrooms: number;
   bathrooms: number;
-  unitAmenities?: string[];
-  nightlyRate?: number;
+  maxGuests?: number;
+  sqft?: number;
+  tagline?: string;
+  eager?: boolean;
 }
 
 const {
@@ -18,86 +22,78 @@ const {
   thumbnailImage,
   bedrooms,
   bathrooms,
-  unitAmenities = [],
-  nightlyRate,
+  maxGuests,
+  sqft,
+  tagline,
+  eager = false,
 } = Astro.props;
 
-const typeLabels: Record<string, string> = {
-  "ocean-front": "Ocean Front",
-  "ocean-view": "Ocean View",
-  "avenue-view": "Avenue View",
-  "garden-view": "Garden View",
-  "poolside-studio": "Poolside Studio",
-};
-
 const typeLabel = typeLabels[type] ?? type;
-const bedroomLabel = bedrooms === 0 ? "Studio" : `${bedrooms} BR`;
+const badgeStyle = typeBadge[type];
+const bedroomChip = bedrooms === 0 ? "Studio" : `${bedrooms} bed`;
+
+// Small inline icons for the chips
+const chips: { label: string }[] = [
+  { label: bedroomChip },
+  { label: `${bathrooms} bath` },
+];
+if (maxGuests) chips.push({ label: `${maxGuests} guests` });
+if (sqft) chips.push({ label: `${sqft.toLocaleString()} sq ft` });
 ---
 
-<article
-  class="villa-card-reveal group bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
->
-  <!-- Image -->
-  <a href={`/villas/${slug}/`} class="block overflow-hidden aspect-[3/2]">
+<article class="villa-card-reveal card group flex flex-col h-full transition-shadow duration-300 hover:shadow-[var(--shadow-lift)]">
+  <!-- Large photo -->
+  <a
+    href={`/villas/${slug}/`}
+    class="relative block overflow-hidden aspect-[4/3]"
+    aria-label={`View ${title}`}
+  >
     <img
       src={thumbnailImage}
       alt={title}
-      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-      loading="lazy"
+      class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+      loading={eager ? "eager" : "lazy"}
     />
+    {
+      badgeStyle && (
+        <span
+          class={`badge absolute top-4 left-4 ${badgeStyle === "ocean" ? "badge-ocean" : "badge-coral"}`}
+        >
+          {typeLabel}
+        </span>
+      )
+    }
   </a>
 
   <!-- Content -->
-  <div class="p-5">
-    <!-- Type badge -->
-    <span
-      class="inline-block text-xs font-body font-semibold uppercase tracking-widest text-brand-teal mb-2"
-    >
-      {typeLabel}
-    </span>
-
-    <!-- Title -->
-    <h3 class="font-display text-h3 text-brand-navy mb-3">
+  <div class="flex flex-col flex-1 p-6">
+    <span class="eyebrow mb-2">{typeLabel}</span>
+    <h3 class="font-display text-h3 leading-tight mb-2">
       <a
         href={`/villas/${slug}/`}
-        class="hover:text-brand-teal transition-colors"
+        class="transition-colors hover:text-brand-teal"
       >
         {title}
       </a>
     </h3>
 
-    <!-- Details row -->
-    <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
-      <span>{bedroomLabel}</span>
-      <span class="w-1 h-1 rounded-full bg-gray-300"></span>
-      <span>{bathrooms} Bath</span>
-      {
-        nightlyRate && (
-          <>
-            <span class="w-1 h-1 rounded-full bg-gray-300" />
-            <span class="text-brand-teal font-semibold">
-              From ${nightlyRate}/night
-            </span>
-          </>
-        )
-      }
-    </div>
-
-    <!-- Amenity pills (first 3) -->
     {
-      unitAmenities.length > 0 && (
-        <div class="flex flex-wrap gap-1.5 mb-5">
-          {unitAmenities.slice(0, 3).map((a) => (
-            <span class="text-xs bg-brand-sand text-brand-navy px-2.5 py-1 rounded-full font-body">
-              {a}
-            </span>
-          ))}
-        </div>
+      tagline && (
+        <p class="text-sm text-brand-muted leading-relaxed mb-4">{tagline}</p>
       )
     }
 
-    <a href={`/villas/${slug}/`} class="btn-outline text-sm px-5 py-2">
-      View Villa
+    <!-- Pill chips: beds · baths · guests · sq ft -->
+    <div class="mt-auto flex flex-wrap gap-2 pt-2">
+      {chips.map((c) => <span class="chip">{c.label}</span>)}
+    </div>
+
+    <a
+      href={`/villas/${slug}/`}
+      class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-teal hover:text-brand-teal-dark transition-colors"
+    >
+      View villa
+      <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
     </a>
   </div>
 </article>

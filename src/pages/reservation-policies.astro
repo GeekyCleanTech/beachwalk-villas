@@ -9,14 +9,14 @@ import Hero from "../components/Hero.astro";
   description="Review Beachwalk Villas reservation and booking policies — check-in times, cancellation policy, deposits, and house rules."
 >
   <Hero
+    eyebrow="Before you book"
     headline="Reservation Policies"
     subheadline="Everything you need to know before booking your stay."
     bgImage="/images/beachwalk-featured-images.jpg"
     size="medium"
-    ctaLabel={undefined}
   />
 
-  <section class="section-pad bg-white reveal">
+  <section class="section-pad bg-brand-sand reveal">
     <div class="container-site max-w-3xl">
       <div class="space-y-10">
         {
@@ -78,12 +78,12 @@ import Hero from "../components/Hero.astro";
             },
           ].map((section) => (
             <div>
-              <h2 class="font-display text-h3 text-brand-navy mb-4 pb-2 border-b border-gray-100">
+              <h2 class="font-display text-h3 text-brand-navy mb-4 pb-2 border-b border-brand-border">
                 {section.title}
               </h2>
-              <ul class="space-y-2">
+              <ul class="space-y-2.5">
                 {section.items.map((item) => (
-                  <li class="flex items-start gap-2 text-gray-600 text-sm">
+                  <li class="flex items-start gap-2.5 text-brand-muted text-sm">
                     <svg
                       class="w-4 h-4 text-brand-teal mt-0.5 flex-shrink-0"
                       fill="currentColor"
@@ -103,13 +103,11 @@ import Hero from "../components/Hero.astro";
           ))
         }
 
-        <div class="bg-brand-sand p-6">
-          <p class="text-sm text-gray-600">
+        <div class="card p-7">
+          <p class="text-sm text-brand-muted mb-4">
             Questions about our policies? We're happy to help.
           </p>
-          <a href="/contact-us/" class="btn-primary mt-4 inline-block"
-            >Contact Us</a
-          >
+          <a href="/contact-us/" class="btn btn-primary">Contact us</a>
         </div>
       </div>
     </div>

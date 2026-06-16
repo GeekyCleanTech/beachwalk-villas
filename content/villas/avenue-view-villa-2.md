@@ -1,10 +1,10 @@
 ---
-title: "Avenue View Villa, #2"
+title: "Avenue View Villa #2"
 slug: "avenue-view-villa-2"
 unit: 2
 type: "avenue-view"
 status: "available"
-thumbnailImage: "/images/1-452x306-1.jpg"
+thumbnailImage: "/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg"
 galleryImages:
   - "/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg"
   - "/images/1-8-1568x1045-1.jpg"
@@ -14,15 +14,19 @@ galleryImages:
   - "/images/6-1-1-1568x1045-1.jpg"
   - "/images/7-1568x1045-1.jpg"
   - "/images/8-1568x1045-1.jpg"
-bedrooms: 1
-bathrooms: 1
-maxGuests: 2
+bedrooms: 2
+bathrooms: 2
+maxGuests: 8
+layout: "2nd floor"
+tagline: "An open floor plan ideal for family gatherings."
+featured: false
 unitAmenities:
   - "Avenue View"
+  - "Open Floor Plan"
   - "Full Kitchen"
-  - "Private Patio"
-metaDescription: "Avenue View Villa #2 at Beachwalk Villas in Carlsbad, CA. Charming one-bedroom villa steps from the beach."
+  - "Sleeps 8"
+metaDescription: "Avenue View Villa #2 at Beachwalk Villas in Carlsbad, CA. A second-floor two-bedroom, two-bath villa with an open floor plan that sleeps up to 8."
 sortOrder: 2
 ---
 
-Avenue View Villa #2 is a beautifully updated villa featuring modern finishes and a warm, inviting atmosphere. Perfect for couples or solo travelers seeking a relaxing Carlsbad retreat.
+Avenue View Villa #2 is a bright, second-floor villa with an open floor plan that's made for family gatherings. Two bedrooms and two baths comfortably host up to eight guests, while the spacious living and dining areas keep everyone together — the perfect Carlsbad home away from home.

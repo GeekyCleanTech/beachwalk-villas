@@ -1,46 +1,37 @@
 ---
 // src/components/Nav.astro
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Villas", href: "/villas/" },
-  { label: "Amenities", href: "/amenities/" },
-  { label: "Attractions", href: "/attractions/" },
-  { label: "Promotions", href: "/promotions/" },
-  { label: "Health & Safety", href: "/health-and-safety/" },
-  { label: "Booking Policies", href: "/reservation-policies/" },
-  { label: "Contact Us", href: "/contact-us/" },
-];
-
+import { navLinks, site } from "../data/site";
 const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
 ---
 
 <nav
   id="main-nav"
-  class="w-full bg-brand-navy text-white sticky top-0 z-50 transition-all duration-300"
+  class="w-full bg-brand-sand/95 text-brand-navy sticky top-0 z-50 border-b border-brand-border transition-all duration-300"
 >
   <div class="container-site flex items-center justify-between h-16 md:h-20">
     <!-- Logo -->
-    <a href="/" class="flex-shrink-0">
+    <a href="/" class="flex-shrink-0 flex items-center gap-3" aria-label="Beachwalk Villas — home">
       <img
         src="/images/logo.png"
         alt="Beachwalk Villas"
-        class="h-10 md:h-12 w-auto"
+        class="h-9 md:h-11 w-auto"
         loading="eager"
       />
     </a>
 
     <!-- Desktop nav links -->
-    <ul class="hidden lg:flex items-center gap-6 xl:gap-8">
+    <ul class="hidden lg:flex items-center gap-7 xl:gap-9">
       {
         navLinks.map((link) => (
           <li>
             <a
               href={link.href}
-              class={`text-sm font-body font-semibold tracking-wide uppercase transition-colors duration-150
-              ${
-                pathname === link.href
-                  ? "text-brand-gold border-b-2 border-brand-gold pb-0.5"
-                  : "text-gray-200 hover:text-white"
+              class={`text-sm font-medium tracking-wide transition-colors duration-150 ${
+                isActive(link.href)
+                  ? "text-brand-teal"
+                  : "text-brand-navy/80 hover:text-brand-teal"
               }`}
             >
               {link.label}
@@ -48,7 +39,26 @@ const pathname = Astro.url.pathname;
           </li>
         ))
       }
+      <li>
+        <a
+          href="/#other-properties"
+          class="text-sm font-medium tracking-wide text-brand-navy/80 hover:text-brand-teal transition-colors"
+        >
+          Other Properties
+        </a>
+      </li>
     </ul>
+
+    <!-- Right: phone + Book Now -->
+    <div class="hidden lg:flex items-center gap-5">
+      <a
+        href={site.phoneHref}
+        class="text-sm font-semibold text-brand-navy hover:text-brand-teal transition-colors whitespace-nowrap"
+      >
+        {site.phone}
+      </a>
+      <a href="/contact-us/" class="btn btn-coral !py-2.5 !px-6 text-sm">Book Now</a>
+    </div>
 
     <!-- Mobile hamburger -->
     <button
@@ -57,31 +67,40 @@ const pathname = Astro.url.pathname;
       aria-label="Open navigation menu"
       aria-expanded="false"
     >
-      <span class="block w-6 h-0.5 bg-white transition-all"></span>
-      <span class="block w-6 h-0.5 bg-white transition-all"></span>
-      <span class="block w-6 h-0.5 bg-white transition-all"></span>
+      <span class="block w-6 h-0.5 bg-brand-navy transition-all"></span>
+      <span class="block w-6 h-0.5 bg-brand-navy transition-all"></span>
+      <span class="block w-6 h-0.5 bg-brand-navy transition-all"></span>
     </button>
   </div>
 
   <!-- Mobile menu -->
-  <div
-    id="mobile-menu"
-    class="hidden lg:hidden bg-brand-navy border-t border-white/10"
-  >
-    <ul class="container-site py-4 flex flex-col gap-2">
+  <div id="mobile-menu" class="hidden lg:hidden bg-brand-sand border-t border-brand-border">
+    <ul class="container-site py-4 flex flex-col gap-1">
       {
         navLinks.map((link) => (
           <li>
             <a
               href={link.href}
-              class={`block py-2 text-sm font-body font-semibold tracking-wide uppercase
-              ${pathname === link.href ? "text-brand-gold" : "text-gray-200 hover:text-white"}`}
+              class={`block py-2.5 text-sm font-medium tracking-wide ${
+                isActive(link.href) ? "text-brand-teal" : "text-brand-navy/80"
+              }`}
             >
               {link.label}
             </a>
           </li>
         ))
       }
+      <li>
+        <a href="/#other-properties" class="block py-2.5 text-sm font-medium text-brand-navy/80">
+          Other Properties
+        </a>
+      </li>
+      <li class="pt-3 mt-2 border-t border-brand-border flex flex-col gap-3">
+        <a href={site.phoneHref} class="text-sm font-semibold text-brand-navy">
+          {site.phone}
+        </a>
+        <a href="/contact-us/" class="btn btn-coral text-sm w-full">Book Now</a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -91,32 +110,22 @@ const pathname = Astro.url.pathname;
   const menu = document.getElementById("mobile-menu");
   btn?.addEventListener("click", () => {
     const isOpen = menu?.classList.toggle("hidden") === false;
-    btn.setAttribute("aria-expanded", String(!isOpen));
+    btn.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Scroll-triggered nav background change
+  // Subtle nav style change on scroll
   const nav = document.getElementById("main-nav");
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-
-  if (nav && !prefersReducedMotion) {
+  if (nav) {
     let ticking = false;
-
-    const updateNav = () => {
-      if (window.scrollY > 50) {
-        nav.classList.add("nav-scrolled");
-      } else {
-        nav.classList.remove("nav-scrolled");
-      }
+    const update = () => {
+      nav.classList.toggle("nav-scrolled", window.scrollY > 40);
       ticking = false;
     };
-
     window.addEventListener(
       "scroll",
       () => {
         if (!ticking) {
-          requestAnimationFrame(updateNav);
+          requestAnimationFrame(update);
           ticking = true;
         }
       },

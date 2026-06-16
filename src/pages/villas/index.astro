@@ -4,60 +4,51 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import Hero from "../../components/Hero.astro";
 import VillaCard from "../../components/VillaCard.astro";
 import { getCollection } from "astro:content";
+import { bedroomCategory, categoryLabels } from "../../data/site";
 
 const allVillas = await getCollection("villas");
 const villas = allVillas.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 
-// Group by type for filtering
-const types = [
-  "ocean-front",
-  "ocean-view",
-  "avenue-view",
-  "garden-view",
-  "poolside-studio",
-];
-const typeLabels: Record<string, string> = {
-  "ocean-front": "Ocean Front",
-  "ocean-view": "Ocean View",
-  "avenue-view": "Avenue View",
-  "garden-view": "Garden View",
-  "poolside-studio": "Poolside Studio",
-};
+// Counts per bedroom category for the filter chips
+const categoriesWithCounts = categoryLabels
+  .map((c) => ({
+    ...c,
+    count: villas.filter((v) => bedroomCategory(v.data.bedrooms) === c.key)
+      .length,
+  }))
+  .filter((c) => c.count > 0);
 ---
 
 <SiteLayout
   title="Our Villas"
-  description="Browse all 10 vacation villas at Beachwalk Villas in Carlsbad, CA — oceanfront, ocean view, avenue view, garden view, and poolside studios."
+  description="Browse all 10 vacation villas at Beachwalk Villas in Carlsbad, CA — studios, one, two, and three-bedroom penthouse stays. Oceanfront, ocean view, and poolside."
 >
   <Hero
+    eyebrow="Ten unique stays"
     headline="Our Villas"
-    subheadline="Ten unique villas. One stunning Carlsbad location."
-    bgImage="/images/beachwalk-featured-images.jpg"
+    subheadline="Studios to a three-bedroom penthouse — each one steps from the Carlsbad shore."
+    bgImage="/images/DSC09425-2048x1365.jpg"
     size="medium"
-    ctaLabel={undefined}
   />
 
   <!-- Filter bar -->
-  <div class="bg-white border-b border-gray-100 sticky top-16 md:top-20 z-40">
-    <div class="container-site py-3 flex flex-wrap gap-2">
+  <div class="bg-brand-sand/95 border-b border-brand-border sticky top-16 md:top-20 z-40">
+    <div class="container-site py-4 flex flex-wrap gap-2.5">
       <button
-        class="villa-filter-btn active px-4 py-1.5 text-sm font-semibold border border-brand-teal bg-brand-teal text-white transition-colors"
+        class="villa-filter-btn is-active px-4 py-2 text-sm font-semibold rounded-full border border-brand-teal bg-brand-teal text-white transition-colors"
         data-filter="all"
       >
         All Villas ({villas.length})
       </button>
       {
-        types.map((type) => {
-          const count = villas.filter((v) => v.data.type === type).length;
-          return count > 0 ? (
-            <button
-              class="villa-filter-btn px-4 py-1.5 text-sm font-semibold border border-gray-200 text-gray-600 hover:border-brand-teal hover:text-brand-teal transition-colors"
-              data-filter={type}
-            >
-              {typeLabels[type]} ({count})
-            </button>
-          ) : null;
-        })
+        categoriesWithCounts.map((c) => (
+          <button
+            class="villa-filter-btn px-4 py-2 text-sm font-semibold rounded-full border border-brand-border text-brand-navy/80 hover:border-brand-teal hover:text-brand-teal transition-colors"
+            data-filter={c.key}
+          >
+            {c.label} ({c.count})
+          </button>
+        ))
       }
     </div>
   </div>
@@ -65,13 +56,10 @@ const typeLabels: Record<string, string> = {
   <!-- Villas grid -->
   <section class="section-pad bg-brand-sand reveal">
     <div class="container-site">
-      <div
-        id="villas-grid"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
+      <div id="villas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         {
           villas.map((villa) => (
-            <div class="villa-item" data-type={villa.data.type}>
+            <div class="villa-item" data-category={bedroomCategory(villa.data.bedrooms)}>
               <VillaCard
                 title={villa.data.title}
                 slug={villa.data.slug}
@@ -79,51 +67,39 @@ const typeLabels: Record<string, string> = {
                 thumbnailImage={villa.data.thumbnailImage}
                 bedrooms={villa.data.bedrooms}
                 bathrooms={villa.data.bathrooms}
-                unitAmenities={villa.data.unitAmenities}
-                nightlyRate={villa.data.nightlyRate}
+                maxGuests={villa.data.maxGuests}
+                sqft={villa.data.sqft}
+                tagline={villa.data.tagline}
               />
             </div>
           ))
         }
       </div>
+      <p id="no-results" class="hidden text-center text-brand-muted py-12">
+        No villas in this category.
+      </p>
     </div>
   </section>
 </SiteLayout>
 
 <script>
-  const filterBtns = document.querySelectorAll(".villa-filter-btn");
-  const villaItems = document.querySelectorAll(".villa-item");
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>(".villa-filter-btn");
+  const villaItems = document.querySelectorAll<HTMLElement>(".villa-item");
 
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const filter = btn.getAttribute("data-filter");
 
-      // Update active button
       filterBtns.forEach((b) => {
-        b.classList.remove(
-          "active",
-          "bg-brand-teal",
-          "text-white",
-          "border-brand-teal",
-        );
-        b.classList.add("border-gray-200", "text-gray-600");
+        b.classList.remove("is-active", "bg-brand-teal", "text-white", "border-brand-teal");
+        b.classList.add("border-brand-border", "text-brand-navy/80");
       });
-      btn.classList.add(
-        "active",
-        "bg-brand-teal",
-        "text-white",
-        "border-brand-teal",
-      );
-      btn.classList.remove("border-gray-200", "text-gray-600");
+      btn.classList.add("is-active", "bg-brand-teal", "text-white", "border-brand-teal");
+      btn.classList.remove("border-brand-border", "text-brand-navy/80");
 
-      // Show/hide villas
       villaItems.forEach((item) => {
-        const type = item.getAttribute("data-type");
-        if (filter === "all" || type === filter) {
-          (item as HTMLElement).style.display = "";
-        } else {
-          (item as HTMLElement).style.display = "none";
-        }
+        const category = item.getAttribute("data-category");
+        item.style.display = filter === "all" || category === filter ? "" : "none";
       });
     });
   });
