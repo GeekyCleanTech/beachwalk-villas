@@ -54,9 +54,49 @@ const chips = [
   ...(maxGuests ? [`${maxGuests} guests`] : []),
   ...(sqft ? [`${sqft.toLocaleString()} sq ft`] : []),
 ];
+
+// Structured data for this specific rental unit + breadcrumb trail
+const siteUrl = "https://beachwalkvillas.net";
+const villaUrl = `${siteUrl}/villas/${villa.data.slug}/`;
+const accommodationLd = {
+  "@context": "https://schema.org",
+  "@type": "Accommodation",
+  name: title,
+  description: tagline ?? metaDescription,
+  url: villaUrl,
+  image: allImages.map((img) => `${siteUrl}${img}`),
+  numberOfBedrooms: bedrooms,
+  numberOfBathroomsTotal: bathrooms,
+  ...(maxGuests
+    ? { occupancy: { "@type": "QuantitativeValue", maxValue: maxGuests, unitText: "guests" } }
+    : {}),
+  ...(sqft
+    ? { floorSize: { "@type": "QuantitativeValue", value: sqft, unitCode: "FTK" } }
+    : {}),
+  amenityFeature: unitAmenities.map((a) => ({
+    "@type": "LocationFeatureSpecification",
+    name: a,
+    value: true,
+  })),
+  containedInPlace: { "@type": "LodgingBusiness", name: site.name, url: siteUrl },
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+    { "@type": "ListItem", position: 2, name: "Villas", item: `${siteUrl}/villas/` },
+    { "@type": "ListItem", position: 3, name: title, item: villaUrl },
+  ],
+};
 ---
 
-<VillaLayout title={title} description={metaDescription} image={thumbnailImage}>
+<VillaLayout
+  title={title}
+  description={metaDescription}
+  image={thumbnailImage}
+  jsonLd={[accommodationLd, breadcrumbLd]}
+>
   <!-- Breadcrumb -->
   <div class="bg-brand-sand border-b border-brand-border">
     <div class="container-site py-3 text-sm text-brand-muted">

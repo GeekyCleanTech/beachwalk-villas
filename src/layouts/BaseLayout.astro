@@ -1,19 +1,50 @@
 ---
 // src/layouts/BaseLayout.astro
+import { site } from "../data/site";
+
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  jsonLd?: object | object[];
 }
 
 const {
   title,
   description = "Beachwalk Villas — oceanfront vacation rentals in Carlsbad, CA, steps from the shore and near Downtown Carlsbad.",
   image = "/images/beachwalk-featured-images.jpg",
+  jsonLd,
 } = Astro.props;
 
 const siteUrl = "https://beachwalkvillas.net";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = new URL(image, siteUrl).toString();
+
+// Site-wide LodgingBusiness structured data (helps local/rich search results)
+const businessLd = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: site.name,
+  description,
+  url: siteUrl,
+  telephone: site.telephoneIntl,
+  email: site.email,
+  image: `${siteUrl}/images/beachwalk-featured-images.jpg`,
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.addressParts.street,
+    addressLocality: site.addressParts.city,
+    addressRegion: site.addressParts.region,
+    postalCode: site.addressParts.postalCode,
+    addressCountry: site.addressParts.country,
+  },
+  hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapsQuery)}`,
+  areaServed: "Carlsbad, California",
+};
+
+// Page-specific JSON-LD (villa accommodation, breadcrumbs, …)
+const pageLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
 // Cloudflare Web Analytics beacon token (optional, set via PUBLIC_CF_BEACON_TOKEN env var)
 const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
@@ -29,20 +60,32 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <!-- Primary Meta -->
     <title>{title} | Beachwalk Villas</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#1f6f78" />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Beachwalk Villas" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={`${title} | Beachwalk Villas`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${siteUrl}${image}`} />
+    <meta property="og:image" content={ogImage} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${title} | Beachwalk Villas`} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${siteUrl}${image}`} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(businessLd)} />
+    {
+      pageLd.map((ld) => (
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
+      ))
+    }
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/logo.png" />

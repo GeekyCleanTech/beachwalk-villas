@@ -86,21 +86,33 @@ const categoriesWithCounts = categoryLabels
   const filterBtns = document.querySelectorAll<HTMLButtonElement>(".villa-filter-btn");
   const villaItems = document.querySelectorAll<HTMLElement>(".villa-item");
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const filter = btn.getAttribute("data-filter");
-
-      filterBtns.forEach((b) => {
-        b.classList.remove("is-active", "bg-brand-teal", "text-white", "border-brand-teal");
-        b.classList.add("border-brand-border", "text-brand-navy/80");
-      });
-      btn.classList.add("is-active", "bg-brand-teal", "text-white", "border-brand-teal");
-      btn.classList.remove("border-brand-border", "text-brand-navy/80");
-
-      villaItems.forEach((item) => {
-        const category = item.getAttribute("data-category");
-        item.style.display = filter === "all" || category === filter ? "" : "none";
-      });
+  const applyFilter = (filter: string) => {
+    filterBtns.forEach((b) => {
+      const isMatch = (b.getAttribute("data-filter") || "all") === filter;
+      b.classList.toggle("is-active", isMatch);
+      b.classList.toggle("bg-brand-teal", isMatch);
+      b.classList.toggle("text-white", isMatch);
+      b.classList.toggle("border-brand-teal", isMatch);
+      b.classList.toggle("border-brand-border", !isMatch);
+      b.classList.toggle("text-brand-navy/80", !isMatch);
     });
+
+    villaItems.forEach((item) => {
+      const category = item.getAttribute("data-category");
+      item.style.display = filter === "all" || category === filter ? "" : "none";
+    });
+  };
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => applyFilter(btn.getAttribute("data-filter") || "all"));
   });
+
+  // Honor a category from the URL (?category=… or #…) — e.g. old WP /category/* redirects
+  const known = Array.from(filterBtns, (b) => b.getAttribute("data-filter"));
+  const requested =
+    new URLSearchParams(window.location.search).get("category") ||
+    window.location.hash.replace("#", "");
+  if (requested && known.includes(requested) && requested !== "all") {
+    applyFilter(requested);
+  }
 </script>

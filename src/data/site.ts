@@ -8,8 +8,17 @@ export const site = {
   mapsQuery: "Beachwalk Villas, 3100 Ocean St, Carlsbad, CA 92008",
   phone: "760-720-1400 ext. 1",
   phoneHref: "tel:+17607201400", // ext. dialed after connection
+  telephoneIntl: "+1-760-720-1400", // E.164-ish, for structured data
   email: "info@beachwalkvillas.net",
   emailHref: "mailto:info@beachwalkvillas.net",
+  // Structured postal address (3100 Ocean St, Carlsbad, CA 92008)
+  addressParts: {
+    street: "3100 Ocean St",
+    city: "Carlsbad",
+    region: "CA",
+    postalCode: "92008",
+    country: "US",
+  },
 };
 
 export const navLinks = [
