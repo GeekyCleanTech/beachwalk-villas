@@ -1,22 +1,24 @@
 ---
 // src/components/Nav.astro
 const navLinks = [
-  { label: 'Home',                href: '/' },
-  { label: 'Villas',              href: '/villas/' },
-  { label: 'Amenities',          href: '/amenities/' },
-  { label: 'Attractions',        href: '/attractions/' },
-  { label: 'Promotions',         href: '/promotions/' },
-  { label: 'Health & Safety',    href: '/health-and-safety/' },
-  { label: 'Booking Policies',   href: '/reservation-policies/' },
-  { label: 'Contact Us',         href: '/contact-us/' },
+  { label: "Home", href: "/" },
+  { label: "Villas", href: "/villas/" },
+  { label: "Amenities", href: "/amenities/" },
+  { label: "Attractions", href: "/attractions/" },
+  { label: "Promotions", href: "/promotions/" },
+  { label: "Health & Safety", href: "/health-and-safety/" },
+  { label: "Booking Policies", href: "/reservation-policies/" },
+  { label: "Contact Us", href: "/contact-us/" },
 ];
 
 const pathname = Astro.url.pathname;
 ---
 
-<nav class="w-full bg-brand-navy text-white sticky top-0 z-50">
+<nav
+  id="main-nav"
+  class="w-full bg-brand-navy text-white sticky top-0 z-50 transition-all duration-300"
+>
   <div class="container-site flex items-center justify-between h-16 md:h-20">
-
     <!-- Logo -->
     <a href="/" class="flex-shrink-0">
       <img
@@ -29,20 +31,23 @@ const pathname = Astro.url.pathname;
 
     <!-- Desktop nav links -->
     <ul class="hidden lg:flex items-center gap-6 xl:gap-8">
-      {navLinks.map(link => (
-        <li>
-          <a
-            href={link.href}
-            class={`text-sm font-body font-semibold tracking-wide uppercase transition-colors duration-150
-              ${pathname === link.href
-                ? 'text-brand-gold border-b-2 border-brand-gold pb-0.5'
-                : 'text-gray-200 hover:text-white'
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class={`text-sm font-body font-semibold tracking-wide uppercase transition-colors duration-150
+              ${
+                pathname === link.href
+                  ? "text-brand-gold border-b-2 border-brand-gold pb-0.5"
+                  : "text-gray-200 hover:text-white"
               }`}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
 
     <!-- Mobile hamburger -->
@@ -59,28 +64,63 @@ const pathname = Astro.url.pathname;
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-brand-navy border-t border-white/10">
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden bg-brand-navy border-t border-white/10"
+  >
     <ul class="container-site py-4 flex flex-col gap-2">
-      {navLinks.map(link => (
-        <li>
-          <a
-            href={link.href}
-            class={`block py-2 text-sm font-body font-semibold tracking-wide uppercase
-              ${pathname === link.href ? 'text-brand-gold' : 'text-gray-200 hover:text-white'}`}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class={`block py-2 text-sm font-body font-semibold tracking-wide uppercase
+              ${pathname === link.href ? "text-brand-gold" : "text-gray-200 hover:text-white"}`}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </nav>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  btn?.addEventListener('click', () => {
-    const isOpen = menu?.classList.toggle('hidden') === false;
-    btn.setAttribute('aria-expanded', String(!isOpen));
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("hidden") === false;
+    btn.setAttribute("aria-expanded", String(!isOpen));
   });
+
+  // Scroll-triggered nav background change
+  const nav = document.getElementById("main-nav");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (nav && !prefersReducedMotion) {
+    let ticking = false;
+
+    const updateNav = () => {
+      if (window.scrollY > 50) {
+        nav.classList.add("nav-scrolled");
+      } else {
+        nav.classList.remove("nav-scrolled");
+      }
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(updateNav);
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+  }
 </script>
