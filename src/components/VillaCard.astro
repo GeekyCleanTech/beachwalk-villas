@@ -1,99 +1,96 @@
 ---
 // src/components/VillaCard.astro
-import { typeLabels, typeBadge } from "../data/site";
+import { Image } from "astro:assets";
 
 interface Props {
-  title: string;
-  slug: string;
-  type: string;
-  thumbnailImage: string;
-  bedrooms: number;
-  bathrooms: number;
-  maxGuests?: number;
-  sqft?: number;
+  name: string;
+  id: string;
+  category: string;
+  viewType: string;
+  image: ImageMetadata | { src: string };
+  specs: {
+    bedrooms: number;
+    bathrooms: number;
+    maxGuests: number;
+    sqft: number;
+  };
   tagline?: string;
   eager?: boolean;
 }
 
 const {
-  title,
-  slug,
-  type,
-  thumbnailImage,
-  bedrooms,
-  bathrooms,
-  maxGuests,
-  sqft,
+  name,
+  id,
+  category,
+  viewType,
+  image,
+  specs,
   tagline,
   eager = false,
 } = Astro.props;
 
-const typeLabel = typeLabels[type] ?? type;
-const badgeStyle = typeBadge[type];
-const bedroomChip = bedrooms === 0 ? "Studio" : `${bedrooms} bed`;
+const typeLabel = `${viewType} ${category}`;
+const badgeStyle = viewType === "Ocean Front" ? "badge-ocean" : "badge-coral";
 
 // Small inline icons for the chips
 const chips: { label: string }[] = [
-  { label: bedroomChip },
-  { label: `${bathrooms} bath` },
+  { label: category === 'Studio' ? 'Studio' : `${specs.bedrooms} bed` },
+  { label: `${specs.bathrooms} bath` },
 ];
-if (maxGuests) chips.push({ label: `${maxGuests} guests` });
-if (sqft) chips.push({ label: `${sqft.toLocaleString()} sq ft` });
+if (specs.maxGuests) chips.push({ label: `${specs.maxGuests} guests` });
+if (specs.sqft) chips.push({ label: `${specs.sqft.toLocaleString()} sq ft` });
+
+// Fallback for image prop
+const isImageMetadata = (img: any): img is ImageMetadata => img && typeof img.src === 'string' && typeof img.width === 'number';
 ---
 
 <article class="villa-card-reveal card group flex flex-col h-full transition-shadow duration-300 hover:shadow-[var(--shadow-lift)]">
   <!-- Large photo -->
   <a
-    href={`/villas/${slug}/`}
+    href={`/villas/${id}/`}
     class="relative block overflow-hidden aspect-[4/3]"
-    aria-label={`View ${title}`}
+    aria-label={`View ${name}`}
   >
-    <img
-      src={thumbnailImage}
-      alt={title}
-      class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-      loading={eager ? "eager" : "lazy"}
-    />
-    {
-      badgeStyle && (
-        <span
-          class={`badge absolute top-4 left-4 ${badgeStyle === "ocean" ? "badge-ocean" : "badge-coral"}`}
-        >
-          {typeLabel}
-        </span>
-      )
-    }
+    {isImageMetadata(image) ? (
+      <Image
+        src={image}
+        alt={name}
+        width={800}
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        loading={eager ? "eager" : "lazy"}
+      />
+    ) : (
+      <img
+        src={image.src}
+        alt={name}
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        loading={eager ? "eager" : "lazy"}
+      />
+    )}
+    <span class={`badge absolute top-4 left-4 ${badgeStyle}`}>
+      {viewType}
+    </span>
   </a>
 
-  <!-- Content -->
-  <div class="flex flex-col flex-1 p-6">
-    <span class="eyebrow mb-2">{typeLabel}</span>
-    <h3 class="font-display text-h3 leading-tight mb-2">
-      <a
-        href={`/villas/${slug}/`}
-        class="transition-colors hover:text-brand-teal"
-      >
-        {title}
+  <!-- Text content -->
+  <div class="p-6 flex flex-col flex-1">
+    <div class="mb-4">
+      <a href={`/villas/${id}/`} class="hover:text-seafoam transition-colors block group-hover:text-seafoam">
+        <h3 class="font-serif text-h3 text-navy">{name}</h3>
       </a>
-    </h3>
+      {tagline && <p class="text-sm text-brand-muted mt-2 leading-relaxed line-clamp-2">{tagline}</p>}
+    </div>
 
-    {
-      tagline && (
-        <p class="text-sm text-brand-muted leading-relaxed mb-4">{tagline}</p>
-      )
-    }
-
-    <!-- Pill chips: beds · baths · guests · sq ft -->
-    <div class="mt-auto flex flex-wrap gap-2 pt-2">
+    <!-- Quick facts (chips) -->
+    <div class="flex flex-wrap gap-2 mb-6">
       {chips.map((c) => <span class="chip">{c.label}</span>)}
     </div>
 
-    <a
-      href={`/villas/${slug}/`}
-      class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-teal hover:text-brand-teal-dark transition-colors"
-    >
-      View villa
-      <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
-    </a>
+    <!-- Actions -->
+    <div class="mt-auto flex gap-3">
+      <a href={`/villas/${id}/`} class="btn btn-primary flex-1 !py-2.5 text-sm justify-center">
+        View details
+      </a>
+    </div>
   </div>
 </article>

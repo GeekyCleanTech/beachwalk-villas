@@ -1,23 +1,29 @@
 ---
-title: "Ocean Front Villa #8"
-slug: "ocean-front-villa-8"
-unit: 8
-type: "ocean-front"
+name: "Ocean Front Villa #8"
+unitNumber: 8
+category: "Two Bedroom"
+viewType: "Ocean Front"
 status: "available"
-thumbnailImage: "/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg"
+image: "../../src/assets/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg"
 galleryImages:
-  - "/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg"
-  - "/images/3-1568x1045-1.jpeg"
-  - "/images/5-1568x1045-1.jpeg"
-  - "/images/6-1568x1045-1.jpeg"
-  - "/images/7-1568x1045-1.jpeg"
-  - "/images/8.5-1568x1046-1.jpg"
-  - "/images/11-1568x1046-1.jpeg"
-  - "/images/12-1568x1046-1.jpeg"
-bedrooms: 2
-bathrooms: 2
-maxGuests: 4
-sqft: 1160
+  - "../../src/assets/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg"
+  - "../../src/assets/images/3-1568x1045-1.jpeg"
+  - "../../src/assets/images/5-1568x1045-1.jpeg"
+  - "../../src/assets/images/6-1568x1045-1.jpeg"
+  - "../../src/assets/images/7-1568x1045-1.jpeg"
+  - "../../src/assets/images/8.5-1568x1046-1.jpg"
+  - "../../src/assets/images/11-1568x1046-1.jpeg"
+  - "../../src/assets/images/12-1568x1046-1.jpeg"
+specs:
+  bedrooms: 2
+  bathrooms: 2
+  maxGuests: 4
+  sqft: 1160
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "Split-level"
 tagline: "Room to spread out — a roomy 1,160 sq ft split-level oceanfront villa."
 featured: true

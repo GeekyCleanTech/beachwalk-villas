@@ -1,21 +1,28 @@
 ---
-title: "Ocean Front Villa #7"
-slug: "ocean-front-villa-7"
-unit: 7
-type: "ocean-front"
+name: "Ocean Front Villa #7"
+unitNumber: 7
+category: "One Bedroom"
+viewType: "Ocean Front"
 status: "available"
-thumbnailImage: "/images/2_.jpg"
+image: "../../src/assets/images/2_.jpg"
 galleryImages:
-  - "/images/1-min-1568x1045-1.jpeg"
-  - "/images/2-min-1-1568x1045-1.jpg"
-  - "/images/3-min-1568x1045-1.jpg"
-  - "/images/4-min-1568x1045-1.jpg"
-  - "/images/5.5-min-1568x1045-1.jpg"
-  - "/images/6-min-1568x1045-1.jpg"
-  - "/images/7-min-1568x1045-1.jpg"
-bedrooms: 1
-bathrooms: 1
-maxGuests: 2
+  - "../../src/assets/images/1-min-1568x1045-1.jpeg"
+  - "../../src/assets/images/2-min-1-1568x1045-1.jpg"
+  - "../../src/assets/images/3-min-1568x1045-1.jpg"
+  - "../../src/assets/images/4-min-1568x1045-1.jpg"
+  - "../../src/assets/images/5.5-min-1568x1045-1.jpg"
+  - "../../src/assets/images/6-min-1568x1045-1.jpg"
+  - "../../src/assets/images/7-min-1568x1045-1.jpg"
+specs:
+  bedrooms: 1
+  bathrooms: 1
+  maxGuests: 2
+  sqft: 500
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "2nd floor"
 tagline: "Spectacular ocean views from the living room, dining, kitchen and private balcony."
 featured: true

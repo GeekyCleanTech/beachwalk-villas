@@ -6,21 +6,33 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Coastal Luxury Palette
+        navy: {
+          DEFAULT: '#0a3d52',
+          dark: '#072b3a',
+        },
+        terracotta: {
+          DEFAULT: '#b85a2d', // Adjusted for WCAG AA contrast against white
+        },
+        seafoam: {
+          DEFAULT: '#408080',
+        },
+        sand: {
+          DEFAULT: '#f8f7f4',
+          dark: '#e5e1dc',
+        },
         brand: {
-          sand:       '#f7f3ec', // warm sand background
           surface:    '#ffffff',
-          teal:       '#1f6f78', // primary ocean teal
-          'teal-dark':'#16555c',
-          coral:      '#e0763c', // accent sunset coral (sparingly)
-          'coral-dark':'#c8632d',
-          navy:       '#1c2b33', // text navy
           muted:      '#5c6b72',
           border:     '#e7dfd2',
         },
       },
       fontFamily: {
-        display: ['"Fraunces"', '"Cormorant Garamond"', 'Georgia', 'serif'],
-        body:    ['"Inter"', '"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+      },
+      spacing: {
+        '128': '32rem',
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 6vw, 4.5rem)', { lineHeight: '1.05' }],
@@ -36,5 +48,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };

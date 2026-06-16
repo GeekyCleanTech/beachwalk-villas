@@ -1,22 +1,29 @@
 ---
-title: "Poolside Studio #9"
-slug: "poolside-studio-9"
-unit: 9
-type: "poolside-studio"
+name: "Poolside Studio #9"
+unitNumber: 9
+category: "Studio"
+viewType: "Poolside"
 status: "available"
-thumbnailImage: "/images/4-min-1-1568x1045-1.jpg"
+image: "../../src/assets/images/4-min-1-1568x1045-1.jpg"
 galleryImages:
-  - "/images/4-min-1-1568x1045-1.jpg"
-  - "/images/6-min-1-1568x1045-1.jpg"
-  - "/images/7.5-min-1568x1045-1.jpg"
-  - "/images/7-min-1-1568x1045-1.jpg"
-  - "/images/8-min-1-1568x1045-1.jpg"
-  - "/images/9-min-1568x1045-1.jpeg"
-  - "/images/10-min-1-1568x1045-1.jpg"
-  - "/images/11-min-1568x1045-1.jpg"
-bedrooms: 0
-bathrooms: 1
-maxGuests: 3
+  - "../../src/assets/images/4-min-1-1568x1045-1.jpg"
+  - "../../src/assets/images/6-min-1-1568x1045-1.jpg"
+  - "../../src/assets/images/7.5-min-1568x1045-1.jpg"
+  - "../../src/assets/images/7-min-1-1568x1045-1.jpg"
+  - "../../src/assets/images/8-min-1-1568x1045-1.jpg"
+  - "../../src/assets/images/9-min-1568x1045-1.jpeg"
+  - "../../src/assets/images/10-min-1-1568x1045-1.jpg"
+  - "../../src/assets/images/11-min-1568x1045-1.jpg"
+specs:
+  bedrooms: 0
+  bathrooms: 1
+  maxGuests: 3
+  sqft: 500
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "Poolside studio"
 tagline: "A tastefully decorated poolside studio with a fully equipped kitchen."
 featured: false

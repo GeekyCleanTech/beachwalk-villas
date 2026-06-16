@@ -4,7 +4,7 @@ import { site, navLinks, footerLinks, sisterProperties } from "../data/site";
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-brand-navy text-white/80">
+<footer class="bg-navy text-white/80">
   <div class="container-site py-16 md:py-20">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
       <!-- Brand -->
@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
         </p>
         <a
           href={site.phoneHref}
-          class="font-display text-2xl text-white hover:text-brand-coral transition-colors"
+          class="font-serif text-2xl text-white hover:text-terracotta transition-colors"
         >
           {site.phone}
         </a>
@@ -29,7 +29,7 @@ const year = new Date().getFullYear();
 
       <!-- Explore -->
       <div class="md:col-span-3">
-        <h3 class="font-display text-lg text-white mb-4">Explore</h3>
+        <h3 class="font-serif text-lg text-white mb-4">Explore</h3>
         <ul class="space-y-2.5 text-sm">
           {
             [...navLinks.slice(1), ...footerLinks].map((link) => (
@@ -48,7 +48,7 @@ const year = new Date().getFullYear();
 
       <!-- Other properties -->
       <div class="md:col-span-3">
-        <h3 class="font-display text-lg text-white mb-4">Other Properties</h3>
+        <h3 class="font-serif text-lg text-white mb-4">Other Properties</h3>
         <ul class="space-y-2.5 text-sm">
           {
             sisterProperties.map((p) => (
@@ -67,7 +67,7 @@ const year = new Date().getFullYear();
           <li>
             <a
               href="/#other-properties"
-              class="text-brand-coral hover:text-white transition-colors font-medium"
+              class="text-terracotta hover:text-white transition-colors font-medium"
             >
               View all →
             </a>
@@ -77,7 +77,7 @@ const year = new Date().getFullYear();
 
       <!-- Contact -->
       <div class="md:col-span-2">
-        <h3 class="font-display text-lg text-white mb-4">Contact</h3>
+        <h3 class="font-serif text-lg text-white mb-4">Contact</h3>
         <address class="not-italic text-sm space-y-2.5 text-white/70">
           <p>{site.location}</p>
           <p>

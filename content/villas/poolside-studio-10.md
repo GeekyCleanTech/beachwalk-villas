@@ -1,18 +1,25 @@
 ---
-title: "Poolside Studio #10"
-slug: "poolside-studio-10"
-unit: 10
-type: "poolside-studio"
+name: "Poolside Studio #10"
+unitNumber: 10
+category: "Studio"
+viewType: "Poolside"
 status: "available"
-thumbnailImage: "/images/Unit-10-kitchen-.jpg"
+image: "../../src/assets/images/Unit-10-kitchen-.jpg"
 galleryImages:
-  - "/images/Unit-10-kitchen-.jpg"
-  - "/images/1-min-1568x1045-1.jpeg"
-  - "/images/2-min-1-1568x1045-1.jpg"
-  - "/images/3-min-1568x1045-1.jpg"
-bedrooms: 0
-bathrooms: 1
-maxGuests: 3
+  - "../../src/assets/images/Unit-10-kitchen-.jpg"
+  - "../../src/assets/images/1-min-1568x1045-1.jpeg"
+  - "../../src/assets/images/2-min-1-1568x1045-1.jpg"
+  - "../../src/assets/images/3-min-1568x1045-1.jpg"
+specs:
+  bedrooms: 0
+  bathrooms: 1
+  maxGuests: 3
+  sqft: 500
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "Poolside studio"
 tagline: "Most recently remodeled, with modern Southern California beach decor."
 featured: false

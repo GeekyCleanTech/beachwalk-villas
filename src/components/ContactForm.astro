@@ -32,15 +32,15 @@ const villas = [
 ];
 
 const fieldClass =
-  "w-full rounded-xl border border-brand-border bg-brand-sand/40 px-4 py-3 text-sm text-brand-navy placeholder:text-brand-muted/70 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-brand-teal transition";
-const labelClass = "block text-sm font-semibold text-brand-navy mb-1.5";
+  "w-full rounded-xl border border-brand-border bg-sand/40 px-4 py-3 text-sm text-navy placeholder:text-brand-muted/70 focus:outline-none focus:ring-2 focus:ring-seafoam focus:border-seafoam transition";
+const labelClass = "block text-sm font-semibold text-navy mb-1.5";
 ---
 
 <div class="card p-8 md:p-10">
-  <h2 class="font-display text-h2 mb-2">{title}</h2>
+  <h2 class="font-serif text-h2 mb-2">{title}</h2>
   <p class="text-sm text-brand-muted mb-7">
     Prefer to talk? Call us at
-    <a href={site.phoneHref} class="text-brand-teal font-semibold hover:underline">{site.phone}</a>.
+    <a href={site.phoneHref} class="text-seafoam font-semibold hover:underline">{site.phone}</a>.
   </p>
 
   <form
@@ -138,9 +138,9 @@ const labelClass = "block text-sm font-semibold text-brand-navy mb-1.5";
 
     const setStatus = (msg: string, kind: "ok" | "err" | "info") => {
       statusEl.textContent = msg;
-      statusEl.classList.remove("hidden", "text-brand-teal", "text-brand-coral", "text-brand-muted");
+      statusEl.classList.remove("hidden", "text-seafoam", "text-terracotta", "text-brand-muted");
       statusEl.classList.add(
-        kind === "ok" ? "text-brand-teal" : kind === "err" ? "text-brand-coral" : "text-brand-muted",
+        kind === "ok" ? "text-seafoam" : kind === "err" ? "text-terracotta" : "text-brand-muted",
       );
     };
 

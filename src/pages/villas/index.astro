@@ -2,21 +2,11 @@
 // src/pages/villas/index.astro
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Hero from "../../components/Hero.astro";
-import VillaCard from "../../components/VillaCard.astro";
+import VillaFilter from "../../components/VillaFilter";
 import { getCollection } from "astro:content";
-import { bedroomCategory, categoryLabels } from "../../data/site";
 
 const allVillas = await getCollection("villas");
 const villas = allVillas.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
-
-// Counts per bedroom category for the filter chips
-const categoriesWithCounts = categoryLabels
-  .map((c) => ({
-    ...c,
-    count: villas.filter((v) => bedroomCategory(v.data.bedrooms) === c.key)
-      .length,
-  }))
-  .filter((c) => c.count > 0);
 ---
 
 <SiteLayout
@@ -31,88 +21,5 @@ const categoriesWithCounts = categoryLabels
     size="medium"
   />
 
-  <!-- Filter bar -->
-  <div class="bg-brand-sand/95 border-b border-brand-border sticky top-16 md:top-20 z-40">
-    <div class="container-site py-4 flex flex-wrap gap-2.5">
-      <button
-        class="villa-filter-btn is-active px-4 py-2 text-sm font-semibold rounded-full border border-brand-teal bg-brand-teal text-white transition-colors"
-        data-filter="all"
-      >
-        All Villas ({villas.length})
-      </button>
-      {
-        categoriesWithCounts.map((c) => (
-          <button
-            class="villa-filter-btn px-4 py-2 text-sm font-semibold rounded-full border border-brand-border text-brand-navy/80 hover:border-brand-teal hover:text-brand-teal transition-colors"
-            data-filter={c.key}
-          >
-            {c.label} ({c.count})
-          </button>
-        ))
-      }
-    </div>
-  </div>
-
-  <!-- Villas grid -->
-  <section class="section-pad bg-brand-sand reveal">
-    <div class="container-site">
-      <div id="villas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-        {
-          villas.map((villa) => (
-            <div class="villa-item" data-category={bedroomCategory(villa.data.bedrooms)}>
-              <VillaCard
-                title={villa.data.title}
-                slug={villa.data.slug}
-                type={villa.data.type}
-                thumbnailImage={villa.data.thumbnailImage}
-                bedrooms={villa.data.bedrooms}
-                bathrooms={villa.data.bathrooms}
-                maxGuests={villa.data.maxGuests}
-                sqft={villa.data.sqft}
-                tagline={villa.data.tagline}
-              />
-            </div>
-          ))
-        }
-      </div>
-      <p id="no-results" class="hidden text-center text-brand-muted py-12">
-        No villas in this category.
-      </p>
-    </div>
-  </section>
+  <VillaFilter client:load villas={villas} />
 </SiteLayout>
-
-<script>
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>(".villa-filter-btn");
-  const villaItems = document.querySelectorAll<HTMLElement>(".villa-item");
-
-  const applyFilter = (filter: string) => {
-    filterBtns.forEach((b) => {
-      const isMatch = (b.getAttribute("data-filter") || "all") === filter;
-      b.classList.toggle("is-active", isMatch);
-      b.classList.toggle("bg-brand-teal", isMatch);
-      b.classList.toggle("text-white", isMatch);
-      b.classList.toggle("border-brand-teal", isMatch);
-      b.classList.toggle("border-brand-border", !isMatch);
-      b.classList.toggle("text-brand-navy/80", !isMatch);
-    });
-
-    villaItems.forEach((item) => {
-      const category = item.getAttribute("data-category");
-      item.style.display = filter === "all" || category === filter ? "" : "none";
-    });
-  };
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => applyFilter(btn.getAttribute("data-filter") || "all"));
-  });
-
-  // Honor a category from the URL (?category=… or #…) — e.g. old WP /category/* redirects
-  const known = Array.from(filterBtns, (b) => b.getAttribute("data-filter"));
-  const requested =
-    new URLSearchParams(window.location.search).get("category") ||
-    window.location.hash.replace("#", "");
-  if (requested && known.includes(requested) && requested !== "all") {
-    applyFilter(requested);
-  }
-</script>

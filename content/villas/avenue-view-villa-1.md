@@ -1,21 +1,28 @@
 ---
-title: "Avenue View Villa #1"
-slug: "avenue-view-villa-1"
-unit: 1
-type: "avenue-view"
+name: "Avenue View Villa #1"
+unitNumber: 1
+category: "Two Bedroom"
+viewType: "Avenue View"
 status: "available"
-thumbnailImage: "/images/unit-1-temp-pic-to-use-as-Villa-front-pages-2-1568x1046-1.jpeg"
+image: "../../src/assets/images/unit-1-temp-pic-to-use-as-Villa-front-pages-2-1568x1046-1.jpeg"
 galleryImages:
-  - "/images/unit-1-temp-pic-to-use-as-Villa-front-pages-2-1568x1046-1.jpeg"
-  - "/images/1-1-1568x1045-1.jpeg"
-  - "/images/2-1568x1046-1.jpeg"
-  - "/images/3-1-2-1568x1045-1.jpeg"
-  - "/images/4.5-1568x1046-1.jpg"
-  - "/images/7-1568x1046-1.jpeg"
-  - "/images/8-1568x1045-2.jpeg"
-bedrooms: 2
-bathrooms: 2
-maxGuests: 4
+  - "../../src/assets/images/unit-1-temp-pic-to-use-as-Villa-front-pages-2-1568x1046-1.jpeg"
+  - "../../src/assets/images/1-1-1568x1045-1.jpeg"
+  - "../../src/assets/images/2-1568x1046-1.jpeg"
+  - "../../src/assets/images/3-1-2-1568x1045-1.jpeg"
+  - "../../src/assets/images/4.5-1568x1046-1.jpg"
+  - "../../src/assets/images/7-1568x1046-1.jpeg"
+  - "../../src/assets/images/8-1568x1045-2.jpeg"
+specs:
+  bedrooms: 2
+  bathrooms: 2
+  maxGuests: 4
+  sqft: 500
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "Split-level"
 tagline: "All the comforts of home for the perfect family getaway."
 featured: false

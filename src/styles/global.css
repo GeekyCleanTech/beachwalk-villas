@@ -6,25 +6,25 @@
    ============================================================ */
 @theme {
   /* Surfaces & backgrounds */
-  --color-brand-sand: #f7f3ec;
+  --color-sand: #f8f7f4;
+  --color-sand-dark: #e5e1dc;
   --color-brand-surface: #ffffff;
 
-  /* Primary — ocean teal */
-  --color-brand-teal: #1f6f78;
-  --color-brand-teal-dark: #16555c;
+  /* Seafoam */
+  --color-seafoam: #408080;
 
-  /* Accent — refined sunset coral (use sparingly) */
-  --color-brand-coral: #e0763c;
-  --color-brand-coral-dark: #c8632d;
+  /* Accent — terracotta */
+  --color-terracotta: #b85a2d;
 
   /* Text */
-  --color-brand-navy: #1c2b33;
+  --color-navy: #0a3d52;
+  --color-navy-dark: #072b3a;
   --color-brand-muted: #5c6b72;
   --color-brand-border: #e7dfd2;
 
   /* Typography */
-  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
-  --font-body: "Inter", "Hanken Grotesk", system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 
   /* Fluid type scale */
   --text-hero: clamp(2.5rem, 6vw, 4.5rem);
@@ -52,9 +52,9 @@
     scroll-behavior: smooth;
   }
   body {
-    font-family: var(--font-body);
-    color: var(--color-brand-navy);
-    background-color: var(--color-brand-sand);
+    font-family: var(--font-sans);
+    color: var(--color-navy);
+    background-color: var(--color-sand);
     font-size: 1.0625rem;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
@@ -66,17 +66,17 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-display);
+    font-family: var(--font-serif);
     font-weight: 500;
     letter-spacing: -0.01em;
-    color: var(--color-brand-navy);
+    color: var(--color-navy);
   }
   img {
     max-width: 100%;
     height: auto;
   }
   ::selection {
-    background-color: var(--color-brand-coral);
+    background-color: var(--color-terracotta);
     color: #fff;
   }
 }
@@ -105,19 +105,19 @@
   /* Eyebrow / kicker label */
   .eyebrow {
     display: inline-block;
-    font-family: var(--font-body);
+    font-family: var(--font-sans);
     font-weight: 600;
     font-size: 0.78rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-brand-teal);
+    color: var(--color-seafoam);
   }
 
   .section-heading {
-    font-family: var(--font-display);
+    font-family: var(--font-serif);
     font-size: var(--text-h2);
     line-height: 1.15;
-    color: var(--color-brand-navy);
+    color: var(--color-navy);
     margin-top: 0.5rem;
   }
 
@@ -140,7 +140,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    font-family: var(--font-body);
+    font-family: var(--font-sans);
     font-weight: 600;
     font-size: 0.95rem;
     line-height: 1;
@@ -167,12 +167,12 @@
   .btn-primary {
     position: relative;
     overflow: hidden;
-    background-color: var(--color-brand-teal);
+    background-color: var(--color-seafoam);
     color: #fff;
     box-shadow: var(--shadow-soft);
   }
   .btn-primary:hover {
-    background-color: var(--color-brand-teal-dark);
+    background-color: var(--color-seafoam);
     box-shadow: var(--shadow-lift);
   }
 
@@ -180,34 +180,34 @@
   .btn-coral {
     position: relative;
     overflow: hidden;
-    background-color: var(--color-brand-coral);
+    background-color: var(--color-terracotta);
     color: #fff;
     box-shadow: var(--shadow-soft);
   }
   .btn-coral:hover {
-    background-color: var(--color-brand-coral-dark);
+    background-color: var(--color-terracotta);
     box-shadow: var(--shadow-lift);
   }
 
   /* Outline */
   .btn-outline {
     background-color: transparent;
-    color: var(--color-brand-teal);
-    border: 1.5px solid var(--color-brand-teal);
+    color: var(--color-seafoam);
+    border: 1.5px solid var(--color-seafoam);
   }
   .btn-outline:hover {
-    background-color: var(--color-brand-teal);
+    background-color: var(--color-seafoam);
     color: #fff;
   }
 
   /* White (over imagery) */
   .btn-white {
     background-color: #fff;
-    color: var(--color-brand-navy);
+    color: var(--color-navy);
     box-shadow: var(--shadow-soft);
   }
   .btn-white:hover {
-    background-color: var(--color-brand-sand);
+    background-color: var(--color-sand);
   }
 
   /* ---- Cards ---- */
@@ -224,11 +224,11 @@
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    font-family: var(--font-body);
+    font-family: var(--font-sans);
     font-size: 0.78rem;
     font-weight: 500;
-    color: var(--color-brand-navy);
-    background-color: var(--color-brand-sand);
+    color: var(--color-navy);
+    background-color: var(--color-sand);
     border: 1px solid var(--color-brand-border);
     border-radius: 9999px;
     padding: 0.3rem 0.7rem;
@@ -239,7 +239,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    font-family: var(--font-body);
+    font-family: var(--font-sans);
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -278,7 +278,7 @@
     margin-bottom: 1.1rem;
   }
   .prose-coastal :where(h2, h3) {
-    color: var(--color-brand-navy);
+    color: var(--color-navy);
     margin-top: 1.8rem;
     margin-bottom: 0.6rem;
   }

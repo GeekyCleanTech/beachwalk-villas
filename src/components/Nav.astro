@@ -8,7 +8,7 @@ const isActive = (href: string) =>
 
 <nav
   id="main-nav"
-  class="w-full bg-brand-sand/95 text-brand-navy sticky top-0 z-50 border-b border-brand-border transition-all duration-300"
+  class="w-full bg-sand/95 text-navy sticky top-0 z-50 border-b border-brand-border transition-all duration-300"
 >
   <div class="container-site flex items-center justify-between h-16 md:h-20">
     <!-- Logo -->
@@ -30,8 +30,8 @@ const isActive = (href: string) =>
               href={link.href}
               class={`text-sm font-medium tracking-wide transition-colors duration-150 ${
                 isActive(link.href)
-                  ? "text-brand-teal"
-                  : "text-brand-navy/80 hover:text-brand-teal"
+                  ? "text-seafoam"
+                  : "text-navy/80 hover:text-seafoam"
               }`}
             >
               {link.label}
@@ -42,7 +42,7 @@ const isActive = (href: string) =>
       <li>
         <a
           href="/#other-properties"
-          class="text-sm font-medium tracking-wide text-brand-navy/80 hover:text-brand-teal transition-colors"
+          class="text-sm font-medium tracking-wide text-navy/80 hover:text-seafoam transition-colors"
         >
           Other Properties
         </a>
@@ -53,7 +53,7 @@ const isActive = (href: string) =>
     <div class="hidden lg:flex items-center gap-5">
       <a
         href={site.phoneHref}
-        class="text-sm font-semibold text-brand-navy hover:text-brand-teal transition-colors whitespace-nowrap"
+        class="text-sm font-semibold text-navy hover:text-seafoam transition-colors whitespace-nowrap"
       >
         {site.phone}
       </a>
@@ -67,14 +67,14 @@ const isActive = (href: string) =>
       aria-label="Open navigation menu"
       aria-expanded="false"
     >
-      <span class="block w-6 h-0.5 bg-brand-navy transition-all"></span>
-      <span class="block w-6 h-0.5 bg-brand-navy transition-all"></span>
-      <span class="block w-6 h-0.5 bg-brand-navy transition-all"></span>
+      <span class="block w-6 h-0.5 bg-navy transition-all"></span>
+      <span class="block w-6 h-0.5 bg-navy transition-all"></span>
+      <span class="block w-6 h-0.5 bg-navy transition-all"></span>
     </button>
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-brand-sand border-t border-brand-border">
+  <div id="mobile-menu" class="hidden lg:hidden bg-sand border-t border-brand-border">
     <ul class="container-site py-4 flex flex-col gap-1">
       {
         navLinks.map((link) => (
@@ -82,7 +82,7 @@ const isActive = (href: string) =>
             <a
               href={link.href}
               class={`block py-2.5 text-sm font-medium tracking-wide ${
-                isActive(link.href) ? "text-brand-teal" : "text-brand-navy/80"
+                isActive(link.href) ? "text-seafoam" : "text-navy/80"
               }`}
             >
               {link.label}
@@ -91,12 +91,12 @@ const isActive = (href: string) =>
         ))
       }
       <li>
-        <a href="/#other-properties" class="block py-2.5 text-sm font-medium text-brand-navy/80">
+        <a href="/#other-properties" class="block py-2.5 text-sm font-medium text-navy/80">
           Other Properties
         </a>
       </li>
       <li class="pt-3 mt-2 border-t border-brand-border flex flex-col gap-3">
-        <a href={site.phoneHref} class="text-sm font-semibold text-brand-navy">
+        <a href={site.phoneHref} class="text-sm font-semibold text-navy">
           {site.phone}
         </a>
         <a href="/contact-us/" class="btn btn-coral text-sm w-full">Book Now</a>

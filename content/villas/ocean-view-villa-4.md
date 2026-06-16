@@ -1,21 +1,28 @@
 ---
-title: "Ocean View Villa #4"
-slug: "ocean-view-villa-4"
-unit: 4
-type: "ocean-view"
+name: "Ocean View Villa #4"
+unitNumber: 4
+category: "Two Bedroom"
+viewType: "Ocean View"
 status: "available"
-thumbnailImage: "/images/1-1-1-1568x1045-1.jpg"
+image: "../../src/assets/images/1-1-1-1568x1045-1.jpg"
 galleryImages:
-  - "/images/1-1-1-1568x1045-1.jpg"
-  - "/images/2.5-1-1-1568x1045-1.jpg"
-  - "/images/2-1568x1045-1.jpg"
-  - "/images/3-1-1-1568x1045-1.jpg"
-  - "/images/4-1-2-1568x1045-1.jpg"
-  - "/images/5-1-1-1568x1045-1.jpg"
-  - "/images/6-1568x1045-1.jpg"
-bedrooms: 2
-bathrooms: 2
-maxGuests: 4
+  - "../../src/assets/images/1-1-1-1568x1045-1.jpg"
+  - "../../src/assets/images/2.5-1-1-1568x1045-1.jpg"
+  - "../../src/assets/images/2-1568x1045-1.jpg"
+  - "../../src/assets/images/3-1-1-1568x1045-1.jpg"
+  - "../../src/assets/images/4-1-2-1568x1045-1.jpg"
+  - "../../src/assets/images/5-1-1-1568x1045-1.jpg"
+  - "../../src/assets/images/6-1568x1045-1.jpg"
+specs:
+  bedrooms: 2
+  bathrooms: 2
+  maxGuests: 4
+  sqft: 500
+rates:
+  winter: 199
+  springHoliday: 299
+  summer: 399
+guestyUrl: "https://booking.guesty.com/"
 layout: "3rd floor"
 tagline: "An oversized deck with stunning ocean views — great for BBQs."
 featured: false

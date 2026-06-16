@@ -1,6 +1,7 @@
 ---
 // src/layouts/BaseLayout.astro
 import { site } from "../data/site";
+import SEO from "../components/SEO.astro";
 
 interface Props {
   title: string;
@@ -57,44 +58,17 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Primary Meta -->
-    <title>{title} | Beachwalk Villas</title>
-    <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#1f6f78" />
-    <link rel="canonical" href={canonicalUrl} />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Beachwalk Villas" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:title" content={`${title} | Beachwalk Villas`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} | Beachwalk Villas`} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-
-    <!-- Structured data -->
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(businessLd)} />
-    {
-      pageLd.map((ld) => (
-        <script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
-      ))
-    }
+    <!-- SEO Component -->
+    <SEO title={title} description={description} schemaData={jsonLd} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/logo.png" />
 
-    <!-- Fonts: Fraunces (serif display) + Inter (body/UI) -->
+    <!-- Fonts: Playfair Display (serif) + Inter (sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
