@@ -19,3 +19,6 @@ npm-debug.log*
 # editor
 .vscode/
 .idea/
+
+# Cloudflare Wrangler local state
+.wrangler/

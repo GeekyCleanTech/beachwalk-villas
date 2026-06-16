@@ -14,6 +14,9 @@ const {
 
 const siteUrl = "https://beachwalkvillas.net";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+// Cloudflare Web Analytics beacon token (optional, set via PUBLIC_CF_BEACON_TOKEN env var)
+const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
 
 <!doctype html>
@@ -120,5 +123,18 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
           .forEach((el) => cardObserver.observe(el));
       }
     </script>
+
+    {
+      /* Cloudflare Web Analytics — only loads if PUBLIC_CF_BEACON_TOKEN is set */
+    }
+    {
+      cfBeaconToken && (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+        />
+      )
+    }
   </body>
 </html>

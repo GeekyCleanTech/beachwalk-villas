@@ -3,10 +3,11 @@
 Modern rebuild of beachwalkvillas.net using Astro, Tailwind CSS, and Cloudflare Pages.
 
 ## Stack
-- **Framework:** Astro 4.x (static output)
-- **Styling:** Tailwind CSS 3.x
-- **Hosting:** Cloudflare Pages
+- **Framework:** Astro 6.x with Cloudflare adapter (server-side rendering)
+- **Styling:** Tailwind CSS 4.x
+- **Hosting:** Cloudflare Pages (with Workers for SSR)
 - **Content:** Astro Content Collections (MDX)
+- **Analytics:** Cloudflare Web Analytics (optional, token-gated)
 
 ## Project Structure
 
@@ -72,11 +73,66 @@ npm run build
 
 ## Deploy to Cloudflare Pages
 
-1. Push to GitHub
-2. Connect repo in Cloudflare Pages dashboard
-3. Build command: `npm run build`
-4. Output directory: `dist`
-5. Node version: 18+
+### 1. Initial Setup
+
+1. Push your code to GitHub
+2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) → Pages
+3. Click "Create a project" → "Connect to Git"
+4. Select your repository and click "Begin setup"
+
+### 2. Build Configuration
+
+| Setting | Value |
+|---------|-------|
+| Framework preset | Astro |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Node version | 18 (or higher) |
+
+### 3. Environment Variables
+
+In Cloudflare Pages dashboard → Settings → Environment variables, add:
+
+```
+PUBLIC_CF_BEACON_TOKEN=your_actual_beacon_token_here
+```
+
+**Note:** Use the `PUBLIC_` prefix for any variables that need to be accessible in the browser. Server-only variables don't need this prefix.
+
+### 4. Cloudflare Web Analytics Setup
+
+1. In Cloudflare dashboard, go to **Web Analytics**
+2. Click **Add a site**
+3. Enter your domain (e.g., `beachwalkvillas.net`)
+4. Copy the beacon token (looks like `1234567890abcdef1234567890abcdef`)
+5. Add it as `PUBLIC_CF_BEACON_TOKEN` in your environment variables
+6. Deploy — analytics will appear after the first page load
+
+### 5. Local Development with Environment Variables
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Add your actual values to `.env`:
+   ```bash
+   PUBLIC_CF_BEACON_TOKEN=your_dev_or_prod_token
+   ```
+3. Run dev server:
+   ```bash
+   npm run dev
+   ```
+
+**Important:** `.env` is in `.gitignore` and will never be committed. Only `.env.example` (with placeholder values) should be in the repo.
+
+### 6. SSR vs Static
+
+This project uses the **Cloudflare adapter** with `output: 'server'`, enabling:
+- Server-side rendering for dynamic content
+- API endpoints for form handling
+- Edge functions on Cloudflare's global network
+
+The build will automatically generate the correct Workers bundle for Cloudflare.
 
 ## Content Updates
 
