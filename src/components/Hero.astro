@@ -10,82 +10,123 @@ interface Props {
   bgVideo?: string;
   bgImage?: string;
   overlay?: boolean;
-  size?: 'full' | 'large' | 'medium';
+  size?: "full" | "large" | "medium";
 }
 
 const {
   headline,
   subheadline,
   ctaLabel,
-  ctaHref = '/villas/',
+  ctaHref = "/villas/",
   ctaSecondaryLabel,
   ctaSecondaryHref,
-  bgVideo = '/images/BG_VIDEO1.mp4',
-  bgImage = '/images/beachwalk-featured-images.jpg',
+  bgVideo = "/images/BG_VIDEO1.mp4",
+  bgImage = "/images/beachwalk-featured-images.jpg",
   overlay = true,
-  size = 'full',
+  size = "full",
 } = Astro.props;
 
 const sizeClasses = {
-  full:   'min-h-screen',
-  large:  'min-h-[70vh]',
-  medium: 'min-h-[50vh]',
+  full: "min-h-screen",
+  large: "min-h-[70vh]",
+  medium: "min-h-[50vh]",
 };
 ---
 
-<section class={`relative flex items-center justify-center ${sizeClasses[size]} overflow-hidden`}>
-
+<section
+  class={`relative flex items-center justify-center ${sizeClasses[size]} overflow-hidden`}
+>
   <!-- Background video (falls back to image) -->
-  {bgVideo ? (
-    <video
-      class="absolute inset-0 w-full h-full object-cover"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster={bgImage}
-    >
-      <source src={bgVideo} type="video/mp4" />
-    </video>
-  ) : (
-    <img
-      src={bgImage}
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-    />
-  )}
+  {
+    bgVideo ? (
+      <video
+        id="hero-bg"
+        class="absolute inset-0 w-full h-full object-cover will-change-transform"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster={bgImage}
+      >
+        <source src={bgVideo} type="video/mp4" />
+      </video>
+    ) : (
+      <img
+        id="hero-bg"
+        src={bgImage}
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover will-change-transform"
+        loading="eager"
+      />
+    )
+  }
 
   <!-- Overlay -->
-  {overlay && (
-    <div class="absolute inset-0 bg-brand-navy/50"></div>
-  )}
+  {overlay && <div class="absolute inset-0 bg-brand-navy/50" />}
 
   <!-- Content -->
   <div class="relative z-10 container-site text-center text-white px-4">
-    <h1 class="font-display text-hero text-balance mb-4 drop-shadow-lg">
+    <h1
+      class="font-display text-hero text-balance mb-4 drop-shadow-lg hero-animate-headline"
+    >
       {headline}
     </h1>
 
-    {subheadline && (
-      <p class="font-body text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 text-balance">
-        {subheadline}
-      </p>
-    )}
+    {
+      subheadline && (
+        <p class="font-body text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 text-balance hero-animate-subheadline">
+          {subheadline}
+        </p>
+      )
+    }
 
-    {(ctaLabel || ctaSecondaryLabel) && (
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        {ctaLabel && (
-          <a href={ctaHref} class="btn-primary shadow-lg">
-            {ctaLabel}
-          </a>
-        )}
-        {ctaSecondaryLabel && ctaSecondaryHref && (
-          <a href={ctaSecondaryHref} class="btn-outline border-white text-white hover:bg-white hover:text-brand-navy">
-            {ctaSecondaryLabel}
-          </a>
-        )}
-      </div>
-    )}
+    {
+      (ctaLabel || ctaSecondaryLabel) && (
+        <div class="flex flex-col sm:flex-row gap-4 justify-center hero-animate-cta">
+          {ctaLabel && (
+            <a href={ctaHref} class="btn-primary shadow-lg">
+              {ctaLabel}
+            </a>
+          )}
+          {ctaSecondaryLabel && ctaSecondaryHref && (
+            <a
+              href={ctaSecondaryHref}
+              class="btn-outline border-white text-white hover:bg-white hover:text-brand-navy"
+            >
+              {ctaSecondaryLabel}
+            </a>
+          )}
+        </div>
+      )
+    }
   </div>
 </section>
+
+<script>
+  // Parallax scroll effect on hero background
+  const heroBg = document.getElementById("hero-bg");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (heroBg && !prefersReducedMotion) {
+    let ticking = false;
+
+    const updateParallax = () => {
+      const scrollY = window.scrollY;
+      heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+  }
+</script>
