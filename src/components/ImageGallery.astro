@@ -1,0 +1,62 @@
+---
+// src/components/ImageGallery.astro
+interface Props {
+  images: string[];
+  title: string;
+}
+const { images, title } = Astro.props;
+---
+
+<div class="w-full">
+  <!-- Main featured image -->
+  <div class="aspect-[16/9] overflow-hidden mb-3">
+    <img
+      id="gallery-main"
+      src={images[0]}
+      alt={title}
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Thumbnail strip -->
+  {images.length > 1 && (
+    <div class="grid grid-cols-4 sm:grid-cols-6 gap-2">
+      {images.map((src, i) => (
+        <button
+          class={`aspect-square overflow-hidden focus:outline-none focus:ring-2 focus:ring-brand-teal
+            ${i === 0 ? 'ring-2 ring-brand-teal' : 'opacity-70 hover:opacity-100'}
+            transition-opacity duration-150`}
+          data-src={src}
+          data-index={i}
+          aria-label={`View image ${i + 1} of ${images.length}`}
+        >
+          <img
+            src={src}
+            alt={`${title} - image ${i + 1}`}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </button>
+      ))}
+    </div>
+  )}
+</div>
+
+<script>
+  const mainImg = document.getElementById('gallery-main') as HTMLImageElement;
+  const thumbBtns = document.querySelectorAll('[data-src]');
+
+  thumbBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const src = btn.getAttribute('data-src');
+      if (src && mainImg) {
+        mainImg.src = src;
+        thumbBtns.forEach(b => b.classList.add('opacity-70'));
+        thumbBtns.forEach(b => b.classList.remove('ring-2', 'ring-brand-teal'));
+        btn.classList.remove('opacity-70');
+        btn.classList.add('ring-2', 'ring-brand-teal');
+      }
+    });
+  });
+</script>

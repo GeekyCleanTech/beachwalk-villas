@@ -1,0 +1,142 @@
+---
+import VillaLayout from '../../layouts/VillaLayout.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const villas = await getCollection('villas');
+  return villas.map(villa => ({
+    params: { slug: villa.data.slug },
+    props: { villa },
+  }));
+}) satisfies GetStaticPaths;
+
+const { villa } = Astro.props;
+const { Content } = await render(villa);
+
+const {
+  title, type, thumbnailImage, galleryImages,
+  bedrooms, bathrooms, maxGuests, sqft,
+  unitAmenities, nightlyRate, weeklyRate, monthlyRate,
+  metaDescription,
+} = villa.data;
+
+const typeLabels = {
+  'ocean-front':     'Ocean Front',
+  'ocean-view':      'Ocean View',
+  'avenue-view':     'Avenue View',
+  'garden-view':     'Garden View',
+  'poolside-studio': 'Poolside Studio',
+};
+
+const allImages = [thumbnailImage, ...galleryImages.filter(img => img !== thumbnailImage)];
+---
+
+<VillaLayout title={title} description={metaDescription} image={thumbnailImage}>
+
+  <div class="bg-brand-sand border-b border-gray-100">
+    <div class="container-site py-3 text-sm text-gray-500">
+      <a href="/" class="hover:text-brand-teal">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/villas/" class="hover:text-brand-teal">Villas</a>
+      <span class="mx-2">/</span>
+      <span class="text-brand-navy font-medium">{title}</span>
+    </div>
+  </div>
+
+  <section class="section-pad bg-white">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <div class="lg:col-span-2">
+          <ImageGallery images={allImages} title={title} />
+          <div class="mt-8">
+            <span class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm">
+              {typeLabels[type]}
+            </span>
+            <h1 class="font-display text-h1 text-brand-navy mt-2 mb-6">{title}</h1>
+            <div class="prose prose-lg max-w-none text-gray-600">
+              <Content />
+            </div>
+            {unitAmenities.length > 0 && (
+              <div class="mt-8">
+                <h2 class="font-display text-h3 text-brand-navy mb-4">Villa Features</h2>
+                <ul class="grid grid-cols-2 gap-2">
+                  {unitAmenities.map(a => (
+                    <li class="flex items-center gap-2 text-gray-600 text-sm">
+                      <svg class="w-4 h-4 text-brand-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div class="lg:col-span-1">
+          <div class="bg-brand-sand p-6 mb-6">
+            <h2 class="font-display text-xl text-brand-navy mb-4">Villa Details</h2>
+            <dl class="space-y-3 text-sm">
+              <div class="flex justify-between">
+                <dt class="text-gray-500">Type</dt>
+                <dd class="font-semibold text-brand-navy">{typeLabels[type]}</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-gray-500">Bedrooms</dt>
+                <dd class="font-semibold text-brand-navy">{bedrooms === 0 ? 'Studio' : bedrooms}</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-gray-500">Bathrooms</dt>
+                <dd class="font-semibold text-brand-navy">{bathrooms}</dd>
+              </div>
+              {maxGuests && (
+                <div class="flex justify-between">
+                  <dt class="text-gray-500">Max Guests</dt>
+                  <dd class="font-semibold text-brand-navy">{maxGuests}</dd>
+                </div>
+              )}
+              {nightlyRate && (
+                <div class="flex justify-between border-t border-gray-200 pt-3 mt-3">
+                  <dt class="text-gray-500">Nightly Rate</dt>
+                  <dd class="font-semibold text-brand-teal text-base">${nightlyRate}</dd>
+                </div>
+              )}
+            </dl>
+            <a href="/contact-us/" class="btn-primary w-full text-center mt-6 block">
+              Check Availability
+            </a>
+          </div>
+          <div class="bg-white border border-gray-100 p-6">
+            <h3 class="font-display text-lg text-brand-navy mb-3">Good to Know</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li><a href="/reservation-policies/" class="text-brand-teal hover:underline">Reservation & Booking Policies</a></li>
+              <li><a href="/health-and-safety/" class="text-brand-teal hover:underline">Health & Safety Guidelines</a></li>
+              <li><a href="/amenities/" class="text-brand-teal hover:underline">Property Amenities</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad bg-brand-sand">
+    <div class="container-site max-w-2xl">
+      <ContactForm title={`Inquire About ${title}`} showVillaSelect={false} />
+    </div>
+  </section>
+
+  <div class="bg-white border-t border-gray-100 py-6">
+    <div class="container-site">
+      <a href="/villas/" class="text-brand-teal font-semibold hover:underline text-sm">
+        ← Back to All Villas
+      </a>
+    </div>
+  </div>
+
+</VillaLayout>

@@ -1,0 +1,30 @@
+# Cloudflare Pages _redirects
+# Maps old WordPress URLs to new Astro URLs
+
+# WordPress default page slugs
+/home/                          /                               301
+/sample-page/                   /                               301
+
+# Villa posts - WordPress used /villa-name/ at root, now under /villas/
+/ocean-view-villa-5/            /villas/ocean-view-villa-5/     301
+/ocean-front-villa-8/           /villas/ocean-front-villa-8/    301
+/ocean-front-villa-6/           /villas/ocean-front-villa-6/    301
+/ocean-view-villa-4/            /villas/ocean-view-villa-4/     301
+/avenue-view-villa-2/           /villas/avenue-view-villa-2/    301
+/avenue-view-villa-1/           /villas/avenue-view-villa-1/    301
+/ocean-front-villa-7/           /villas/ocean-front-villa-7/    301
+/garden-view-villa-3/           /villas/garden-view-villa-3/    301
+/poolside-studio-9/             /villas/poolside-studio-9/      301
+/poolside-studio-10/            /villas/poolside-studio-10/     301
+
+# Reservation policies slug fix (was elementor-580)
+/elementor-580/                 /reservation-policies/          301
+
+# WordPress admin (block access)
+/wp-admin/*                     /                               301
+/wp-login.php                   /                               301
+
+# Category archives
+/category/*                     /villas/                        301
+/one-bedroom-villas/            /villas/                        301
+/studios/                       /villas/                        301

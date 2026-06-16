@@ -1,0 +1,107 @@
+---
+// src/pages/reservation-policies.astro
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<SiteLayout
+  title="Reservation Policies"
+  description="Review Beachwalk Villas reservation and booking policies — check-in times, cancellation policy, deposits, and house rules."
+>
+  <Hero
+    headline="Reservation Policies"
+    subheadline="Everything you need to know before booking your stay."
+    bgImage="/images/beachwalk-featured-images.jpg"
+    size="medium"
+    ctaLabel={undefined}
+  />
+
+  <section class="section-pad bg-white">
+    <div class="container-site max-w-3xl">
+      <div class="space-y-10">
+
+        {[
+          {
+            title: 'Check-In & Check-Out',
+            items: [
+              'Check-in: 4:00 PM',
+              'Check-out: 11:00 AM',
+              'Early check-in and late check-out may be available upon request (subject to availability)',
+              'Self check-in via keyless entry — instructions provided 24 hours before arrival',
+            ],
+          },
+          {
+            title: 'Deposits & Payment',
+            items: [
+              'A security deposit is required at time of booking',
+              'Full payment is due at time of reservation',
+              'Accepted payment methods: major credit cards',
+              'Security deposit refunded within 7 days of check-out, pending inspection',
+            ],
+          },
+          {
+            title: 'Cancellation Policy',
+            items: [
+              'Cancellations made 30+ days before check-in: full refund minus processing fee',
+              'Cancellations made 14–29 days before check-in: 50% refund',
+              'Cancellations made less than 14 days before check-in: no refund',
+              'In case of documented medical emergency, exceptions may be considered',
+            ],
+          },
+          {
+            title: 'Guest Policy',
+            items: [
+              'Maximum occupancy as listed per villa — strictly enforced',
+              'All guests must be registered at time of booking',
+              'Guests must be 25 years of age or older to book',
+              'Valid government-issued ID required at check-in',
+            ],
+          },
+          {
+            title: 'House Rules',
+            items: [
+              'No smoking anywhere on the property (including patios and balconies)',
+              'No pets allowed',
+              'No parties or events',
+              'Quiet hours: 10:00 PM – 8:00 AM',
+              'Trash must be disposed of properly in designated areas',
+              'Treat the villa with respect — damages will be charged to the security deposit',
+            ],
+          },
+          {
+            title: 'Parking',
+            items: [
+              'One parking space included per villa',
+              'Additional vehicles must be approved in advance',
+              'RVs, trailers, and oversized vehicles not permitted',
+            ],
+          },
+        ].map(section => (
+          <div>
+            <h2 class="font-display text-h3 text-brand-navy mb-4 pb-2 border-b border-gray-100">
+              {section.title}
+            </h2>
+            <ul class="space-y-2">
+              {section.items.map(item => (
+                <li class="flex items-start gap-2 text-gray-600 text-sm">
+                  <svg class="w-4 h-4 text-brand-teal mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <div class="bg-brand-sand p-6">
+          <p class="text-sm text-gray-600">
+            Questions about our policies? We're happy to help.
+          </p>
+          <a href="/contact-us/" class="btn-primary mt-4 inline-block">Contact Us</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</SiteLayout>

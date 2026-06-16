@@ -1,0 +1,176 @@
+---
+// src/pages/index.astro
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Hero from '../components/Hero.astro';
+import VillaCard from '../components/VillaCard.astro';
+import { getCollection } from 'astro:content';
+
+const allVillas = await getCollection('villas');
+const featuredVillas = allVillas
+  .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
+  .slice(0, 3);
+---
+
+<SiteLayout
+  title="Beachside Vacation Villas in Carlsbad, CA"
+  description="Beachwalk Villas offers luxury oceanfront and ocean view vacation rentals in Carlsbad, California — steps from the Pacific."
+>
+  <!-- Hero with background video -->
+  <Hero
+    headline="Your Private Escape on the California Coast"
+    subheadline="Luxury villas steps from the Pacific — in beautiful Carlsbad, California."
+    ctaLabel="View Our Villas"
+    ctaHref="/villas/"
+    ctaSecondaryLabel="Contact Us"
+    ctaSecondaryHref="/contact-us/"
+    bgVideo="/images/BG_VIDEO1.mp4"
+    bgImage="/images/beachwalk-featured-images.jpg"
+    size="full"
+  />
+
+  <!-- Welcome section -->
+  <section class="section-pad bg-white">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm mb-3">
+            Welcome to Beachwalk Villas
+          </p>
+          <h2 class="section-heading">Carlsbad's Premier Beachside Retreat</h2>
+          <p class="section-subheading mb-6">
+            Nestled along the stunning Carlsbad coastline, Beachwalk Villas offers a collection of
+            beautifully appointed vacation villas — from cozy poolside studios to stunning oceanfront suites.
+          </p>
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            Each villa is fully furnished with modern amenities, a full kitchen, and coastal-inspired décor.
+            Whether you're planning a romantic getaway, a family vacation, or an extended stay,
+            Beachwalk Villas is your home away from home on the Pacific coast.
+          </p>
+          <a href="/villas/" class="btn-primary">Explore All Villas</a>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <img
+            src="/images/modern-inspired-vila-home-img-1.jpg"
+            alt="Beachwalk Villas exterior"
+            class="w-full aspect-square object-cover"
+            loading="lazy"
+          />
+          <img
+            src="/images/bottom-img1.jpg"
+            alt="Beachwalk Villas interior"
+            class="w-full aspect-square object-cover mt-6"
+            loading="lazy"
+          />
+          <img
+            src="/images/bottom-img2.jpg"
+            alt="Beachwalk Villas amenities"
+            class="w-full aspect-square object-cover -mt-6"
+            loading="lazy"
+          />
+          <img
+            src="/images/bottom-img3-1.jpg"
+            alt="Beachwalk Villas ocean view"
+            class="w-full aspect-square object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Villas -->
+  <section class="section-pad bg-brand-sand">
+    <div class="container-site">
+      <div class="text-center mb-12">
+        <p class="text-brand-teal font-body font-semibold tracking-widest uppercase text-sm mb-3">
+          Our Properties
+        </p>
+        <h2 class="section-heading">Featured Villas</h2>
+        <p class="section-subheading mx-auto">
+          From oceanfront suites to garden retreats, find the perfect villa for your stay.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        {featuredVillas.map(villa => (
+          <VillaCard
+            title={villa.data.title}
+            slug={villa.data.slug}
+            type={villa.data.type}
+            thumbnailImage={villa.data.thumbnailImage}
+            bedrooms={villa.data.bedrooms}
+            bathrooms={villa.data.bathrooms}
+            unitAmenities={villa.data.unitAmenities}
+            nightlyRate={villa.data.nightlyRate}
+          />
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="/villas/" class="btn-primary">View All 10 Villas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property highlights / amenities strip -->
+  <section class="section-pad bg-brand-navy text-white">
+    <div class="container-site">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { stat: '10',  label: 'Unique Villas' },
+          { stat: '100ft', label: 'From the Beach' },
+          { stat: '5★',  label: 'Guest Rating' },
+          { stat: '∞',   label: 'Memories Made' },
+        ].map(item => (
+          <div>
+            <p class="font-display text-5xl text-brand-gold mb-2">{item.stat}</p>
+            <p class="font-body text-sm uppercase tracking-widest text-gray-300">{item.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Property photos -->
+  <section class="section-pad bg-white">
+    <div class="container-site">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">Life at Beachwalk</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        {[
+          '/images/Beachwalk-Villas-Beachside.png',
+          '/images/Beachwalk-Pool-area.png',
+          '/images/DSC09391.jpg',
+          '/images/DSC09395.jpg',
+          '/images/DSC09406-HDR.jpg',
+          '/images/DSC09410.jpg',
+          '/images/DSC09413.jpg',
+          '/images/DSC09425.jpg',
+        ].map((src, i) => (
+          <div class="aspect-square overflow-hidden">
+            <img
+              src={src}
+              alt={`Beachwalk Villas photo ${i + 1}`}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="py-16 bg-brand-teal text-white text-center">
+    <div class="container-site">
+      <h2 class="font-display text-h1 mb-4">Ready to Book Your Stay?</h2>
+      <p class="font-body text-lg text-white/90 max-w-xl mx-auto mb-8">
+        Contact us today to check availability and reserve your Beachwalk Villa.
+      </p>
+      <a href="/contact-us/" class="btn-primary bg-white text-brand-teal hover:bg-brand-navy hover:text-white">
+        Contact Us
+      </a>
+    </div>
+  </section>
+</SiteLayout>

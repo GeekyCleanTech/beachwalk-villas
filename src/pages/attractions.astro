@@ -1,0 +1,134 @@
+---
+// src/pages/attractions.astro
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Hero from '../components/Hero.astro';
+
+const attractions = [
+  {
+    name: 'Carlsbad State Beach',
+    description: 'Miles of pristine sandy beach just steps from your villa. Perfect for swimming, surfing, and sunset strolls.',
+    image: '/images/activities-img-01.jpg',
+    distance: 'Steps away',
+  },
+  {
+    name: 'LEGOLAND California',
+    description: 'The iconic family theme park is just minutes away — a must for families with kids.',
+    image: '/images/activities-img-02.jpg',
+    distance: '10 min drive',
+  },
+  {
+    name: 'Carlsbad Village',
+    description: 'Explore charming shops, restaurants, art galleries, and the famous Carlsbad Farmers Market.',
+    image: '/images/carlsbad-sign-picture.jpg',
+    distance: '5 min drive',
+  },
+  {
+    name: 'The Flower Fields',
+    description: 'Carlsbad\'s famous 50-acre flower fields bloom every spring with stunning rows of Giant Tecolote Ranunculus.',
+    image: '/images/activities-img-04.jpg',
+    distance: '8 min drive',
+  },
+  {
+    name: 'San Diego Zoo & Safari Park',
+    description: 'World-renowned zoo and safari park — one of the best in the world and just a short drive south.',
+    image: '/images/activities-img-05.jpg',
+    distance: '35 min drive',
+  },
+  {
+    name: 'Torrey Pines State Reserve',
+    description: 'Hike dramatic coastal cliffs with breathtaking Pacific views at this iconic San Diego nature reserve.',
+    image: '/images/activities-img-06.jpg',
+    distance: '25 min drive',
+  },
+  {
+    name: 'Old Town San Diego',
+    description: 'Explore California\'s historic birthplace with colorful shops, authentic Mexican cuisine, and living history.',
+    image: '/images/activities-img-07.jpg',
+    distance: '35 min drive',
+  },
+  {
+    name: 'Carlsbad Premium Outlets',
+    description: 'Over 90 designer and brand-name outlet stores just minutes from the villas.',
+    image: '/images/activities-img-08.jpg',
+    distance: '8 min drive',
+  },
+];
+---
+
+<SiteLayout
+  title="Local Attractions"
+  description="Discover the best local attractions near Beachwalk Villas in Carlsbad, CA — beaches, LEGOLAND, Carlsbad Village, and more."
+>
+  <Hero
+    headline="Explore Carlsbad & Beyond"
+    subheadline="World-class attractions, beaches, and adventures — all within minutes of your villa."
+    bgImage="/images/carlsbad-sign-pic.jpg"
+    size="large"
+    ctaLabel={undefined}
+  />
+
+  <section class="section-pad bg-white">
+    <div class="container-site">
+      <div class="max-w-2xl mb-12">
+        <h2 class="section-heading">Things to Do Near Beachwalk</h2>
+        <p class="section-subheading">
+          Carlsbad offers something for everyone — from sun-soaked beaches to theme parks, wine tasting to world-class golf.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {attractions.map(attraction => (
+          <div class="flex gap-5">
+            <div class="w-28 h-28 flex-shrink-0 overflow-hidden">
+              <img
+                src={attraction.image}
+                alt={attraction.name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h3 class="font-display text-lg text-brand-navy">{attraction.name}</h3>
+                <span class="text-xs bg-brand-teal/10 text-brand-teal px-2 py-0.5 rounded-full whitespace-nowrap font-semibold">
+                  {attraction.distance}
+                </span>
+              </div>
+              <p class="text-sm text-gray-600 leading-relaxed">{attraction.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Photo slider strip -->
+      <div class="mt-16">
+        <h2 class="section-heading mb-6">Carlsbad Gallery</h2>
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-2">
+          {[
+            '/images/diego-slider-01-1.jpg',
+            '/images/diego-slider-02.jpg',
+            '/images/diego-slider-03.jpg',
+            '/images/diego-slider-04.jpg',
+            '/images/diego-slider-05.jpg',
+            '/images/diego-slider-06.jpg',
+            '/images/diego-slider-07.jpg',
+            '/images/diego-slider-08.jpg',
+            '/images/diego-slider-09.jpg',
+            '/images/diego-slider-10.jpg',
+            '/images/diego-slider-17.jpg',
+            '/images/diego-slider-18.jpg',
+          ].map((src, i) => (
+            <div class="aspect-square overflow-hidden">
+              <img
+                src={src}
+                alt={`Carlsbad photo ${i + 1}`}
+                class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

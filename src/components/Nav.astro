@@ -1,0 +1,86 @@
+---
+// src/components/Nav.astro
+const navLinks = [
+  { label: 'Home',                href: '/' },
+  { label: 'Villas',              href: '/villas/' },
+  { label: 'Amenities',          href: '/amenities/' },
+  { label: 'Attractions',        href: '/attractions/' },
+  { label: 'Promotions',         href: '/promotions/' },
+  { label: 'Health & Safety',    href: '/health-and-safety/' },
+  { label: 'Booking Policies',   href: '/reservation-policies/' },
+  { label: 'Contact Us',         href: '/contact-us/' },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<nav class="w-full bg-brand-navy text-white sticky top-0 z-50">
+  <div class="container-site flex items-center justify-between h-16 md:h-20">
+
+    <!-- Logo -->
+    <a href="/" class="flex-shrink-0">
+      <img
+        src="/images/logo.png"
+        alt="Beachwalk Villas"
+        class="h-10 md:h-12 w-auto"
+        loading="eager"
+      />
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="hidden lg:flex items-center gap-6 xl:gap-8">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class={`text-sm font-body font-semibold tracking-wide uppercase transition-colors duration-150
+              ${pathname === link.href
+                ? 'text-brand-gold border-b-2 border-brand-gold pb-0.5'
+                : 'text-gray-200 hover:text-white'
+              }`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="lg:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-white transition-all"></span>
+      <span class="block w-6 h-0.5 bg-white transition-all"></span>
+      <span class="block w-6 h-0.5 bg-white transition-all"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-brand-navy border-t border-white/10">
+    <ul class="container-site py-4 flex flex-col gap-2">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class={`block py-2 text-sm font-body font-semibold tracking-wide uppercase
+              ${pathname === link.href ? 'text-brand-gold' : 'text-gray-200 hover:text-white'}`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>
