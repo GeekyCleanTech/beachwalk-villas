@@ -27,3 +27,118 @@
     height: auto;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Shimmer effect for CTA buttons */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  .btn-primary:hover::before {
+    animation: shimmer 0.6s ease-out;
+  }
+
+  /* Reveal animation - elements start visible, JS adds .js-enabled then hides */
+  .js-enabled .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+  }
+
+  .js-enabled .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hero load-in animations */
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate-headline {
+    animation: hero-fade-up 0.8s ease-out forwards;
+  }
+
+  .hero-animate-subheadline {
+    opacity: 0;
+    animation: hero-fade-up 0.8s ease-out 0.15s forwards;
+  }
+
+  .hero-animate-cta {
+    opacity: 0;
+    animation: hero-fade-up 0.8s ease-out 0.3s forwards;
+  }
+
+  /* Villa card staggered reveal */
+  .villa-card-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+  }
+
+  .villa-card-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger delays based on nth-child */
+  .villa-card-reveal:nth-child(1) { transition-delay: 0ms; }
+  .villa-card-reveal:nth-child(2) { transition-delay: 80ms; }
+  .villa-card-reveal:nth-child(3) { transition-delay: 160ms; }
+  .villa-card-reveal:nth-child(4) { transition-delay: 240ms; }
+  .villa-card-reveal:nth-child(5) { transition-delay: 320ms; }
+  .villa-card-reveal:nth-child(6) { transition-delay: 400ms; }
+  .villa-card-reveal:nth-child(7) { transition-delay: 480ms; }
+  .villa-card-reveal:nth-child(8) { transition-delay: 560ms; }
+  .villa-card-reveal:nth-child(9) { transition-delay: 640ms; }
+  .villa-card-reveal:nth-child(10) { transition-delay: 720ms; }
+
+  /* Nav scroll state */
+  .nav-scrolled {
+    backdrop-filter: blur(12px);
+    background-color: rgba(26, 46, 68, 0.92) !important;
+    transition: backdrop-filter 0.3s ease-out, background-color 0.3s ease-out;
+  }
+
+  /* Image gallery crossfade */
+  .gallery-main {
+    transition: opacity 0.2s ease-out;
+  }
+
+  .gallery-main.fading-out {
+    opacity: 0;
+  }
+}
