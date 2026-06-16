@@ -14,7 +14,7 @@ const isActive = (href: string) =>
     <!-- Logo -->
     <a href="/" class="flex-shrink-0 flex items-center gap-3" aria-label="Beachwalk Villas — home">
       <img
-        src="/images/logo.png"
+        src="/images/logo-navy.png"
         alt="Beachwalk Villas"
         class="h-9 md:h-11 w-auto"
         loading="eager"
@@ -42,7 +42,7 @@ const isActive = (href: string) =>
       <li>
         <a
           href="/#other-properties"
-          class="text-sm font-medium tracking-wide text-navy/80 hover:text-seafoam transition-colors"
+          class="text-sm font-medium tracking-wide whitespace-nowrap text-navy/80 hover:text-seafoam transition-colors"
         >
           Other Properties
         </a>
@@ -50,7 +50,7 @@ const isActive = (href: string) =>
     </ul>
 
     <!-- Right: phone + Book Now -->
-    <div class="hidden lg:flex items-center gap-5">
+    <div class="hidden lg:flex items-center gap-5 lg:pl-6 lg:border-l lg:border-brand-border">
       <a
         href={site.phoneHref}
         class="text-sm font-semibold text-navy hover:text-seafoam transition-colors whitespace-nowrap"
