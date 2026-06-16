@@ -4,7 +4,7 @@ import GalleryIsland from "../../components/GalleryIsland";
 import ContactForm from "../../components/ContactForm.astro";
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
-import { typeLabels, site } from "../../data/site";
+import { site } from "../../data/site";
 
 export const getStaticPaths = (async () => {
   const villas = await getCollection("villas");

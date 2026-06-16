@@ -1,5 +1,7 @@
 ---
 // src/components/Hero.astro
+import { Image } from "astro:assets";
+
 interface Props {
   eyebrow?: string;
   headline: string;
@@ -9,7 +11,7 @@ interface Props {
   ctaSecondaryLabel?: string;
   ctaSecondaryHref?: string;
   bgVideo?: string;
-  bgImage?: string;
+  bgImage?: string | ImageMetadata;
   align?: "center" | "left";
   size?: "full" | "large" | "medium";
 }
@@ -39,6 +41,8 @@ const alignClasses =
     ? "items-center text-center"
     : "items-center text-left";
 const contentAlign = align === "center" ? "mx-auto" : "mr-auto";
+
+const isImageMetadata = (img: any): img is ImageMetadata => img && typeof img.src === 'string' && typeof img.width === 'number';
 ---
 
 <section
@@ -54,17 +58,29 @@ const contentAlign = align === "center" ? "mx-auto" : "mr-auto";
         muted
         loop
         playsinline
-        poster={bgImage}
+        poster={typeof bgImage === 'string' ? bgImage : bgImage?.src}
       >
         <source src={bgVideo} type="video/mp4" />
       </video>
-    ) : (
-      <img
+    ) : isImageMetadata(bgImage) ? (
+      <Image
         id="hero-bg"
         src={bgImage}
         alt=""
         class="absolute inset-0 w-full h-full object-cover will-change-transform"
         loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    ) : (
+      <img
+        id="hero-bg"
+        src={bgImage}
+        alt="Hero background"
+        class="absolute inset-0 w-full h-full object-cover will-change-transform"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
       />
     )
   }

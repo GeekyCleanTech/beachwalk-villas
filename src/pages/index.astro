@@ -4,8 +4,18 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import Hero from "../components/Hero.astro";
 import VillaCard from "../components/VillaCard.astro";
 import SisterProperties from "../components/SisterProperties.astro";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { site } from "../data/site";
+
+import imgHeroBg from "../assets/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg";
+import imgInterior from "../assets/images/DSC09431-1024x683.jpg";
+import imgBalcony from "../assets/images/DSC09464-300x200.jpg";
+import imgStateBeach from "../assets/images/Beachwalk-Villas-Beachside.png";
+import imgVillage from "../assets/images/carlsbad-sign-pic.jpg";
+import imgFlower from "../assets/images/activities-img-04.jpg";
+import imgLego from "../assets/images/activities-img-02.jpg";
+import imgContactBg from "../assets/images/DSC09464-2048x1365.jpg";
 
 const allVillas = await getCollection("villas");
 const featuredVillas = allVillas
@@ -26,22 +36,22 @@ const attractions = [
   {
     name: "Carlsbad State Beach",
     distance: "Steps away",
-    image: "/images/Beachwalk-Villas-Beachside.png",
+    image: imgStateBeach,
   },
   {
     name: "Carlsbad Village",
     distance: "5 min",
-    image: "/images/carlsbad-sign-pic.jpg",
+    image: imgVillage,
   },
   {
     name: "The Flower Fields",
     distance: "8 min",
-    image: "/images/activities-img-04.jpg",
+    image: imgFlower,
   },
   {
     name: "LEGOLAND California",
     distance: "10 min",
-    image: "/images/activities-img-02.jpg",
+    image: imgLego,
   },
 ];
 ---
@@ -59,7 +69,7 @@ const attractions = [
     ctaHref="/villas/"
     ctaSecondaryLabel="Book Now"
     ctaSecondaryHref="/contact-us/"
-    bgImage="/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg"
+    bgImage={imgHeroBg}
     size="full"
   />
 
@@ -88,15 +98,17 @@ const attractions = [
         </div>
 
         <div class="grid grid-cols-2 gap-4">
-          <img
-            src="/images/DSC09431-1024x683.jpg"
+          <Image
+            src={imgInterior}
             alt="Sun-washed Beachwalk Villas interior"
+            width={600}
             class="rounded-card w-full aspect-[3/4] object-cover shadow-[var(--shadow-soft)]"
             loading="lazy"
           />
-          <img
-            src="/images/DSC09464-300x200.jpg"
+          <Image
+            src={imgBalcony}
             alt="Oceanfront balcony view"
+            width={600}
             class="rounded-card w-full aspect-[3/4] object-cover shadow-[var(--shadow-soft)] mt-8"
             loading="lazy"
           />
@@ -157,14 +169,12 @@ const attractions = [
         {
           featuredVillas.map((villa) => (
             <VillaCard
-              title={villa.data.title}
-              slug={villa.data.slug}
-              type={villa.data.type}
-              thumbnailImage={villa.data.thumbnailImage}
-              bedrooms={villa.data.bedrooms}
-              bathrooms={villa.data.bathrooms}
-              maxGuests={villa.data.maxGuests}
-              sqft={villa.data.sqft}
+              name={villa.data.name}
+              id={villa.id}
+              category={villa.data.category}
+              viewType={villa.data.viewType}
+              image={villa.data.image}
+              specs={villa.data.specs}
               tagline={villa.data.tagline}
             />
           ))
@@ -189,9 +199,10 @@ const attractions = [
         {
           attractions.map((a) => (
             <a href="/attractions/" class="group relative block overflow-hidden rounded-card aspect-[3/4] shadow-[var(--shadow-soft)]">
-              <img
+              <Image
                 src={a.image}
                 alt={a.name}
+                width={400}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
@@ -216,9 +227,10 @@ const attractions = [
 
   <!-- Contact band with phone number -->
   <section class="relative overflow-hidden reveal">
-    <img
-      src="/images/DSC09464-2048x1365.jpg"
+    <Image
+      src={imgContactBg}
       alt=""
+      width={1920}
       class="absolute inset-0 w-full h-full object-cover"
       loading="lazy"
     />

@@ -9,9 +9,7 @@ const villas = defineCollection({
     category: z.enum(['Studio', 'One Bedroom', 'Two Bedroom', 'Three Bedroom Penthouse']),
     viewType: z.string(),
     status: z.enum(['available', 'occupied', 'maintenance']).default('available'),
-    image: image().refine((img) => img.width >= 800, {
-      message: "Villa images must be at least 800px wide for high-res displays.",
-    }),
+    image: image(),
     galleryImages: z.array(image()).default([]),
     specs: z.object({
       bedrooms: z.number(),

@@ -257,6 +257,11 @@
     color: #fff;
   }
 
+  /* Filter to convert white logo to match --color-navy (#0a3d52) */
+  .logo-navy {
+    filter: brightness(0) saturate(100%) invert(16%) sepia(37%) saturate(3941%) hue-rotate(176deg) brightness(93%) contrast(95%);
+  }
+
   /* Image scrim for text-over-photo */
   .scrim {
     background: linear-gradient(
