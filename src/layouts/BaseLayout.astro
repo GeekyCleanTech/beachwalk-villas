@@ -8,65 +8,117 @@ interface Props {
 
 const {
   title,
-  description = 'Beachwalk Villas offers luxury vacation rentals in Carlsbad, CA — steps from the Pacific Ocean.',
-  image = '/images/beachwalk-featured-images.jpg',
+  description = "Beachwalk Villas offers luxury vacation rentals in Carlsbad, CA — steps from the Pacific Ocean.",
+  image = "/images/beachwalk-featured-images.jpg",
 } = Astro.props;
 
-const siteUrl = 'https://beachwalkvillas.net';
+const siteUrl = "https://beachwalkvillas.net";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- Primary Meta -->
-  <title>{title} | Beachwalk Villas</title>
-  <meta name="description" content={description} />
-  <link rel="canonical" href={canonicalUrl} />
+    <!-- Primary Meta -->
+    <title>{title} | Beachwalk Villas</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:title" content={`${title} | Beachwalk Villas`} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={`${siteUrl}${image}`} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={`${title} | Beachwalk Villas`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${image}`} />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={`${title} | Beachwalk Villas`} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={`${siteUrl}${image}`} />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Beachwalk Villas`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${image}`} />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/images/logo.png" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo.png" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <style is:global>
-    @import '../styles/global.css';
-  </style>
-</head>
-<body>
-  <slot name="nav">
-    <!-- Default nav injected from component -->
-  </slot>
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
+  </head>
+  <body>
+    <slot name="nav">
+      <!-- Default nav injected from component -->
+    </slot>
 
-  <main>
-    <slot />
-  </main>
+    <main>
+      <slot />
+    </main>
 
-  <slot name="footer">
-    <!-- Default footer injected from component -->
-  </slot>
-</body>
+    <slot name="footer">
+      <!-- Default footer injected from component -->
+    </slot>
+
+    <script>
+      // Progressive enhancement: add js-enabled class for animation support
+      document.documentElement.classList.add("js-enabled");
+
+      // Respect prefers-reduced-motion
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      if (!prefersReducedMotion) {
+        // Intersection Observer for .reveal elements
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          },
+        );
+
+        // Intersection Observer for villa cards
+        const cardObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                cardObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px",
+          },
+        );
+
+        // Observe all reveal elements
+        document
+          .querySelectorAll(".reveal")
+          .forEach((el) => revealObserver.observe(el));
+        document
+          .querySelectorAll(".villa-card-reveal")
+          .forEach((el) => cardObserver.observe(el));
+      }
+    </script>
+  </body>
 </html>
