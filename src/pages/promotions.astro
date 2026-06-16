@@ -1,7 +1,7 @@
 ---
 // src/pages/promotions.astro
-import SiteLayout from '../layouts/SiteLayout.astro';
-import Hero from '../components/Hero.astro';
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
 <SiteLayout
@@ -16,7 +16,7 @@ import Hero from '../components/Hero.astro';
     ctaLabel={undefined}
   />
 
-  <section class="section-pad bg-white">
+  <section class="section-pad bg-white reveal">
     <div class="container-site">
       <div class="max-w-2xl mb-12">
         <h2 class="section-heading">Current Offers</h2>
@@ -27,56 +27,71 @@ import Hero from '../components/Hero.astro';
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        {[
-          {
-            title: 'Extended Stay Discount',
-            description: 'Stay 7+ nights and save. Ask about our weekly and monthly rates for significant savings on longer visits.',
-            image: '/images/promotions-img-01.jpg',
-            badge: 'Weekly & Monthly',
-          },
-          {
-            title: 'Last-Minute Deals',
-            description: 'Check back often — we post last-minute availability specials for flexible travelers.',
-            image: '/images/promotions-img-02.jpg',
-            badge: 'Limited Availability',
-          },
-          {
-            title: 'Seasonal Specials',
-            description: 'Enjoy the best of Carlsbad in the off-season with reduced rates and fewer crowds.',
-            image: '/images/promotions-img-03.jpg',
-            badge: 'Off-Season Savings',
-          },
-          {
-            title: 'Return Guest Offer',
-            description: 'Stayed with us before? Contact us directly for returning guest appreciation rates.',
-            image: '/images/promotions-img-04.jpg',
-            badge: 'Loyalty Reward',
-          },
-        ].map(promo => (
-          <div class="bg-brand-sand overflow-hidden">
-            <div class="aspect-[16/9] overflow-hidden relative">
-              <img
-                src={promo.image}
-                alt={promo.title}
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <span class="absolute top-3 left-3 bg-brand-teal text-white text-xs font-semibold px-3 py-1 uppercase tracking-wide">
-                {promo.badge}
-              </span>
+        {
+          [
+            {
+              title: "Extended Stay Discount",
+              description:
+                "Stay 7+ nights and save. Ask about our weekly and monthly rates for significant savings on longer visits.",
+              image: "/images/promotions-img-01.jpg",
+              badge: "Weekly & Monthly",
+            },
+            {
+              title: "Last-Minute Deals",
+              description:
+                "Check back often — we post last-minute availability specials for flexible travelers.",
+              image: "/images/promotions-img-02.jpg",
+              badge: "Limited Availability",
+            },
+            {
+              title: "Seasonal Specials",
+              description:
+                "Enjoy the best of Carlsbad in the off-season with reduced rates and fewer crowds.",
+              image: "/images/promotions-img-03.jpg",
+              badge: "Off-Season Savings",
+            },
+            {
+              title: "Return Guest Offer",
+              description:
+                "Stayed with us before? Contact us directly for returning guest appreciation rates.",
+              image: "/images/promotions-img-04.jpg",
+              badge: "Loyalty Reward",
+            },
+          ].map((promo) => (
+            <div class="bg-brand-sand overflow-hidden">
+              <div class="aspect-[16/9] overflow-hidden relative">
+                <img
+                  src={promo.image}
+                  alt={promo.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <span class="absolute top-3 left-3 bg-brand-teal text-white text-xs font-semibold px-3 py-1 uppercase tracking-wide">
+                  {promo.badge}
+                </span>
+              </div>
+              <div class="p-6">
+                <h3 class="font-display text-h3 text-brand-navy mb-2">
+                  {promo.title}
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">{promo.description}</p>
+                <a href="/contact-us/" class="btn-outline text-sm px-5 py-2">
+                  Inquire Now
+                </a>
+              </div>
             </div>
-            <div class="p-6">
-              <h3 class="font-display text-h3 text-brand-navy mb-2">{promo.title}</h3>
-              <p class="text-gray-600 text-sm mb-4">{promo.description}</p>
-              <a href="/contact-us/" class="btn-outline text-sm px-5 py-2">Inquire Now</a>
-            </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
 
       <!-- Promotional banners -->
       <div class="space-y-4">
-        <img src="/images/BYE-BYE-SPRING-2026.png" alt="Spring 2026 promotion" class="w-full" loading="lazy" />
+        <img
+          src="/images/BYE-BYE-SPRING-2026.png"
+          alt="Spring 2026 promotion"
+          class="w-full"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>

@@ -1,8 +1,8 @@
 ---
 // src/pages/contact-us.astro
-import SiteLayout from '../layouts/SiteLayout.astro';
-import Hero from '../components/Hero.astro';
-import ContactForm from '../components/ContactForm.astro';
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Hero from "../components/Hero.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <SiteLayout
@@ -17,19 +17,23 @@ import ContactForm from '../components/ContactForm.astro';
     ctaLabel={undefined}
   />
 
-  <section class="section-pad bg-brand-sand">
+  <section class="section-pad bg-brand-sand reveal">
     <div class="container-site">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-
         <!-- Contact info sidebar -->
         <div class="lg:col-span-1 space-y-6">
           <div class="bg-white p-6 shadow-sm">
-            <h2 class="font-display text-xl text-brand-navy mb-4">Get In Touch</h2>
+            <h2 class="font-display text-xl text-brand-navy mb-4">
+              Get In Touch
+            </h2>
             <dl class="space-y-4 text-sm text-gray-600">
               <div>
                 <dt class="font-semibold text-brand-navy mb-1">Email</dt>
                 <dd>
-                  <a href="mailto:info@beachwalkvillas.net" class="text-brand-teal hover:underline">
+                  <a
+                    href="mailto:info@beachwalkvillas.net"
+                    class="text-brand-teal hover:underline"
+                  >
                     info@beachwalkvillas.net
                   </a>
                 </dd>
@@ -39,23 +43,43 @@ import ContactForm from '../components/ContactForm.astro';
                 <dd>Carlsbad, CA 92008</dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-1">Check-In Time</dt>
+                <dt class="font-semibold text-brand-navy mb-1">
+                  Check-In Time
+                </dt>
                 <dd>4:00 PM</dd>
               </div>
               <div>
-                <dt class="font-semibold text-brand-navy mb-1">Check-Out Time</dt>
+                <dt class="font-semibold text-brand-navy mb-1">
+                  Check-Out Time
+                </dt>
                 <dd>11:00 AM</dd>
               </div>
             </dl>
           </div>
 
           <div class="bg-white p-6 shadow-sm">
-            <h3 class="font-display text-lg text-brand-navy mb-3">Helpful Links</h3>
+            <h3 class="font-display text-lg text-brand-navy mb-3">
+              Helpful Links
+            </h3>
             <ul class="space-y-2 text-sm">
-              <li><a href="/villas/" class="text-brand-teal hover:underline">Browse All Villas</a></li>
-              <li><a href="/amenities/" class="text-brand-teal hover:underline">Property Amenities</a></li>
-              <li><a href="/reservation-policies/" class="text-brand-teal hover:underline">Reservation Policies</a></li>
-              <li><a href="/promotions/" class="text-brand-teal hover:underline">Current Promotions</a></li>
+              <li>
+                <a href="/villas/" class="text-brand-teal hover:underline"
+                  >Browse All Villas</a>
+              </li>
+              <li>
+                <a href="/amenities/" class="text-brand-teal hover:underline"
+                  >Property Amenities</a>
+              </li>
+              <li>
+                <a
+                  href="/reservation-policies/"
+                  class="text-brand-teal hover:underline"
+                  >Reservation Policies</a>
+              </li>
+              <li>
+                <a href="/promotions/" class="text-brand-teal hover:underline"
+                  >Current Promotions</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -64,7 +88,6 @@ import ContactForm from '../components/ContactForm.astro';
         <div class="lg:col-span-2">
           <ContactForm title="Send Us a Message" showVillaSelect={true} />
         </div>
-
       </div>
     </div>
   </section>

@@ -1,21 +1,27 @@
 ---
 // src/pages/villas/index.astro
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import Hero from '../../components/Hero.astro';
-import VillaCard from '../../components/VillaCard.astro';
-import { getCollection } from 'astro:content';
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import Hero from "../../components/Hero.astro";
+import VillaCard from "../../components/VillaCard.astro";
+import { getCollection } from "astro:content";
 
-const allVillas = await getCollection('villas');
+const allVillas = await getCollection("villas");
 const villas = allVillas.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 
 // Group by type for filtering
-const types = ['ocean-front', 'ocean-view', 'avenue-view', 'garden-view', 'poolside-studio'];
+const types = [
+  "ocean-front",
+  "ocean-view",
+  "avenue-view",
+  "garden-view",
+  "poolside-studio",
+];
 const typeLabels: Record<string, string> = {
-  'ocean-front':     'Ocean Front',
-  'ocean-view':      'Ocean View',
-  'avenue-view':     'Avenue View',
-  'garden-view':     'Garden View',
-  'poolside-studio': 'Poolside Studio',
+  "ocean-front": "Ocean Front",
+  "ocean-view": "Ocean View",
+  "avenue-view": "Avenue View",
+  "garden-view": "Garden View",
+  "poolside-studio": "Poolside Studio",
 };
 ---
 
@@ -40,66 +46,83 @@ const typeLabels: Record<string, string> = {
       >
         All Villas ({villas.length})
       </button>
-      {types.map(type => {
-        const count = villas.filter(v => v.data.type === type).length;
-        return count > 0 ? (
-          <button
-            class="villa-filter-btn px-4 py-1.5 text-sm font-semibold border border-gray-200 text-gray-600 hover:border-brand-teal hover:text-brand-teal transition-colors"
-            data-filter={type}
-          >
-            {typeLabels[type]} ({count})
-          </button>
-        ) : null;
-      })}
+      {
+        types.map((type) => {
+          const count = villas.filter((v) => v.data.type === type).length;
+          return count > 0 ? (
+            <button
+              class="villa-filter-btn px-4 py-1.5 text-sm font-semibold border border-gray-200 text-gray-600 hover:border-brand-teal hover:text-brand-teal transition-colors"
+              data-filter={type}
+            >
+              {typeLabels[type]} ({count})
+            </button>
+          ) : null;
+        })
+      }
     </div>
   </div>
 
   <!-- Villas grid -->
-  <section class="section-pad bg-brand-sand">
+  <section class="section-pad bg-brand-sand reveal">
     <div class="container-site">
-      <div id="villas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {villas.map(villa => (
-          <div class="villa-item" data-type={villa.data.type}>
-            <VillaCard
-              title={villa.data.title}
-              slug={villa.data.slug}
-              type={villa.data.type}
-              thumbnailImage={villa.data.thumbnailImage}
-              bedrooms={villa.data.bedrooms}
-              bathrooms={villa.data.bathrooms}
-              unitAmenities={villa.data.unitAmenities}
-              nightlyRate={villa.data.nightlyRate}
-            />
-          </div>
-        ))}
+      <div
+        id="villas-grid"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {
+          villas.map((villa) => (
+            <div class="villa-item" data-type={villa.data.type}>
+              <VillaCard
+                title={villa.data.title}
+                slug={villa.data.slug}
+                type={villa.data.type}
+                thumbnailImage={villa.data.thumbnailImage}
+                bedrooms={villa.data.bedrooms}
+                bathrooms={villa.data.bathrooms}
+                unitAmenities={villa.data.unitAmenities}
+                nightlyRate={villa.data.nightlyRate}
+              />
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 </SiteLayout>
 
 <script>
-  const filterBtns = document.querySelectorAll('.villa-filter-btn');
-  const villaItems = document.querySelectorAll('.villa-item');
+  const filterBtns = document.querySelectorAll(".villa-filter-btn");
+  const villaItems = document.querySelectorAll(".villa-item");
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
 
       // Update active button
-      filterBtns.forEach(b => {
-        b.classList.remove('active', 'bg-brand-teal', 'text-white', 'border-brand-teal');
-        b.classList.add('border-gray-200', 'text-gray-600');
+      filterBtns.forEach((b) => {
+        b.classList.remove(
+          "active",
+          "bg-brand-teal",
+          "text-white",
+          "border-brand-teal",
+        );
+        b.classList.add("border-gray-200", "text-gray-600");
       });
-      btn.classList.add('active', 'bg-brand-teal', 'text-white', 'border-brand-teal');
-      btn.classList.remove('border-gray-200', 'text-gray-600');
+      btn.classList.add(
+        "active",
+        "bg-brand-teal",
+        "text-white",
+        "border-brand-teal",
+      );
+      btn.classList.remove("border-gray-200", "text-gray-600");
 
       // Show/hide villas
-      villaItems.forEach(item => {
-        const type = item.getAttribute('data-type');
-        if (filter === 'all' || type === filter) {
-          (item as HTMLElement).style.display = '';
+      villaItems.forEach((item) => {
+        const type = item.getAttribute("data-type");
+        if (filter === "all" || type === filter) {
+          (item as HTMLElement).style.display = "";
         } else {
-          (item as HTMLElement).style.display = 'none';
+          (item as HTMLElement).style.display = "none";
         }
       });
     });

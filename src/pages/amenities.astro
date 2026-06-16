@@ -1,32 +1,64 @@
 ---
 // src/pages/amenities.astro
-import SiteLayout from '../layouts/SiteLayout.astro';
-import Hero from '../components/Hero.astro';
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Hero from "../components/Hero.astro";
 
 const amenityGroups = [
   {
-    category: 'Beach & Outdoors',
-    items: ['Steps to the Pacific Ocean', 'Community Pool', 'Sun Deck', 'BBQ Area', 'Outdoor Shower', 'Beach Access'],
+    category: "Beach & Outdoors",
+    items: [
+      "Steps to the Pacific Ocean",
+      "Community Pool",
+      "Sun Deck",
+      "BBQ Area",
+      "Outdoor Shower",
+      "Beach Access",
+    ],
   },
   {
-    category: 'Villa Features',
-    items: ['Full Kitchen', 'Living Room', 'Dining Area', 'Private Patio or Balcony', 'In-Unit Washer/Dryer', 'Air Conditioning'],
+    category: "Villa Features",
+    items: [
+      "Full Kitchen",
+      "Living Room",
+      "Dining Area",
+      "Private Patio or Balcony",
+      "In-Unit Washer/Dryer",
+      "Air Conditioning",
+    ],
   },
   {
-    category: 'Kitchen & Dining',
-    items: ['Refrigerator', 'Stove & Oven', 'Microwave', 'Dishwasher', 'Coffee Maker', 'Full Cookware & Utensils'],
+    category: "Kitchen & Dining",
+    items: [
+      "Refrigerator",
+      "Stove & Oven",
+      "Microwave",
+      "Dishwasher",
+      "Coffee Maker",
+      "Full Cookware & Utensils",
+    ],
   },
   {
-    category: 'Entertainment',
-    items: ['Smart TV', 'High-Speed WiFi', 'Streaming Services', 'Bluetooth Speaker'],
+    category: "Entertainment",
+    items: [
+      "Smart TV",
+      "High-Speed WiFi",
+      "Streaming Services",
+      "Bluetooth Speaker",
+    ],
   },
   {
-    category: 'Comfort & Linens',
-    items: ['Premium Bedding', 'Fresh Towels', 'Beach Towels', 'Iron & Ironing Board', 'Hair Dryer'],
+    category: "Comfort & Linens",
+    items: [
+      "Premium Bedding",
+      "Fresh Towels",
+      "Beach Towels",
+      "Iron & Ironing Board",
+      "Hair Dryer",
+    ],
   },
   {
-    category: 'Parking & Access',
-    items: ['Free Parking', 'Keyless Entry', '24/7 Check-In', 'Self Check-Out'],
+    category: "Parking & Access",
+    items: ["Free Parking", "Keyless Entry", "24/7 Check-In", "Self Check-Out"],
   },
 ];
 ---
@@ -43,47 +75,67 @@ const amenityGroups = [
     ctaLabel={undefined}
   />
 
-  <section class="section-pad bg-white">
+  <section class="section-pad bg-white reveal">
     <div class="container-site">
       <!-- Intro -->
       <div class="max-w-2xl mb-12">
         <h2 class="section-heading">Resort-Style Amenities</h2>
         <p class="section-subheading">
-          Beachwalk Villas is designed for comfort, convenience, and coastal living.
-          Every villa comes fully equipped so you can relax from the moment you arrive.
+          Beachwalk Villas is designed for comfort, convenience, and coastal
+          living. Every villa comes fully equipped so you can relax from the
+          moment you arrive.
         </p>
       </div>
 
       <!-- Feature photos -->
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16">
-        {[
-          { src: '/images/amenities-banner.jpg', alt: 'Beachwalk amenities' },
-          { src: '/images/amenities-box-img1.jpg', alt: 'Pool area' },
-          { src: '/images/amenities-box-img2-1.jpg', alt: 'Villa interior' },
-        ].map(img => (
-          <div class="aspect-[4/3] overflow-hidden">
-            <img src={img.src} alt={img.alt} class="w-full h-full object-cover" loading="lazy" />
-          </div>
-        ))}
+        {
+          [
+            { src: "/images/amenities-banner.jpg", alt: "Beachwalk amenities" },
+            { src: "/images/amenities-box-img1.jpg", alt: "Pool area" },
+            { src: "/images/amenities-box-img2-1.jpg", alt: "Villa interior" },
+          ].map((img) => (
+            <div class="aspect-[4/3] overflow-hidden">
+              <img
+                src={img.src}
+                alt={img.alt}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          ))
+        }
       </div>
 
       <!-- Amenity groups grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {amenityGroups.map(group => (
-          <div class="bg-brand-sand p-6">
-            <h3 class="font-display text-xl text-brand-navy mb-4">{group.category}</h3>
-            <ul class="space-y-2">
-              {group.items.map(item => (
-                <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <svg class="w-4 h-4 text-brand-teal mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {
+          amenityGroups.map((group) => (
+            <div class="bg-brand-sand p-6">
+              <h3 class="font-display text-xl text-brand-navy mb-4">
+                {group.category}
+              </h3>
+              <ul class="space-y-2">
+                {group.items.map((item) => (
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <svg
+                      class="w-4 h-4 text-brand-teal mt-0.5 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </div>
 
       <div class="mt-12 text-center">
