@@ -135,16 +135,30 @@ const breadcrumbLd = {
               <div class="mt-10 pt-8 border-t border-brand-border">
                 <h2 class="font-serif text-h3 mb-5">Villa Features</h2>
                 <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-                  {unitAmenities.map((a) => (
-                    <li class="flex items-center gap-3 text-navy">
-                      <span class="flex items-center justify-center w-7 h-7 rounded-full bg-seafoam/10 flex-shrink-0">
-                        <svg class="w-4 h-4 text-seafoam" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                        </svg>
-                      </span>
-                      <span class="text-sm">{a}</span>
-                    </li>
-                  ))}
+                  {unitAmenities.map((a) => {
+                    const match = a.match(/^\*\*(.*?)\*\*(.*)/);
+                    let bold = match ? match[1].trim() : '';
+                    let rest = match ? match[2].trim() : a;
+                    if (bold.endsWith(':')) {
+                      bold = bold.slice(0, -1).trim();
+                    }
+                    if (rest.startsWith(':')) {
+                      rest = rest.slice(1).trim();
+                    }
+                    return (
+                      <li class="flex items-start gap-3 text-navy">
+                        <span class="flex items-center justify-center w-7 h-7 rounded-full bg-seafoam/10 flex-shrink-0 mt-0.5">
+                          <svg class="w-4 h-4 text-seafoam" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                        </span>
+                        <span class="text-sm">
+                          {bold ? <strong class="font-semibold">{bold}:</strong> : ''}
+                          {rest}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             )
