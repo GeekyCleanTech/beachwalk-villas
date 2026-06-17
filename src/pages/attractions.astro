@@ -68,28 +68,29 @@ const attractions = [
   description="Discover the best local attractions near Beachwalk Villas in Carlsbad, CA — beaches, LEGOLAND, Carlsbad Village, and more."
 >
   <Hero
+    eyebrow="Near Downtown Carlsbad"
     headline="Explore Carlsbad & Beyond"
     subheadline="World-class attractions, beaches, and adventures — all within minutes of your villa."
     bgImage="/images/carlsbad-sign-pic.jpg"
     size="large"
-    ctaLabel={undefined}
   />
 
-  <section class="section-pad bg-white reveal">
+  <section class="section-pad bg-sand reveal">
     <div class="container-site">
       <div class="max-w-2xl mb-12">
-        <h2 class="section-heading">Things to Do Near Beachwalk</h2>
-        <p class="section-subheading">
+        <span class="eyebrow">Out & about</span>
+        <h2 class="section-heading">Things to do near Beachwalk</h2>
+        <p class="section-subheading mt-3">
           Carlsbad offers something for everyone — from sun-soaked beaches to
           theme parks, wine tasting to world-class golf.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {
           attractions.map((attraction) => (
-            <div class="flex gap-5">
-              <div class="w-28 h-28 flex-shrink-0 overflow-hidden">
+            <div class="card p-4 flex gap-5 items-center">
+              <div class="w-28 h-28 flex-shrink-0 overflow-hidden rounded-xl">
                 <img
                   src={attraction.image}
                   alt={attraction.name}
@@ -99,14 +100,14 @@ const attractions = [
               </div>
               <div>
                 <div class="flex items-start justify-between gap-2 mb-1">
-                  <h3 class="font-display text-lg text-brand-navy">
+                  <h3 class="font-serif text-lg text-navy">
                     {attraction.name}
                   </h3>
-                  <span class="text-xs bg-brand-teal/10 text-brand-teal px-2 py-0.5 rounded-full whitespace-nowrap font-semibold">
+                  <span class="text-xs bg-terracotta/12 text-terracotta px-2.5 py-0.5 rounded-full whitespace-nowrap font-semibold">
                     {attraction.distance}
                   </span>
                 </div>
-                <p class="text-sm text-gray-600 leading-relaxed">
+                <p class="text-sm text-brand-muted leading-relaxed">
                   {attraction.description}
                 </p>
               </div>
@@ -117,7 +118,7 @@ const attractions = [
 
       <!-- Photo slider strip -->
       <div class="mt-16">
-        <h2 class="section-heading mb-6">Carlsbad Gallery</h2>
+        <h2 class="section-heading mb-6">Carlsbad gallery</h2>
         <div class="grid grid-cols-3 md:grid-cols-6 gap-2">
           {
             [
@@ -134,7 +135,7 @@ const attractions = [
               "/images/diego-slider-17.jpg",
               "/images/diego-slider-18.jpg",
             ].map((src, i) => (
-              <div class="aspect-square overflow-hidden">
+              <div class="aspect-square overflow-hidden rounded-xl">
                 <img
                   src={src}
                   alt={`Carlsbad photo ${i + 1}`}

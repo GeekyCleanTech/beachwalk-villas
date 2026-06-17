@@ -1,67 +1,107 @@
 ---
 // src/components/Footer.astro
+import { site, navLinks, footerLinks, sisterProperties } from "../data/site";
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-brand-navy text-gray-300">
-  <div class="container-site py-12 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-      <!-- Brand column -->
-      <div>
-        <a href="/">
-          <img
-            src="/images/footer-logo.png"
-            alt="Beachwalk Villas"
-            class="h-12 w-auto mb-4"
-            loading="lazy"
-          />
-        </a>
-        <p class="text-sm leading-relaxed text-gray-400 max-w-xs">
-          Luxury vacation villas in Carlsbad, California — steps from the Pacific Ocean.
+<footer class="bg-navy text-white/80">
+  <div class="container-site py-16 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+      <!-- Brand -->
+      <div class="md:col-span-4">
+        <img
+          src="/images/footer-logo.png"
+          alt="Beachwalk Villas"
+          class="h-12 w-auto mb-5"
+          loading="lazy"
+        />
+        <p class="text-sm leading-relaxed text-white/70 max-w-xs mb-5">
+          Oceanfront vacation villas in Carlsbad, California — steps from the
+          shore and near Downtown Carlsbad. Feel right at home.
         </p>
+        <a
+          href={site.phoneHref}
+          class="font-serif text-2xl text-white hover:text-terracotta transition-colors"
+        >
+          {site.phone}
+        </a>
       </div>
 
-      <!-- Quick links -->
-      <div>
-        <h3 class="text-white font-display text-lg mb-4">Quick Links</h3>
-        <ul class="space-y-2 text-sm">
-          {[
-            ['Villas',            '/villas/'],
-            ['Amenities',        '/amenities/'],
-            ['Attractions',      '/attractions/'],
-            ['Promotions',       '/promotions/'],
-            ['Booking Policies', '/reservation-policies/'],
-            ['Health & Safety',  '/health-and-safety/'],
-            ['Contact Us',       '/contact-us/'],
-          ].map(([label, href]) => (
-            <li>
-              <a href={href} class="hover:text-white transition-colors duration-150">{label}</a>
-            </li>
-          ))}
+      <!-- Explore -->
+      <div class="md:col-span-3">
+        <h3 class="font-serif text-lg text-white mb-4">Explore</h3>
+        <ul class="space-y-2.5 text-sm">
+          {
+            [...navLinks.slice(1), ...footerLinks].map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-white/70 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
-      <!-- Contact info -->
-      <div>
-        <h3 class="text-white font-display text-lg mb-4">Contact</h3>
-        <address class="not-italic text-sm space-y-2 text-gray-400">
-          <p>Beachwalk Villas</p>
-          <p>Carlsbad, CA</p>
+      <!-- Other properties -->
+      <div class="md:col-span-3">
+        <h3 class="font-serif text-lg text-white mb-4">Other Properties</h3>
+        <ul class="space-y-2.5 text-sm">
+          {
+            sisterProperties.map((p) => (
+              <li>
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-white/70 hover:text-white transition-colors"
+                >
+                  {p.name}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a
+              href="/#other-properties"
+              class="text-terracotta hover:text-white transition-colors font-medium"
+            >
+              View all →
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="md:col-span-2">
+        <h3 class="font-serif text-lg text-white mb-4">Contact</h3>
+        <address class="not-italic text-sm space-y-2.5 text-white/70">
+          <p>{site.location}</p>
           <p>
-            <a href="mailto:info@beachwalkvillas.net" class="hover:text-white transition-colors">
-              info@beachwalkvillas.net
+            <a href={site.emailHref} class="hover:text-white transition-colors">
+              {site.email}
+            </a>
+          </p>
+          <p>
+            <a href={site.phoneHref} class="hover:text-white transition-colors">
+              {site.phone}
             </a>
           </p>
         </address>
       </div>
-
     </div>
 
     <!-- Bottom bar -->
-    <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-      <p>&copy; {year} Beachwalk Villas. All rights reserved.</p>
-      <a href="/privacy-policy/" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
+    <div
+      class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50"
+    >
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <a href="/reservation-policies/" class="hover:text-white/80 transition-colors">
+        Booking Policies
+      </a>
     </div>
   </div>
 </footer>

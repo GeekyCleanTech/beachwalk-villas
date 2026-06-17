@@ -6,11 +6,12 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  jsonLd?: object | object[];
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, jsonLd } = Astro.props;
 ---
 
-<SiteLayout title={title} description={description} image={image}>
+<SiteLayout title={title} description={description} image={image} jsonLd={jsonLd}>
   <slot />
 </SiteLayout>

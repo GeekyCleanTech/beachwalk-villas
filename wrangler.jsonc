@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers static-assets config for the Astro build output.
+  // `npm run build` emits to ./dist, which is served directly as static assets.
+  "name": "beachwalk-villas",
+  "compatibility_date": "2026-06-16",
+  "assets": {
+    "directory": "./dist"
+  }
+}
