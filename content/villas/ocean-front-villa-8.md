@@ -4,27 +4,23 @@ unitNumber: 8
 category: Two Bedroom
 viewType: Ocean Front
 status: available
-image: >-
-  ../../src/assets/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg
+image: ../../src/assets/images/sdbg/villa-8/01.jpg
 galleryImages:
-  - >-
-    ../../src/assets/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg
-  - ../../src/assets/images/3-1568x1045-1.jpeg
-  - ../../src/assets/images/5-1568x1045-1.jpeg
-  - ../../src/assets/images/6-1568x1045-1.jpeg
-  - ../../src/assets/images/7-1568x1045-1.jpeg
-  - ../../src/assets/images/8.5-1568x1046-1.jpg
-  - ../../src/assets/images/11-1568x1046-1.jpeg
-  - ../../src/assets/images/12-1568x1046-1.jpeg
+  - ../../src/assets/images/sdbg/villa-8/01.jpg
+  - ../../src/assets/images/sdbg/villa-8/02.jpg
+  - ../../src/assets/images/sdbg/villa-8/03.jpg
+  - ../../src/assets/images/sdbg/villa-8/04.jpg
+  - ../../src/assets/images/sdbg/villa-8/05.jpg
+  - ../../src/assets/images/sdbg/villa-8/06.jpg
+  - ../../src/assets/images/sdbg/villa-8/07.jpg
+  - ../../src/assets/images/sdbg/villa-8/08.jpg
+  - ../../src/assets/images/sdbg/villa-8/09.jpg
+  - ../../src/assets/images/sdbg/villa-8/10.jpg
 specs:
   bedrooms: 2
   bathrooms: 2
   maxGuests: 4
   sqft: 1160
-rates:
-  winter: 435
-  springHoliday: 435
-  summer: 435
 guestyUrl: 'https://booking.guesty.com/'
 layout: Split-level
 tagline: >-

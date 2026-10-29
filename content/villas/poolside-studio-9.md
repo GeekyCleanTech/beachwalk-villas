@@ -4,25 +4,20 @@ unitNumber: 9
 category: Studio
 viewType: Poolside
 status: available
-image: ../../src/assets/images/4-min-1-1568x1045-1.jpg
+image: ../../src/assets/images/sdbg/villa-9/01.jpg
 galleryImages:
-  - ../../src/assets/images/4-min-1-1568x1045-1.jpg
-  - ../../src/assets/images/6-min-1-1568x1045-1.jpg
-  - ../../src/assets/images/7.5-min-1568x1045-1.jpg
-  - ../../src/assets/images/7-min-1-1568x1045-1.jpg
-  - ../../src/assets/images/8-min-1-1568x1045-1.jpg
-  - ../../src/assets/images/9-min-1568x1045-1.jpeg
-  - ../../src/assets/images/10-min-1-1568x1045-1.jpg
-  - ../../src/assets/images/11-min-1568x1045-1.jpg
+  - ../../src/assets/images/sdbg/villa-9/01.jpg
+  - ../../src/assets/images/sdbg/villa-9/02.jpg
+  - ../../src/assets/images/sdbg/villa-9/03.jpg
+  - ../../src/assets/images/sdbg/villa-9/04.jpg
+  - ../../src/assets/images/sdbg/villa-9/05.jpg
+  - ../../src/assets/images/sdbg/villa-9/06.jpg
+  - ../../src/assets/images/sdbg/villa-9/07.jpg
 specs:
   bedrooms: 0
   bathrooms: 1
   maxGuests: 3
   sqft: 327
-rates:
-  winter: 225
-  springHoliday: 225
-  summer: 225
 guestyUrl: 'https://booking.guesty.com/'
 layout: Poolside studio
 tagline: >-

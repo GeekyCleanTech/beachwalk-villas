@@ -4,26 +4,19 @@ unitNumber: 6
 category: Two Bedroom
 viewType: Ocean Front
 status: available
-image: ../../src/assets/images/0.5-1568x1046-1.jpeg
+image: ../../src/assets/images/sdbg/villa-6/01.jpg
 galleryImages:
-  - ../../src/assets/images/0.5-1568x1046-1.jpeg
-  - ../../src/assets/images/0-1568x1046-1.jpeg
-  - ../../src/assets/images/1.5-1568x1045-1.jpg
-  - ../../src/assets/images/2-1-1-1568x1045-1.jpeg
-  - ../../src/assets/images/3-.PLS-LIGHTEN-THIS-PICTURE_-1568x1045-1.jpg
-  - ../../src/assets/images/4-1-1568x1045-1.jpeg
-  - ../../src/assets/images/5-1-1568x1045-1.jpeg
-  - ../../src/assets/images/6-1-1568x1045-1.jpeg
-  - ../../src/assets/images/8-1568x1045-1.jpeg
+  - ../../src/assets/images/sdbg/villa-6/01.jpg
+  - ../../src/assets/images/sdbg/villa-6/02.jpg
+  - ../../src/assets/images/sdbg/villa-6/03.jpg
+  - ../../src/assets/images/sdbg/villa-6/04.jpg
+  - ../../src/assets/images/sdbg/villa-6/05.jpg
+  - ../../src/assets/images/sdbg/villa-6/06.jpg
 specs:
   bedrooms: 2
   bathrooms: 2
   maxGuests: 5
   sqft: 1160
-rates:
-  winter: 415
-  springHoliday: 415
-  summer: 415
 guestyUrl: 'https://booking.guesty.com/'
 layout: Two-level
 tagline: >-

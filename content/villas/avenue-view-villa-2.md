@@ -4,25 +4,21 @@ unitNumber: 2
 category: Two Bedroom
 viewType: Avenue View
 status: available
-image: ../../src/assets/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg
+image: ../../src/assets/images/sdbg/villa-2/01.jpg
 galleryImages:
-  - ../../src/assets/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg
-  - ../../src/assets/images/1-8-1568x1045-1.jpg
-  - ../../src/assets/images/3-2-1568x1045-1.jpg
-  - ../../src/assets/images/4-2-1568x1045-1.jpg
-  - ../../src/assets/images/5-2-1568x1045-1.jpg
-  - ../../src/assets/images/6-1-1-1568x1045-1.jpg
-  - ../../src/assets/images/7-1568x1045-1.jpg
-  - ../../src/assets/images/8-1568x1045-1.jpg
+  - ../../src/assets/images/sdbg/villa-2/01.jpg
+  - ../../src/assets/images/sdbg/villa-2/02.jpg
+  - ../../src/assets/images/sdbg/villa-2/03.jpg
+  - ../../src/assets/images/sdbg/villa-2/04.jpg
+  - ../../src/assets/images/sdbg/villa-2/05.jpg
+  - ../../src/assets/images/sdbg/villa-2/06.jpg
+  - ../../src/assets/images/sdbg/villa-2/07.jpg
+  - ../../src/assets/images/sdbg/villa-2/08.jpg
 specs:
   bedrooms: 2
   bathrooms: 2
   maxGuests: 8
   sqft: 1250
-rates:
-  winter: 395
-  springHoliday: 395
-  summer: 395
 guestyUrl: 'https://booking.guesty.com/'
 layout: 2nd floor
 tagline: >-

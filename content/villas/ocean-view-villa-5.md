@@ -4,22 +4,21 @@ unitNumber: 5
 category: Three Bedroom Penthouse
 viewType: Ocean View
 status: available
-image: ../../src/assets/images/1-min-1-1568x1045-1.jpg
+image: ../../src/assets/images/sdbg/villa-5/01.jpg
 galleryImages:
-  - ../../src/assets/images/1-min-1-1568x1045-1.jpg
-  - ../../src/assets/images/2_-min-1568x1045-1.jpg
-  - ../../src/assets/images/3.5-min-1568x1046-1.jpg
-  - ../../src/assets/images/3-min-2-1568x1045-1.jpg
-  - ../../src/assets/images/4-min-2-1568x1045-1.jpg
+  - ../../src/assets/images/sdbg/villa-5/01.jpg
+  - ../../src/assets/images/sdbg/villa-5/02.jpg
+  - ../../src/assets/images/sdbg/villa-5/03.jpg
+  - ../../src/assets/images/sdbg/villa-5/04.jpg
+  - ../../src/assets/images/sdbg/villa-5/05.jpg
+  - ../../src/assets/images/sdbg/villa-5/06.jpg
+  - ../../src/assets/images/sdbg/villa-5/07.jpg
+  - ../../src/assets/images/sdbg/villa-5/08.jpg
 specs:
   bedrooms: 3
   bathrooms: 2
   maxGuests: 6
   sqft: 1800
-rates:
-  winter: 615
-  springHoliday: 615
-  summer: 615
 guestyUrl: 'https://booking.guesty.com/'
 layout: Penthouse
 tagline: >-

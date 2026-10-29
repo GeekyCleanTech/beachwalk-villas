@@ -17,11 +17,6 @@ const villas = defineCollection({
       maxGuests: z.number(),
       sqft: z.number(),
     }),
-    rates: z.object({
-      winter: z.number(),
-      springHoliday: z.number(),
-      summer: z.number(),
-    }),
     guestyUrl: z.string().url(),
     layout: z.string().optional(),
     tagline: z.string().optional(),

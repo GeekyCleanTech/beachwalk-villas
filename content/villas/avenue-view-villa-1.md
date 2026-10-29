@@ -4,26 +4,14 @@ unitNumber: 1
 category: Two Bedroom
 viewType: Avenue View
 status: available
-image: >-
-  ../../src/assets/images/unit-1-temp-pic-to-use-as-Villa-front-pages-2-1568x1046-1.jpeg
+image: ../../src/assets/images/sdbg/villa-1/01.jpg
 galleryImages:
-  - >-
-    ../../src/assets/images/unit-1-temp-pic-to-use-as-Villa-front-pages-2-1568x1046-1.jpeg
-  - ../../src/assets/images/1-1-1568x1045-1.jpeg
-  - ../../src/assets/images/2-1568x1046-1.jpeg
-  - ../../src/assets/images/3-1-2-1568x1045-1.jpeg
-  - ../../src/assets/images/4.5-1568x1046-1.jpg
-  - ../../src/assets/images/7-1568x1046-1.jpeg
-  - ../../src/assets/images/8-1568x1045-2.jpeg
+  - ../../src/assets/images/sdbg/villa-1/01.jpg
 specs:
   bedrooms: 2
   bathrooms: 2
   maxGuests: 4
   sqft: 1040
-rates:
-  winter: 375
-  springHoliday: 375
-  summer: 375
 guestyUrl: 'https://booking.guesty.com/'
 layout: Split-level
 tagline: >-

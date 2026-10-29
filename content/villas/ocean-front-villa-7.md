@@ -4,24 +4,19 @@ unitNumber: 7
 category: One Bedroom
 viewType: Ocean Front
 status: available
-image: ../../src/assets/images/2_.jpg
+image: ../../src/assets/images/sdbg/villa-7/01.jpg
 galleryImages:
-  - ../../src/assets/images/1-min-1568x1045-1.jpeg
-  - ../../src/assets/images/2-min-1-1568x1045-1.jpg
-  - ../../src/assets/images/3-min-1568x1045-1.jpg
-  - ../../src/assets/images/4-min-1568x1045-1.jpg
-  - ../../src/assets/images/5.5-min-1568x1045-1.jpg
-  - ../../src/assets/images/6-min-1568x1045-1.jpg
-  - ../../src/assets/images/7-min-1568x1045-1.jpg
+  - ../../src/assets/images/sdbg/villa-7/01.jpg
+  - ../../src/assets/images/sdbg/villa-7/02.jpg
+  - ../../src/assets/images/sdbg/villa-7/03.jpg
+  - ../../src/assets/images/sdbg/villa-7/04.jpg
+  - ../../src/assets/images/sdbg/villa-7/05.jpg
+  - ../../src/assets/images/sdbg/villa-7/06.jpg
 specs:
   bedrooms: 1
   bathrooms: 1
   maxGuests: 2
   sqft: 616
-rates:
-  winter: 335
-  springHoliday: 335
-  summer: 335
 guestyUrl: 'https://booking.guesty.com/'
 layout: 2nd floor
 tagline: >-

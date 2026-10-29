@@ -4,22 +4,18 @@ unitNumber: 3
 category: One Bedroom
 viewType: Garden View
 status: available
-image: ../../src/assets/images/3-1st-pic-1568x1045-1.jpg
+image: ../../src/assets/images/sdbg/villa-3/01.jpg
 galleryImages:
-  - ../../src/assets/images/3-1st-pic-1568x1045-1.jpg
-  - ../../src/assets/images/1_-2-1568x1045-1.jpg
-  - ../../src/assets/images/3-1568x1045-1.jpg
-  - ../../src/assets/images/4-1-1-1568x1045-1.jpg
-  - ../../src/assets/images/Unit-3-picture-to-add-1568x1045-1.jpg
+  - ../../src/assets/images/sdbg/villa-3/01.jpg
+  - ../../src/assets/images/sdbg/villa-3/02.jpg
+  - ../../src/assets/images/sdbg/villa-3/03.jpg
+  - ../../src/assets/images/sdbg/villa-3/04.jpg
+  - ../../src/assets/images/sdbg/villa-3/05.jpg
 specs:
   bedrooms: 1
   bathrooms: 1
   maxGuests: 2
   sqft: 465
-rates:
-  winter: 295
-  springHoliday: 295
-  summer: 295
 guestyUrl: 'https://booking.guesty.com/'
 layout: Garden view
 tagline: >-

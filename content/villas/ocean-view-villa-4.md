@@ -4,24 +4,22 @@ unitNumber: 4
 category: Two Bedroom
 viewType: Ocean View
 status: available
-image: ../../src/assets/images/1-1-1-1568x1045-1.jpg
+image: ../../src/assets/images/sdbg/villa-4/01.jpg
 galleryImages:
-  - ../../src/assets/images/1-1-1-1568x1045-1.jpg
-  - ../../src/assets/images/2.5-1-1-1568x1045-1.jpg
-  - ../../src/assets/images/2-1568x1045-1.jpg
-  - ../../src/assets/images/3-1-1-1568x1045-1.jpg
-  - ../../src/assets/images/4-1-2-1568x1045-1.jpg
-  - ../../src/assets/images/5-1-1-1568x1045-1.jpg
-  - ../../src/assets/images/6-1568x1045-1.jpg
+  - ../../src/assets/images/sdbg/villa-4/01.jpg
+  - ../../src/assets/images/sdbg/villa-4/02.jpg
+  - ../../src/assets/images/sdbg/villa-4/03.jpg
+  - ../../src/assets/images/sdbg/villa-4/04.jpg
+  - ../../src/assets/images/sdbg/villa-4/05.jpg
+  - ../../src/assets/images/sdbg/villa-4/06.jpg
+  - ../../src/assets/images/sdbg/villa-4/07.jpg
+  - ../../src/assets/images/sdbg/villa-4/08.jpg
+  - ../../src/assets/images/sdbg/villa-4/09.jpg
 specs:
   bedrooms: 2
   bathrooms: 2
   maxGuests: 4
   sqft: 1138
-rates:
-  winter: 435
-  springHoliday: 435
-  summer: 435
 guestyUrl: 'https://booking.guesty.com/'
 layout: 3rd floor
 tagline: >-
