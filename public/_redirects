@@ -24,7 +24,11 @@
 /wp-admin/*                     /                               301
 /wp-login.php                   /                               301
 
-# Category archives
-/category/*                     /villas/                        301
-/one-bedroom-villas/            /villas/                        301
-/studios/                       /villas/                        301
+# Category archives → pre-filtered villas grid (the filter honors ?category=)
+/category/studios/                       /villas/?category=studio                    301
+/category/one-bedroom-villas/            /villas/?category=one-bedroom               301
+/category/two-bedroom-villas/            /villas/?category=two-bedroom               301
+/category/three-bedroom-penthouse-villa/ /villas/?category=three-bedroom-penthouse   301
+/category/*                              /villas/                                    301
+/one-bedroom-villas/                     /villas/?category=one-bedroom               301
+/studios/                                /villas/?category=studio                    301

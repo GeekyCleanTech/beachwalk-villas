@@ -1,19 +1,23 @@
 ---
 // src/layouts/BaseLayout.astro
+import { site } from "../data/site";
+import SEO from "../components/SEO.astro";
+
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  jsonLd?: object | object[];
 }
 
 const {
   title,
-  description = "Beachwalk Villas offers luxury vacation rentals in Carlsbad, CA — steps from the Pacific Ocean.",
+  description = "Beachwalk Villas — oceanfront vacation rentals in Carlsbad, CA, steps from the shore and near Downtown Carlsbad.",
   image = "/images/beachwalk-featured-images.jpg",
+  jsonLd,
 } = Astro.props;
 
 const siteUrl = "https://beachwalkvillas.net";
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
 // Cloudflare Web Analytics beacon token (optional, set via PUBLIC_CF_BEACON_TOKEN env var)
 const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
@@ -26,32 +30,17 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Primary Meta -->
-    <title>{title} | Beachwalk Villas</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:title" content={`${title} | Beachwalk Villas`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${siteUrl}${image}`} />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} | Beachwalk Villas`} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${siteUrl}${image}`} />
+    <!-- SEO Component -->
+    <SEO title={title} description={description} schemaData={jsonLd} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/logo.png" />
 
-    <!-- Fonts -->
+    <!-- Fonts: Playfair Display (serif) + Inter (sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -129,7 +118,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     }
     {
       cfBeaconToken && (
-        <script
+        <script is:inline
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}

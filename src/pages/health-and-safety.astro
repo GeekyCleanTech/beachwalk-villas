@@ -9,17 +9,17 @@ import Hero from "../components/Hero.astro";
   description="Beachwalk Villas health and safety guidelines for guests — cleaning protocols, check-in procedures, and property safety information."
 >
   <Hero
+    eyebrow="Stay with confidence"
     headline="Health & Safety"
     subheadline="Your safety and comfort are our highest priority."
     bgImage="/images/health.jpg"
     size="medium"
-    ctaLabel={undefined}
   />
 
-  <section class="section-pad bg-white reveal">
+  <section class="section-pad bg-sand reveal">
     <div class="container-site max-w-3xl">
-      <div class="prose prose-lg max-w-none">
-        <h2 class="font-display text-h2 text-brand-navy">
+      <div class="prose-coastal">
+        <h2 class="font-serif text-h2 text-navy">
           Our Commitment to Your Safety
         </h2>
         <p class="text-gray-600">
@@ -29,7 +29,7 @@ import Hero from "../components/Hero.astro";
           expectations.
         </p>
 
-        <h3 class="font-display text-h3 text-brand-navy mt-8">
+        <h3 class="font-serif text-h3 text-navy mt-8">
           Enhanced Cleaning Protocols
         </h3>
         <ul class="space-y-2 text-gray-600">
@@ -48,7 +48,7 @@ import Hero from "../components/Hero.astro";
           </li>
         </ul>
 
-        <h3 class="font-display text-h3 text-brand-navy mt-8">
+        <h3 class="font-serif text-h3 text-navy mt-8">
           Contactless Check-In & Check-Out
         </h3>
         <ul class="space-y-2 text-gray-600">
@@ -58,7 +58,7 @@ import Hero from "../components/Hero.astro";
           <li>Self check-out — no contact needed on departure</li>
         </ul>
 
-        <h3 class="font-display text-h3 text-brand-navy mt-8">
+        <h3 class="font-serif text-h3 text-navy mt-8">
           Pool & Common Areas
         </h3>
         <ul class="space-y-2 text-gray-600">
@@ -67,7 +67,7 @@ import Hero from "../components/Hero.astro";
           <li>Hand sanitizer stations available throughout the property</li>
         </ul>
 
-        <h3 class="font-display text-h3 text-brand-navy mt-8">
+        <h3 class="font-serif text-h3 text-navy mt-8">
           Emergency Information
         </h3>
         <ul class="space-y-2 text-gray-600">
@@ -79,13 +79,13 @@ import Hero from "../components/Hero.astro";
           </li>
         </ul>
 
-        <div class="bg-brand-sand p-6 mt-10">
-          <h3 class="font-display text-xl text-brand-navy mb-2">Questions?</h3>
-          <p class="text-gray-600 text-sm mb-4">
+        <div class="card p-7 mt-10 not-prose">
+          <h3 class="font-serif text-xl text-navy mb-2">Questions?</h3>
+          <p class="text-brand-muted text-sm mb-4">
             If you have any health or safety questions before or during your
             stay, please don't hesitate to contact us.
           </p>
-          <a href="/contact-us/" class="btn-primary">Contact Us</a>
+          <a href="/contact-us/" class="btn btn-primary">Contact us</a>
         </div>
       </div>
     </div>
