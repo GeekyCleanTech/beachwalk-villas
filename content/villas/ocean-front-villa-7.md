@@ -1,28 +1,105 @@
 ---
-title: "Ocean Front Villa, #7"
+title: "Villa 7 w/ 1 Bedroom, 1 Bath"
 slug: "ocean-front-villa-7"
 unit: 7
 type: "ocean-front"
 status: "available"
-thumbnailImage: "/images/2_.jpg"
+thumbnailImage: "/images/guesty/villa-7/01.jpg"
 galleryImages:
-  - "/images/1-min-1568x1045-1.jpeg"
-  - "/images/2-min-1-1568x1045-1.jpg"
-  - "/images/3-min-1568x1045-1.jpg"
-  - "/images/4-min-1568x1045-1.jpg"
-  - "/images/5.5-min-1568x1045-1.jpg"
-  - "/images/6-min-1568x1045-1.jpg"
-  - "/images/7-min-1568x1045-1.jpg"
+  - "/images/guesty/villa-7/01.jpg"
+  - "/images/guesty/villa-7/02.jpg"
+  - "/images/guesty/villa-7/03.jpg"
+  - "/images/guesty/villa-7/04.jpg"
+  - "/images/guesty/villa-7/05.jpg"
 bedrooms: 1
 bathrooms: 1
-maxGuests: 2
+maxGuests: 3
 unitAmenities:
-  - "Oceanfront"
-  - "Unobstructed Ocean Views"
-  - "Full Kitchen"
-  - "Private Deck"
-metaDescription: "Ocean Front Villa #7 at Beachwalk Villas in Carlsbad, CA. Stunning oceanfront villa with panoramic Pacific Ocean views."
+  - "Beach"
+  - "Communal pool"
+  - "Kitchen"
+  - "Patio or balcony"
+  - "BBQ grill"
+  - "Wireless Internet"
+  - "Barbeque utensils"
+  - "Beach Front"
+  - "Beach View"
+  - "Bed linens"
+  - "Body soap"
+  - "Carbon monoxide detector"
+  - "Clothing storage"
+  - "Coffee maker"
+  - "Coin Laundry"
+  - "Conditioner"
+  - "Cookware"
+  - "Dining table"
+  - "Dishes and silverware"
+  - "Dishwasher"
+  - "Dryer"
+  - "Dryer in common space"
+  - "Extra pillows and blankets"
+  - "Family/kid friendly"
+  - "Freezer"
+  - "Hair dryer"
+  - "Hangers"
+  - "Heating"
+  - "Hot water"
+  - "Internet"
+  - "Iron"
+  - "Laundromat nearby"
+  - "Microwave"
+  - "Near Ocean"
+  - "Ocean Front"
+  - "Oven"
+  - "Refrigerator"
+  - "Shampoo"
+  - "Shower gel"
+  - "Smoke detector"
+  - "Stove"
+  - "TV"
+  - "Toaster"
+  - "Washer in common space"
+  - "Water View"
+  - "Waterfront"
+  - "Suitable for children (2-12 years)"
+  - "Suitable for infants (under 2 years)"
+nightlyRate: 335
+metaDescription: "Villa 7 w/ 1 Bedroom, 1 Bath at Beachwalk Villas in Carlsbad, CA. Villa number 7 is located on the second floor and is a 1 bedroom / 1 bathroom Ocean Front villa that boasts a spectacular ocean view from the living room, dining room, kitchen and private balcony."
 sortOrder: 7
 ---
+Villa number 7 is located on the second floor and is a 1 bedroom / 1 bathroom Ocean Front villa that boasts a spectacular ocean view from the living room, dining room, kitchen and private balcony.
 
-Ocean Front Villa #7 puts you front and center on the Pacific. Panoramic ocean views, a fully equipped kitchen, and Beachwalk's signature coastal design make this one of the most sought-after units on the property.
+## Guest Access
+
+You will receive a 4 digit access code to the Villa, once guest have provided the proper documents to verify their reservation.
+
+## The Neighborhood
+
+Discover Cafes, Restaurants and Boutiques all within 5- 10 minute walk. Beachwalk Villas is located in Downtown Carlsbad only steps from the Carlsbad Shoreline.
+
+## Getting Around
+
+Located near the Carlsbad train station to easily get to neighboring cities.
+
+## Meeting Your Hosts
+
+We will meet you at the front desk, at check-in time.
+
+## Other Things to Note
+
+On your first day, enjoy a complimentary package with bottled water, coffee pods, and premium toiletries (shampoo, conditioner, lotion, soap). Guests are welcome to purchase any additional supplies they may need.
+
+## Check-In & Check-Out
+
+- Check-in: 4:00 PM
+- Check-out: 10:00 AM
+- Minimum stay: 2 nights
+
+## House Rules
+
+- No pets are allowed
+- Quiet time (22:00 to 8:00)
+- No smoking
+- No parties or events are allowed
+- Suitable for children (2 to 12 years)
+- Suitable for infants (under 2 years)
