@@ -68,19 +68,20 @@ const amenityGroups = [
   description="Discover the full range of amenities at Beachwalk Villas in Carlsbad, CA — pool, beach access, full kitchens, parking, and more."
 >
   <Hero
+    eyebrow="Comfort, fully equipped"
     headline="Amenities"
     subheadline="Everything you need for the perfect coastal getaway."
     bgImage="/images/amenities-banner.jpg"
     size="medium"
-    ctaLabel={undefined}
   />
 
-  <section class="section-pad bg-white reveal">
+  <section class="section-pad bg-sand reveal">
     <div class="container-site">
       <!-- Intro -->
       <div class="max-w-2xl mb-12">
-        <h2 class="section-heading">Resort-Style Amenities</h2>
-        <p class="section-subheading">
+        <span class="eyebrow">Resort-style living</span>
+        <h2 class="section-heading">Designed for easy coastal living</h2>
+        <p class="section-subheading mt-3">
           Beachwalk Villas is designed for comfort, convenience, and coastal
           living. Every villa comes fully equipped so you can relax from the
           moment you arrive.
@@ -95,7 +96,7 @@ const amenityGroups = [
             { src: "/images/amenities-box-img1.jpg", alt: "Pool area" },
             { src: "/images/amenities-box-img2-1.jpg", alt: "Villa interior" },
           ].map((img) => (
-            <div class="aspect-[4/3] overflow-hidden">
+            <div class="aspect-[4/3] overflow-hidden rounded-card shadow-[var(--shadow-soft)]">
               <img
                 src={img.src}
                 alt={img.alt}
@@ -111,15 +112,15 @@ const amenityGroups = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           amenityGroups.map((group) => (
-            <div class="bg-brand-sand p-6">
-              <h3 class="font-display text-xl text-brand-navy mb-4">
+            <div class="card p-7">
+              <h3 class="font-serif text-xl text-navy mb-4">
                 {group.category}
               </h3>
-              <ul class="space-y-2">
+              <ul class="space-y-2.5">
                 {group.items.map((item) => (
-                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                  <li class="flex items-start gap-2.5 text-sm text-brand-muted">
                     <svg
-                      class="w-4 h-4 text-brand-teal mt-0.5 flex-shrink-0"
+                      class="w-4 h-4 text-seafoam mt-0.5 flex-shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -139,7 +140,7 @@ const amenityGroups = [
       </div>
 
       <div class="mt-12 text-center">
-        <a href="/villas/" class="btn-primary">View Our Villas</a>
+        <a href="/villas/" class="btn btn-primary">View our villas</a>
       </div>
     </div>
   </section>

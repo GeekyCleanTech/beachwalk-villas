@@ -1,92 +1,60 @@
 ---
-title: "Villa 9 Studio"
-slug: "poolside-studio-9"
-unit: 9
-type: "poolside-studio"
-status: "available"
-thumbnailImage: "/images/guesty/villa-9/01.jpg"
+name: 'Poolside Studio #9'
+unitNumber: 9
+category: Studio
+viewType: Poolside
+status: available
+image: ../../src/assets/images/4-min-1-1568x1045-1.jpg
 galleryImages:
-  - "/images/guesty/villa-9/01.jpg"
-  - "/images/guesty/villa-9/02.jpg"
-  - "/images/guesty/villa-9/03.jpg"
-  - "/images/guesty/villa-9/04.jpg"
-bedrooms: 0
-bathrooms: 1
-maxGuests: 3
+  - ../../src/assets/images/4-min-1-1568x1045-1.jpg
+  - ../../src/assets/images/6-min-1-1568x1045-1.jpg
+  - ../../src/assets/images/7.5-min-1568x1045-1.jpg
+  - ../../src/assets/images/7-min-1-1568x1045-1.jpg
+  - ../../src/assets/images/8-min-1-1568x1045-1.jpg
+  - ../../src/assets/images/9-min-1568x1045-1.jpeg
+  - ../../src/assets/images/10-min-1-1568x1045-1.jpg
+  - ../../src/assets/images/11-min-1568x1045-1.jpg
+specs:
+  bedrooms: 0
+  bathrooms: 1
+  maxGuests: 3
+  sqft: 327
+rates:
+  winter: 225
+  springHoliday: 225
+  summer: 225
+guestyUrl: 'https://booking.guesty.com/'
+layout: Poolside studio
+tagline: >-
+  Embrace casual Carlsbad elegance in Poolside Studio #9. This meticulously
+  curated poolside retreat offers immediate access to the pool area, styled with
+  high-end travertine finishes and modern coastal decor for a comfortable and
+  refined beachside escape.
+featured: false
 unitAmenities:
-  - "Beach"
-  - "Communal pool"
-  - "Kitchen"
-  - "BBQ grill"
-  - "Wireless Internet"
-  - "Barbeque utensils"
-  - "Bed linens"
-  - "Carbon monoxide detector"
-  - "Ceiling fan"
-  - "Clothing storage"
-  - "Coffee maker"
-  - "Coin Laundry"
-  - "Conditioner"
-  - "Cookware"
-  - "Dishes and silverware"
-  - "Dryer in common space"
-  - "Extra pillows and blankets"
-  - "Family/kid friendly"
-  - "Freezer"
-  - "Hair dryer"
-  - "Hangers"
-  - "Hot water"
-  - "Internet"
-  - "Iron"
-  - "Microwave"
-  - "Near Ocean"
-  - "Oven"
-  - "Refrigerator"
-  - "Shampoo"
-  - "Shower gel"
-  - "Smoke detector"
-  - "Stove"
-  - "TV"
-  - "Washer in common space"
-  - "Suitable for children (2-12 years)"
-  - "Suitable for infants (under 2 years)"
-nightlyRate: 225
-metaDescription: "Villa 9 Studio at Beachwalk Villas in Carlsbad, CA. Villa number 9 is a tastefully decorated poolside studio. It includes all the amenities you will need to have a comfortable and memorable stay."
+  - '**Poolside Studio Layout:** 327 Sq. Ft. of curated poolside living.'
+  - >-
+    **Comfortable Bedding:** Plush Queen-sized bed and a versatile futon in the
+    living area.
+  - >-
+    **Epicurean Kitchen:** Fully equipped kitchen styled with granite
+    countertops and a breakfast bar.
+  - >-
+    **Bath Amenities:** Elegant Travertine-finished bathroom featuring a walk-in
+    shower.
+  - '**Media & Entertainment:** Flat-screen television and a DVD player.'
+  - >-
+    **Poolside Living:** Direct access to the shared poolside propane BBQ and
+    patio seating area.
+  - >-
+    **Exclusive Conveniences:** High-speed wireless internet and a
+    complimentary, dedicated parking space.
+  - '**Occupancy Specs:** Accommodates up to 3 guests maximum.'
+metaDescription: >-
+  Beachwalk Villas | Poolside Studio #9 in Carlsbad, CA. Embrace casual Carlsbad
+  elegance in Poolside Studio #9. This meticulously curated poolside retreat
+  offers immediate access to the pool area,...
 sortOrder: 9
 ---
-Villa number 9 is a tastefully decorated poolside studio. It includes all the amenities you will need to have a comfortable and memorable stay.
 
-## Guest Access
-
-You will receive a 4 digit access code to the Villa, once guest have provided the proper documents to verify their reservation.
-
-## The Neighborhood
-
-Discover Cafes, Restaurants and Boutiques all within 5- 10 minute walk. Beachwalk Villas is located in Downtown Carlsbad only steps from the Carlsbad Shoreline.
-
-## Getting Around
-
-Located near the Carlsbad train station to easily get to neighboring cities.
-
-## Meeting Your Hosts
-
-We will meet you at the front desk, at check-in time.
-
-## Other Things to Note
-
-On your first day, enjoy a complimentary package with bottled water, coffee pods, and premium toiletries (shampoo, conditioner, lotion, soap). Guests are welcome to purchase any additional supplies they may need.
-
-## Check-In & Check-Out
-
-- Check-in: 4:00 PM
-- Check-out: 10:00 AM
-- Minimum stay: 2 nights
-
-## House Rules
-
-- No pets are allowed
-- Quiet time (22:00 to 8:00)
-- No smoking
-- No parties or events are allowed
-- Suitable for children (2 to 12 years)
-- Suitable for infants (under 2 years)
+Embrace casual Carlsbad elegance in Poolside Studio #9. This meticulously curated poolside retreat offers immediate access to the pool area, styled with high-end travertine finishes and modern coastal decor for a comfortable and refined beachside escape.

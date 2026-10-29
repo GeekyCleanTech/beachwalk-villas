@@ -1,102 +1,65 @@
 ---
-title: "Villa 8 w/ 2 Bedroom, 2 Bath"
-slug: "ocean-front-villa-8"
-unit: 8
-type: "ocean-front"
-status: "available"
-thumbnailImage: "/images/guesty/villa-8/01.jpg"
+name: 'Ocean Front Villa #8'
+unitNumber: 8
+category: Two Bedroom
+viewType: Ocean Front
+status: available
+image: >-
+  ../../src/assets/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg
 galleryImages:
-  - "/images/guesty/villa-8/01.jpg"
-  - "/images/guesty/villa-8/02.jpg"
-  - "/images/guesty/villa-8/03.jpg"
-  - "/images/guesty/villa-8/04.jpg"
-  - "/images/guesty/villa-8/05.jpg"
-  - "/images/guesty/villa-8/06.jpg"
-bedrooms: 2
-bathrooms: 2
-maxGuests: 8
-sqft: 1160
+  - >-
+    ../../src/assets/images/1-.jpg-and-use-for-home-page-too-under-villas-feel-right-.-1-1568x1045-1.jpg
+  - ../../src/assets/images/3-1568x1045-1.jpeg
+  - ../../src/assets/images/5-1568x1045-1.jpeg
+  - ../../src/assets/images/6-1568x1045-1.jpeg
+  - ../../src/assets/images/7-1568x1045-1.jpeg
+  - ../../src/assets/images/8.5-1568x1046-1.jpg
+  - ../../src/assets/images/11-1568x1046-1.jpeg
+  - ../../src/assets/images/12-1568x1046-1.jpeg
+specs:
+  bedrooms: 2
+  bathrooms: 2
+  maxGuests: 4
+  sqft: 1160
+rates:
+  winter: 435
+  springHoliday: 435
+  summer: 435
+guestyUrl: 'https://booking.guesty.com/'
+layout: Split-level
+tagline: >-
+  Immerse yourself in oceanfront sophistication in Ocean Front Villa #8, an
+  impressive split-level two-bedroom villa. Featuring 1,160 square feet of
+  meticulously designed coastal living space, this oceanfront haven offers the
+  perfect balance of family gathering spaces and private retreats.
+featured: true
 unitAmenities:
-  - "Beach"
-  - "Communal pool"
-  - "Kitchen"
-  - "Patio or balcony"
-  - "BBQ grill"
-  - "Wireless Internet"
-  - "Free parking on street"
-  - "Barbeque utensils"
-  - "Bathtub"
-  - "Beach Front"
-  - "Beach View"
-  - "Bed linens"
-  - "Body soap"
-  - "Carbon monoxide detector"
-  - "Clothing storage"
-  - "Coffee maker"
-  - "Coin Laundry"
-  - "Conditioner"
-  - "Cookware"
-  - "Dishes and silverware"
-  - "Dishwasher"
-  - "Dryer in common space"
-  - "Extra pillows and blankets"
-  - "Family/kid friendly"
-  - "Freezer"
-  - "Hair dryer"
-  - "Hangers"
-  - "Heating"
-  - "Hot water"
-  - "Internet"
-  - "Iron"
-  - "Microwave"
-  - "Near Ocean"
-  - "Ocean Front"
-  - "Oven"
-  - "Refrigerator"
-  - "Shampoo"
-  - "Shower gel"
-  - "Smoke detector"
-  - "Stove"
-  - "TV"
-  - "Toaster"
-  - "Water View"
-  - "Waterfront"
-nightlyRate: 455
-metaDescription: "Villa 8 w/ 2 Bedroom, 2 Bath at Beachwalk Villas in Carlsbad, CA. Villa number 8 is an impressive split-level 2 bedroom/ 2 bathroom Ocean Front villa. The spacious villa has 1,160 square feet of living space with plenty of room to spread out, and is the perfect place for a memorable family vacation."
+  - '**Spacious Layout:** 1,160 Sq. Ft. of split-level oceanfront luxury.'
+  - '**Master Suite:** Premium King-sized bed in the master bedroom.'
+  - '**Guest Suite:** Comfortable Queen-sized bed in the secondary bedroom.'
+  - >-
+    **Epicurean Kitchen:** Fully equipped kitchen styled with granite
+    countertops, premium dishes, cookware, and utensils.
+  - >-
+    **Living Salon:** Large, tastefully decorated living salon with a sofa,
+    lounge chair, and dedicated writing desk.
+  - >-
+    **Media & Entertainment:** Flat-screen television in the living area and a
+    DVD player.
+  - >-
+    **Alfresco Living:** Furnished oceanfront balcony equipped with a premium
+    propane BBQ.
+  - >-
+    **Exclusive Conveniences:** High-speed wireless internet and a
+    complimentary, dedicated parking space.
+  - >-
+    **Occupancy Specs:** Sleeps 4 guests in bedrooms; maximum occupancy up to 6
+    guests (additional fees apply).
+metaDescription: >-
+  Beachwalk Villas | Ocean Front Villa #8 in Carlsbad, CA. Immerse yourself in
+  oceanfront sophistication in Ocean Front Villa #8, an impressive split-level
+  two-bedroom villa. Featuring 1,160 square f...
 sortOrder: 8
 ---
-Villa number 8 is an impressive split-level 2 bedroom/ 2 bathroom Ocean Front villa. The spacious villa has 1,160 square feet of living space with plenty of room to spread out, and is the perfect place for a memorable family vacation.
 
-## Guest Access
-
-You will receive a 4 digit access code to the Villa, once guest have provided the proper documents to verify their reservation.
-
-## The Neighborhood
-
-Discover Cafes, Restaurants and Boutiques all within 5- 10 minute walk. Beachwalk Villas is located in Downtown Carlsbad only steps from the Carlsbad Shoreline.
-
-## Getting Around
-
-Located near the Carlsbad train station to easily get to neighboring cities.
-
-## Meeting Your Hosts
-
-We will meet you at the front desk, at check-in time.
-
-## Other Things to Note
-
-On your first day, enjoy a complimentary package with bottled water, coffee pods, and premium toiletries (shampoo, conditioner, lotion, soap). Guests are welcome to purchase any additional supplies they may need.
-
-## Check-In & Check-Out
-
-- Check-in: 4:00 PM
-- Check-out: 10:00 AM
-- Minimum stay: 2 nights
-
-## House Rules
-
-- No pets are allowed
-- No smoking
-- No parties or events are allowed
-- Not suitable for children (2 to 12 years)
-- Not suitable for infants (under 2 years)
+Immerse yourself in oceanfront sophistication in Ocean Front Villa #8, an impressive split-level two-bedroom villa. Featuring 1,160 square feet of meticulously designed coastal living space, this oceanfront haven offers the perfect balance of family gathering spaces and private retreats.

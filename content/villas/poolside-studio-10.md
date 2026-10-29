@@ -1,94 +1,53 @@
 ---
-title: "Villa 10 Studio"
-slug: "poolside-studio-10"
-unit: 10
-type: "poolside-studio"
-status: "available"
-thumbnailImage: "/images/guesty/villa-10/01.jpg"
+name: 'Poolside Studio #10'
+unitNumber: 10
+category: Studio
+viewType: Poolside
+status: available
+image: ../../src/assets/images/Unit-10-kitchen-.jpg
 galleryImages:
-  - "/images/guesty/villa-10/01.jpg"
-bedrooms: 0
-bathrooms: 1
-maxGuests: 2
+  - ../../src/assets/images/Unit-10-kitchen-.jpg
+  - ../../src/assets/images/1-min-1568x1045-1.jpeg
+  - ../../src/assets/images/2-min-1-1568x1045-1.jpg
+  - ../../src/assets/images/3-min-1568x1045-1.jpg
+specs:
+  bedrooms: 0
+  bathrooms: 1
+  maxGuests: 3
+  sqft: 300
+rates:
+  winter: 205
+  springHoliday: 205
+  summer: 205
+guestyUrl: 'https://booking.guesty.com/'
+layout: Poolside studio
+tagline: >-
+  Freshly remodeled, Poolside Studio #10 is a modern Southern California design
+  masterpiece. Drawing inspiration from local beach life, this chic studio
+  combines premium high-end amenities with an intimate layout, offering a
+  stylish and comfortable retreat steps from the pool.
+featured: false
 unitAmenities:
-  - "Beach"
-  - "Communal pool"
-  - "Kitchen"
-  - "Wireless Internet"
-  - "Free parking on street"
-  - "Air conditioning"
-  - "Barbeque utensils"
-  - "Bed linens"
-  - "Blender"
-  - "Body soap"
-  - "Carbon monoxide detector"
-  - "Ceiling fan"
-  - "Clothing storage"
-  - "Coffee maker"
-  - "Coin Laundry"
-  - "Conditioner"
-  - "Cookware"
-  - "Dishes and silverware"
-  - "Dryer in common space"
-  - "Extra pillows and blankets"
-  - "Family/kid friendly"
-  - "Freezer"
-  - "Hair dryer"
-  - "Hangers"
-  - "Heating"
-  - "Hot water"
-  - "Internet"
-  - "Iron"
-  - "Laundromat nearby"
-  - "Microwave"
-  - "Near Ocean"
-  - "Oven"
-  - "Refrigerator"
-  - "Shampoo"
-  - "Shower gel"
-  - "Smoke detector"
-  - "Stove"
-  - "TV"
-  - "Washer in common space"
-  - "Suitable for children (2-12 years)"
-  - "Suitable for infants (under 2 years)"
-nightlyRate: 205
-metaDescription: "Villa 10 Studio at Beachwalk Villas in Carlsbad, CA. Villa 10 is our most recently remodeled studio. This studio décor was inspired by the modern Southern California Beach Life. Though small, this studio includes every amenity for a comfortable and memorable stay."
+  - '**Chic Studio Layout:** 300 Sq. Ft. of newly remodeled poolside living.'
+  - '**Master Bedding:** Plush Queen-sized bed.'
+  - >-
+    **Kitchenette:** Fully equipped kitchenette complete with premium dishes,
+    cookware, and utensils.
+  - '**Bath Amenities:** Walk-in Travertine shower and ample closet space.'
+  - '**Media & Entertainment:** Flat-screen television and a DVD player.'
+  - '**Comfort & Control:** Fully equipped with air conditioning.'
+  - >-
+    **Poolside Living:** Direct access to the shared poolside propane BBQ and
+    patio seating area.
+  - >-
+    **Exclusive Conveniences:** High-speed wireless internet and a
+    complimentary, dedicated parking space.
+  - '**Occupancy Specs:** Maximum occupancy of 2 guests.'
+metaDescription: >-
+  Beachwalk Villas | Poolside Studio #10 in Carlsbad, CA. Freshly remodeled,
+  Poolside Studio #10 is a modern Southern California design masterpiece.
+  Drawing inspiration from local beach life, this c...
 sortOrder: 10
 ---
-Villa 10 is our most recently remodeled studio. This studio décor was inspired by the modern Southern California Beach Life. Though small, this studio includes every amenity for a comfortable and memorable stay.
 
-## Guest Access
-
-You will receive a 4 digit access code to the Villa, once guest have provided the proper documents to verify their reservation.
-
-## The Neighborhood
-
-Discover Cafes, Restaurants and Boutiques all within 5- 10 minute walk. Beachwalk Villas is located in Downtown Carlsbad only steps from the Carlsbad Shoreline.
-
-## Getting Around
-
-Located near the Carlsbad train station to easily get to neighboring cities.
-
-## Meeting Your Hosts
-
-We will meet you at the front desk, at check-in time.
-
-## Other Things to Note
-
-On your first day, enjoy a complimentary package with bottled water, coffee pods, and premium toiletries (shampoo, conditioner, lotion, soap). Guests are welcome to purchase any additional supplies they may need.
-
-## Check-In & Check-Out
-
-- Check-in: 4:00 PM
-- Check-out: 10:00 AM
-- Minimum stay: 2 nights
-
-## House Rules
-
-- No pets are allowed
-- Quiet time (22:00 to 8:00)
-- No smoking
-- No parties or events are allowed
-- Suitable for children (2 to 12 years)
-- Suitable for infants (under 2 years)
+Freshly remodeled, Poolside Studio #10 is a modern Southern California design masterpiece. Drawing inspiration from local beach life, this chic studio combines premium high-end amenities with an intimate layout, offering a stylish and comfortable retreat steps from the pool.

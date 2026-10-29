@@ -1,98 +1,61 @@
 ---
-title: "Villa 3 w/ 1 Bedroom, 1 Bath"
-slug: "garden-view-villa-3"
-unit: 3
-type: "garden-view"
-status: "available"
-thumbnailImage: "/images/guesty/villa-3/01.jpg"
+name: 'Garden View Villa #3'
+unitNumber: 3
+category: One Bedroom
+viewType: Garden View
+status: available
+image: ../../src/assets/images/3-1st-pic-1568x1045-1.jpg
 galleryImages:
-  - "/images/guesty/villa-3/01.jpg"
-  - "/images/guesty/villa-3/02.jpg"
-  - "/images/guesty/villa-3/03.jpg"
-  - "/images/guesty/villa-3/04.jpg"
-  - "/images/guesty/villa-3/05.jpg"
-bedrooms: 1
-bathrooms: 1
-maxGuests: 3
+  - ../../src/assets/images/3-1st-pic-1568x1045-1.jpg
+  - ../../src/assets/images/1_-2-1568x1045-1.jpg
+  - ../../src/assets/images/3-1568x1045-1.jpg
+  - ../../src/assets/images/4-1-1-1568x1045-1.jpg
+  - ../../src/assets/images/Unit-3-picture-to-add-1568x1045-1.jpg
+specs:
+  bedrooms: 1
+  bathrooms: 1
+  maxGuests: 2
+  sqft: 465
+rates:
+  winter: 295
+  springHoliday: 295
+  summer: 295
+guestyUrl: 'https://booking.guesty.com/'
+layout: Garden view
+tagline: >-
+  Garden View Villa #3 is an intimate, ground-floor coastal haven designed for
+  those seeking a tranquil and sophisticated retreat. Surrounded by serene
+  garden views, this one-bedroom sanctuary is meticulously curated to deliver an
+  elevated, relaxing beach getaway.
+featured: false
 unitAmenities:
-  - "Beach"
-  - "Communal pool"
-  - "Kitchen"
-  - "BBQ grill"
-  - "Wireless Internet"
-  - "Barbeque utensils"
-  - "Bathtub"
-  - "Bed linens"
-  - "Body soap"
-  - "Carbon monoxide detector"
-  - "Clothing storage"
-  - "Coffee maker"
-  - "Coin Laundry"
-  - "Conditioner"
-  - "Cookware"
-  - "Dining table"
-  - "Dishes and silverware"
-  - "Dryer in common space"
-  - "Extra pillows and blankets"
-  - "Family/kid friendly"
-  - "Freezer"
-  - "Hair dryer"
-  - "Hangers"
-  - "Hot water"
-  - "Internet"
-  - "Iron"
-  - "Microwave"
-  - "Near Ocean"
-  - "Oven"
-  - "Refrigerator"
-  - "Shopping"
-  - "Shower gel"
-  - "Smoke detector"
-  - "Stove"
-  - "TV"
-  - "Toaster"
-  - "Washer in common space"
-  - "Suitable for children (2-12 years)"
-  - "Suitable for infants (under 2 years)"
-nightlyRate: 265
-metaDescription: "Villa 3 w/ 1 Bedroom, 1 Bath at Beachwalk Villas in Carlsbad, CA. Villa number 3 is a spacious 1 bedroom / 1 bathroom garden view villa that includes everything you will need for the perfect beach getaway."
+  - '**Intimate Layout:** 465 Sq. Ft. of serene living space.'
+  - >-
+    **Master Retreat:** Queen-sized bed dressed in crisp white bedding and a
+    premium down comforter.
+  - >-
+    **Epicurean Kitchen:** Fully equipped kitchen with granite countertops,
+    cookware, and utensils.
+  - >-
+    **Curated Spaces:** Ample closet space and cozy dining area in an
+    open-concept living salon.
+  - >-
+    **Media & Entertainment:** Flat-screen televisions in both the living salon
+    and bedroom, alongside a DVD player.
+  - >-
+    **Private Patio:** Secluded outdoor patio featuring comfortable seating and
+    a premium propane BBQ.
+  - >-
+    **Exclusive Conveniences:** High-speed wireless internet and a
+    complimentary, dedicated parking space.
+  - >-
+    **Occupancy Specs:** Sleeps 2 guests in bedroom; maximum occupancy up to 3
+    guests (additional fees apply).
+metaDescription: >-
+  Beachwalk Villas | Garden View Villa #3 in Carlsbad, CA. Garden View Villa #3
+  is an intimate, ground-floor coastal haven designed for those seeking a
+  tranquil and sophisticated retreat. Surrounded ...
 sortOrder: 3
 ---
-Villa number 3 is a spacious 1 bedroom / 1 bathroom garden view villa that includes everything you will need for the perfect beach getaway.
 
-## Guest Access
-
-You will receive a 4 digit access code to the Villa, once guest have provided the proper documents to verify their reservation.
-
-## The Neighborhood
-
-Discover Cafes, Restaurants and Boutiques all within 5- 10 minute walk. Beachwalk Villas is located in Downtown Carlsbad only steps from the Carlsbad Shoreline.
-
-## Getting Around
-
-Located near the Carlsbad train station to easily get to neighboring cities.
-
-## Meeting Your Hosts
-
-We will meet you at the front desk, at check-in time.
-
-## Other Things to Note
-
-On your first day, enjoy a complimentary package with bottled water, coffee pods, and premium toiletries (shampoo, conditioner, lotion, soap). Guests are welcome to purchase any additional supplies they may need.
-
-## Check-In & Check-Out
-
-- Check-in: 4:00 PM
-- Check-out: 10:00 AM
-- Minimum stay: 2 nights
-
-## House Rules
-
-- No pets are allowed
-- Quiet time (22:00 to 8:00)
-- No smoking
-- No parties or events are allowed
-- Suitable for children (2 to 12 years)
-- Suitable for infants (under 2 years)
-- Minimum age to book: 21
-- Each guest has an assigned parking space
+Garden View Villa #3 is an intimate, ground-floor coastal haven designed for those seeking a tranquil and sophisticated retreat. Surrounded by serene garden views, this one-bedroom sanctuary is meticulously curated to deliver an elevated, relaxing beach getaway.

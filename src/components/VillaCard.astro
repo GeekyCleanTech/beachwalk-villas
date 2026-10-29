@@ -1,103 +1,96 @@
 ---
 // src/components/VillaCard.astro
+import { Image } from "astro:assets";
+
 interface Props {
-  title: string;
-  slug: string;
-  type: string;
-  thumbnailImage: string;
-  bedrooms: number;
-  bathrooms: number;
-  unitAmenities?: string[];
-  nightlyRate?: number;
+  name: string;
+  id: string;
+  category: string;
+  viewType: string;
+  image: ImageMetadata | { src: string };
+  specs: {
+    bedrooms: number;
+    bathrooms: number;
+    maxGuests: number;
+    sqft: number;
+  };
+  tagline?: string;
+  eager?: boolean;
 }
 
 const {
-  title,
-  slug,
-  type,
-  thumbnailImage,
-  bedrooms,
-  bathrooms,
-  unitAmenities = [],
-  nightlyRate,
+  name,
+  id,
+  category,
+  viewType,
+  image,
+  specs,
+  tagline,
+  eager = false,
 } = Astro.props;
 
-const typeLabels: Record<string, string> = {
-  "ocean-front": "Ocean Front",
-  "ocean-view": "Ocean View",
-  "avenue-view": "Avenue View",
-  "garden-view": "Garden View",
-  "poolside-studio": "Poolside Studio",
-};
+const typeLabel = `${viewType} ${category}`;
+const badgeStyle = viewType === "Ocean Front" ? "badge-ocean" : "badge-coral";
 
-const typeLabel = typeLabels[type] ?? type;
-const bedroomLabel = bedrooms === 0 ? "Studio" : `${bedrooms} BR`;
+// Small inline icons for the chips
+const chips: { label: string }[] = [
+  { label: category === 'Studio' ? 'Studio' : `${specs.bedrooms} bed` },
+  { label: `${specs.bathrooms} bath` },
+];
+if (specs.maxGuests) chips.push({ label: `${specs.maxGuests} guests` });
+if (specs.sqft) chips.push({ label: `${specs.sqft.toLocaleString()} sq ft` });
+
+// Fallback for image prop
+const isImageMetadata = (img: any): img is ImageMetadata => img && typeof img.src === 'string' && typeof img.width === 'number';
 ---
 
-<article
-  class="villa-card-reveal group bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
->
-  <!-- Image -->
-  <a href={`/villas/${slug}/`} class="block overflow-hidden aspect-[3/2]">
-    <img
-      src={thumbnailImage}
-      alt={title}
-      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-      loading="lazy"
-    />
+<article class="villa-card-reveal card group flex flex-col h-full transition-shadow duration-300 hover:shadow-[var(--shadow-lift)]">
+  <!-- Large photo -->
+  <a
+    href={`/villas/${id}/`}
+    class="relative block overflow-hidden aspect-[4/3]"
+    aria-label={`View ${name}`}
+  >
+    {isImageMetadata(image) ? (
+      <Image
+        src={image}
+        alt={name}
+        width={800}
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        loading={eager ? "eager" : "lazy"}
+      />
+    ) : (
+      <img
+        src={image.src}
+        alt={name}
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        loading={eager ? "eager" : "lazy"}
+      />
+    )}
+    <span class={`badge absolute top-4 left-4 ${badgeStyle}`}>
+      {viewType}
+    </span>
   </a>
 
-  <!-- Content -->
-  <div class="p-5">
-    <!-- Type badge -->
-    <span
-      class="inline-block text-xs font-body font-semibold uppercase tracking-widest text-brand-teal mb-2"
-    >
-      {typeLabel}
-    </span>
-
-    <!-- Title -->
-    <h3 class="font-display text-h3 text-brand-navy mb-3">
-      <a
-        href={`/villas/${slug}/`}
-        class="hover:text-brand-teal transition-colors"
-      >
-        {title}
+  <!-- Text content -->
+  <div class="p-6 flex flex-col flex-1">
+    <div class="mb-4">
+      <a href={`/villas/${id}/`} class="hover:text-seafoam transition-colors block group-hover:text-seafoam">
+        <h3 class="font-serif text-h3 text-navy">{name}</h3>
       </a>
-    </h3>
-
-    <!-- Details row -->
-    <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
-      <span>{bedroomLabel}</span>
-      <span class="w-1 h-1 rounded-full bg-gray-300"></span>
-      <span>{bathrooms} Bath</span>
-      {
-        nightlyRate && (
-          <>
-            <span class="w-1 h-1 rounded-full bg-gray-300" />
-            <span class="text-brand-teal font-semibold">
-              From ${nightlyRate}/night
-            </span>
-          </>
-        )
-      }
+      {tagline && <p class="text-sm text-brand-muted mt-2 leading-relaxed line-clamp-2">{tagline}</p>}
     </div>
 
-    <!-- Amenity pills (first 3) -->
-    {
-      unitAmenities.length > 0 && (
-        <div class="flex flex-wrap gap-1.5 mb-5">
-          {unitAmenities.slice(0, 3).map((a) => (
-            <span class="text-xs bg-brand-sand text-brand-navy px-2.5 py-1 rounded-full font-body">
-              {a}
-            </span>
-          ))}
-        </div>
-      )
-    }
+    <!-- Quick facts (chips) -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      {chips.map((c) => <span class="chip">{c.label}</span>)}
+    </div>
 
-    <a href={`/villas/${slug}/`} class="btn-outline text-sm px-5 py-2">
-      View Villa
-    </a>
+    <!-- Actions -->
+    <div class="mt-auto flex gap-3">
+      <a href={`/villas/${id}/`} class="btn btn-primary flex-1 !py-2.5 text-sm justify-center">
+        View details
+      </a>
+    </div>
   </div>
 </article>

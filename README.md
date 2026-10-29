@@ -146,17 +146,36 @@ Update the `unitAmenities` array in each villa's MDX frontmatter.
 ### Add pricing
 Add `nightlyRate`, `weeklyRate`, or `monthlyRate` to any villa's frontmatter.
 
-### Update brand colors
-Edit `tailwind.config.mjs` — the `brand` color palette is the single source of truth.
-Update hex values after confirming exact colors from the live site or Figma.
+### Update brand colors & fonts
+The canonical design tokens live in `src/styles/global.css` under `@theme`
+(Tailwind v4 reads them from there); `tailwind.config.mjs` mirrors them for tooling.
+
+Current palette:
+- Sand background `#F7F3EC` · Surface `#FFFFFF`
+- Primary ocean teal `#1F6F78` · Primary dark `#16555C`
+- Accent sunset coral `#E0763C` (used sparingly)
+- Text navy `#1C2B33` · Muted `#5C6B72` · Border `#E7DFD2`
+
+Typography: **Fraunces** (serif display) + **Inter** (body/UI), loaded in `BaseLayout.astro`.
+
+Shared site data (phone, nav, sister properties, type labels) lives in `src/data/site.ts`.
+
+### Contact form
+The contact / inquiry form (`src/components/ContactForm.astro`) submits to
+[Web3Forms](https://web3forms.com), which works on a fully static site.
+Create a free access key (point it at the destination inbox) and set
+`PUBLIC_WEB3FORMS_KEY` (see `.env.example`). With a key set, submissions post via
+fetch with inline success/error feedback; without one, the form falls back to
+opening the visitor's email client so nothing breaks in dev/preview.
 
 ## TODO Before Launch
-- [ ] Copy all images from WP uploads to `/public/images/`
-- [ ] Confirm exact brand hex colors from live site / Figma
-- [ ] Update contact email address in Footer and ContactForm
-- [ ] Add phone number when confirmed
+- [x] Confirm exact brand hex colors (sand/teal/coral palette applied)
+- [x] Add phone number — `760-720-1400 ext. 1` (see `src/data/site.ts`)
+- [x] Add Google Maps embed to Contact page (3100 Ocean St, Carlsbad, CA 92008)
+- [x] Link sister properties to their live Redwood La Jolla pages
+- [x] Wire up form handling (Web3Forms — add `PUBLIC_WEB3FORMS_KEY`)
+- [ ] Create the Web3Forms access key and set it in the deploy env
+- [ ] Confirm the `info@beachwalkvillas.net` email address
 - [ ] Verify all villa gallery image assignments match actual photos
-- [ ] Set up form handling (Cloudflare Forms, Formspark, or Resend)
-- [ ] Add Google Maps embed to Contact page
 - [ ] Test all redirects from old WP URLs
 - [ ] Submit sitemap to Google Search Console after launch

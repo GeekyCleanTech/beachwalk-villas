@@ -1,97 +1,63 @@
 ---
-title: "Villa 2 w/ 2 Bedroom, 2 Bath"
-slug: "avenue-view-villa-2"
-unit: 2
-type: "avenue-view"
-status: "available"
-thumbnailImage: "/images/guesty/villa-2/01.jpg"
+name: 'Avenue View Villa #2'
+unitNumber: 2
+category: Two Bedroom
+viewType: Avenue View
+status: available
+image: ../../src/assets/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg
 galleryImages:
-  - "/images/guesty/villa-2/01.jpg"
-  - "/images/guesty/villa-2/02.jpg"
-  - "/images/guesty/villa-2/03.jpg"
-  - "/images/guesty/villa-2/04.jpg"
-bedrooms: 2
-bathrooms: 2
-maxGuests: 6
+  - ../../src/assets/images/Beachwalk-unit-2-finals-to-add-1568x1045-1.jpg
+  - ../../src/assets/images/1-8-1568x1045-1.jpg
+  - ../../src/assets/images/3-2-1568x1045-1.jpg
+  - ../../src/assets/images/4-2-1568x1045-1.jpg
+  - ../../src/assets/images/5-2-1568x1045-1.jpg
+  - ../../src/assets/images/6-1-1-1568x1045-1.jpg
+  - ../../src/assets/images/7-1568x1045-1.jpg
+  - ../../src/assets/images/8-1568x1045-1.jpg
+specs:
+  bedrooms: 2
+  bathrooms: 2
+  maxGuests: 8
+  sqft: 1250
+rates:
+  winter: 395
+  springHoliday: 395
+  summer: 395
+guestyUrl: 'https://booking.guesty.com/'
+layout: 2nd floor
+tagline: >-
+  Perched on the second floor, Avenue View Villa #2 offers a sophisticated
+  coastal sanctuary. The expansively designed open-concept floor plan seamlessly
+  connects curated living and dining spaces, creating an ideal setting for
+  family gatherings and refined entertaining by the Pacific.
+featured: false
 unitAmenities:
-  - "Beach"
-  - "Communal pool"
-  - "Kitchen"
-  - "Patio or balcony"
-  - "BBQ grill"
-  - "Wireless Internet"
-  - "Free parking on street"
-  - "Barbeque utensils"
-  - "Bathtub"
-  - "Bed linens"
-  - "Body soap"
-  - "Carbon monoxide detector"
-  - "Clothing storage"
-  - "Coffee maker"
-  - "Coin Laundry"
-  - "Conditioner"
-  - "Cookware"
-  - "Dining table"
-  - "Dishes and silverware"
-  - "Dishwasher"
-  - "Dryer in common space"
-  - "Family/kid friendly"
-  - "Freezer"
-  - "Hair dryer"
-  - "Hangers"
-  - "Hot water"
-  - "Internet"
-  - "Iron"
-  - "Microwave"
-  - "Near Ocean"
-  - "Oven"
-  - "Refrigerator"
-  - "Shampoo"
-  - "Shower gel"
-  - "Smoke detector"
-  - "Stove"
-  - "TV"
-  - "Toaster"
-  - "Washer in common space"
-  - "Suitable for children (2-12 years)"
-  - "Suitable for infants (under 2 years)"
-nightlyRate: 415
-metaDescription: "Villa 2 w/ 2 Bedroom, 2 Bath at Beachwalk Villas in Carlsbad, CA. Villa number 2 is located on the second floor and is a 2 bedroom / 2 bathroom Avenue View villa. Its open floor plan makes this unit ideal for family gatherings."
+  - '**Spacious Layout:** 1,250 Sq. Ft. of elevated beachside living.'
+  - >-
+    **Curated Bedding:** Two premium Queen-sized beds offering exceptional
+    comfort.
+  - '**Elegant Bathrooms:** Two fully updated, modern bathrooms.'
+  - >-
+    **Epicurean Kitchen:** Fully equipped culinary space styled with premium
+    Corian countertops, dishes, cookware, and utensils.
+  - >-
+    **Guest Accommodations:** Spacious living salon featuring two Queen-sized
+    sofa sleepers.
+  - >-
+    **Media & Entertainment:** Flat-screen televisions in both bedrooms and the
+    main living salon.
+  - >-
+    **Alfresco Dining:** Private furnished balcony equipped with a premium
+    propane BBQ.
+  - >-
+    **Exclusive Conveniences:** High-speed wireless internet and one
+    complimentary, dedicated parking space.
+  - '**Occupancy Specs:** Accommodates up to 8 guests maximum.'
+metaDescription: >-
+  Beachwalk Villas | Avenue View Villa #2 in Carlsbad, CA. Perched on the second
+  floor, Avenue View Villa #2 offers a sophisticated coastal sanctuary. The
+  expansively designed open-concept floor plan...
 sortOrder: 2
 ---
-Villa number 2 is located on the second floor and is a 2 bedroom / 2 bathroom Avenue View villa. Its open floor plan makes this unit ideal for family gatherings.
 
-## Guest Access
-
-You will receive a 4 digit access code to the Villa, once guest have provided the proper documents to verify their reservation.
-
-## The Neighborhood
-
-Discover Cafes, Restaurants and Boutiques all within 5- 10 minute walk. Beachwalk Villas is located in Downtown Carlsbad only steps from the Carlsbad Shoreline.
-
-## Getting Around
-
-Located near the Carlsbad train station to easily get to neighboring cities.
-
-## Meeting Your Hosts
-
-We will meet you at the front desk, at check-in time.
-
-## Other Things to Note
-
-On your first day, enjoy a complimentary package with bottled water, coffee pods, and premium toiletries (shampoo, conditioner, lotion, soap). Guests are welcome to purchase any additional supplies they may need.
-
-## Check-In & Check-Out
-
-- Check-in: 4:00 PM
-- Check-out: 10:00 AM
-- Minimum stay: 2 nights
-
-## House Rules
-
-- No pets are allowed
-- Quiet time (22:00 to 8:00)
-- No smoking
-- No parties or events are allowed
-- Suitable for children (2 to 12 years)
-- Suitable for infants (under 2 years)
+Perched on the second floor, Avenue View Villa #2 offers a sophisticated coastal sanctuary. The expansively designed open-concept floor plan seamlessly connects curated living and dining spaces, creating an ideal setting for family gatherings and refined entertaining by the Pacific.

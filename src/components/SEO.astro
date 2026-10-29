@@ -1,0 +1,54 @@
+---
+// src/components/SEO.astro
+import { SEO as AstroSEO } from "astro-seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  isVillaPage?: boolean;
+  schemaData?: Record<string, any>;
+}
+
+const {
+  title = "Beachwalk Villas | Luxury Oceanfront Rentals in Carlsbad",
+  description = "Experience boutique coastal luxury at Beachwalk Villas. Steps from the Carlsbad shore, offering residential-style villas with unobstructed ocean views.",
+  canonical,
+  isVillaPage = false,
+  schemaData
+} = Astro.props;
+
+const siteName = "Beachwalk Villas";
+const fullTitle = title ? `${title} | ${siteName}` : siteName;
+
+// Default Organization Schema
+const baseSchema = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": siteName,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3100 Ocean Street",
+    "addressLocality": "Carlsbad",
+    "addressRegion": "CA",
+    "postalCode": "92008",
+    "addressCountry": "US"
+  },
+  "telephone": "+1-760-720-1400",
+  "url": "https://beachwalkvillas.net"
+};
+---
+
+<AstroSEO
+  title={fullTitle}
+  description={description}
+  canonical={canonical || Astro.url.href}
+  openGraph={{
+    basic: { title: fullTitle, type: "website", image: "/images/beachwalk-featured-images.jpg" },
+    optional: { siteName: siteName, description: description },
+  }}
+  twitter={{ card: "summary_large_image" }}
+/>
+
+<!-- JSON-LD Structured Data Injection -->
+<script type="application/ld+json" set:html={JSON.stringify(isVillaPage && schemaData ? schemaData : baseSchema)}></script>

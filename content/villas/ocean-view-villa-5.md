@@ -1,104 +1,62 @@
 ---
-title: "Villa 5 w/ 3 Bedroom, 2 Bath"
-slug: "ocean-view-villa-5"
-unit: 5
-type: "ocean-view"
-status: "available"
-thumbnailImage: "/images/guesty/villa-5/01.jpg"
+name: 'Ocean View Penthouse #5'
+unitNumber: 5
+category: Three Bedroom Penthouse
+viewType: Ocean View
+status: available
+image: ../../src/assets/images/1-min-1-1568x1045-1.jpg
 galleryImages:
-  - "/images/guesty/villa-5/01.jpg"
-  - "/images/guesty/villa-5/02.jpg"
-  - "/images/guesty/villa-5/03.jpg"
-  - "/images/guesty/villa-5/04.jpg"
-  - "/images/guesty/villa-5/05.jpg"
-  - "/images/guesty/villa-5/06.jpg"
-  - "/images/guesty/villa-5/07.jpg"
-bedrooms: 3
-bathrooms: 2
-maxGuests: 8
-sqft: 1800
+  - ../../src/assets/images/1-min-1-1568x1045-1.jpg
+  - ../../src/assets/images/2_-min-1568x1045-1.jpg
+  - ../../src/assets/images/3.5-min-1568x1046-1.jpg
+  - ../../src/assets/images/3-min-2-1568x1045-1.jpg
+  - ../../src/assets/images/4-min-2-1568x1045-1.jpg
+specs:
+  bedrooms: 3
+  bathrooms: 2
+  maxGuests: 6
+  sqft: 1800
+rates:
+  winter: 615
+  springHoliday: 615
+  summer: 615
+guestyUrl: 'https://booking.guesty.com/'
+layout: Penthouse
+tagline: >-
+  Indulge in the pinnacle of Carlsbad coastal luxury in Ocean View Villa #5, a
+  spectacular 1,800-square-foot penthouse. Featuring three beautifully appointed
+  bedrooms, a dramatic open living area, and a grand balcony boasting
+  unobstructed views of the Pacific, this residence defines coastal elegance.
+featured: true
 unitAmenities:
-  - "Beach"
-  - "Communal pool"
-  - "Kitchen"
-  - "Patio or balcony"
-  - "BBQ grill"
-  - "Wireless Internet"
-  - "Free parking on street"
-  - "Barbeque utensils"
-  - "Bathtub"
-  - "Beach Front"
-  - "Beach View"
-  - "Bed linens"
-  - "Body soap"
-  - "Carbon monoxide detector"
-  - "Ceiling fan"
-  - "Clothing storage"
-  - "Coffee maker"
-  - "Coin Laundry"
-  - "Conditioner"
-  - "Cookware"
-  - "Dining table"
-  - "Dishes and silverware"
-  - "Dishwasher"
-  - "Dryer in common space"
-  - "Extra pillows and blankets"
-  - "Family/kid friendly"
-  - "Freezer"
-  - "Hair dryer"
-  - "Hangers"
-  - "Hot water"
-  - "Internet"
-  - "Iron"
-  - "Microwave"
-  - "Near Ocean"
-  - "Ocean Front"
-  - "Refrigerator"
-  - "Sea view"
-  - "Shampoo"
-  - "Shower gel"
-  - "Smoke detector"
-  - "Stove"
-  - "TV"
-  - "Toaster"
-  - "Water View"
-nightlyRate: 615
-metaDescription: "Villa 5 w/ 3 Bedroom, 2 Bath at Beachwalk Villas in Carlsbad, CA. Villa number 5 is a spectacular 1,800 square foot penthouse which includes 3 bedrooms / 2 bathrooms and an oversized balcony boasting unobstructed views of the Pacific Ocean."
+  - '**Penthouse Layout:** 1,800 Sq. Ft. of ultra-premium penthouse living.'
+  - '**Master Retreat:** King-sized bed featuring premium down bedding.'
+  - >-
+    **Guest Suites:** Elegant Queen-sized beds with plush bedding in both guest
+    bedrooms.
+  - >-
+    **Design Details:** Circular gas fireplace and a wet bar with mini-fridge in
+    the grand salon.
+  - >-
+    **Epicurean Kitchen:** Fully equipped culinary area styled with granite
+    countertops.
+  - >-
+    **Media & Entertainment:** Flat-screen televisions in the living area and
+    master bedroom, plus a DVD player.
+  - >-
+    **Grand Balcony:** Oversized furnished balcony with a premium propane BBQ
+    and panoramic ocean views.
+  - >-
+    **Exclusive Conveniences:** High-speed wireless internet and two
+    complimentary, dedicated parking spaces.
+  - >-
+    **Occupancy Specs:** Sleeps 6 guests in bedrooms; maximum occupancy up to 10
+    guests (additional fees apply).
+metaDescription: >-
+  Beachwalk Villas | Ocean View Penthouse #5 in Carlsbad, CA. Indulge in the
+  pinnacle of Carlsbad coastal luxury in Ocean View Villa #5, a spectacular
+  1,800-square-foot penthouse. Featuring three beauti...
 sortOrder: 5
 ---
-Villa number 5 is a spectacular 1,800 square foot penthouse which includes 3 bedrooms / 2 bathrooms and an oversized balcony boasting unobstructed views of the Pacific Ocean.
 
-## Guest Access
-
-You will receive a 4 digit access code to the Villa, once guest have provided the proper documents to verify their reservation.
-
-## The Neighborhood
-
-Discover Cafes, Restaurants and Boutiques all within 5- 10 minute walk. Beachwalk Villas is located in Downtown Carlsbad only steps from the Carlsbad Shoreline.
-
-## Getting Around
-
-Located near the Carlsbad train station to easily get to neighboring cities.
-
-## Meeting Your Hosts
-
-We will meet you at the front desk, at check-in time.
-
-## Other Things to Note
-
-On your first day, enjoy a complimentary package with bottled water, coffee pods, and premium toiletries (shampoo, conditioner, lotion, soap). Guests are welcome to purchase any additional supplies they may need.
-
-## Check-In & Check-Out
-
-- Check-in: 4:00 PM
-- Check-out: 10:00 AM
-- Minimum stay: 2 nights
-
-## House Rules
-
-- No pets are allowed
-- Quiet time (22:00 to 8:00)
-- No smoking
-- No parties or events are allowed
-- Not suitable for children (2 to 12 years)
-- Not suitable for infants (under 2 years)
+Indulge in the pinnacle of Carlsbad coastal luxury in Ocean View Villa #5, a spectacular 1,800-square-foot penthouse. Featuring three beautifully appointed bedrooms, a dramatic open living area, and a grand balcony boasting unobstructed views of the Pacific, this residence defines coastal elegance.
