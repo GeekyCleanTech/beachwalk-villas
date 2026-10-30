@@ -7,6 +7,19 @@ status: available
 image: ../../src/assets/images/sdbg/villa-1/01.jpg
 galleryImages:
   - ../../src/assets/images/sdbg/villa-1/01.jpg
+  - ../../src/assets/images/villa-1/01.jpg
+  - ../../src/assets/images/villa-1/02.jpg
+  - ../../src/assets/images/villa-1/03.jpg
+  - ../../src/assets/images/villa-1/04.jpg
+  - ../../src/assets/images/villa-1/05.jpg
+  - ../../src/assets/images/villa-1/06.jpg
+  - ../../src/assets/images/villa-1/07.jpg
+  - ../../src/assets/images/villa-1/08.jpg
+  - ../../src/assets/images/villa-1/09.jpg
+  - ../../src/assets/images/villa-1/10.jpg
+  - ../../src/assets/images/villa-1/11.jpg
+  - ../../src/assets/images/villa-1/12.jpg
+  - ../../src/assets/images/villa-1/13.jpg
 specs:
   bedrooms: 2
   bathrooms: 2
