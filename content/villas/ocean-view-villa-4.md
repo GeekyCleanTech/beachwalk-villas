@@ -4,7 +4,7 @@ unitNumber: 4
 category: Two Bedroom
 viewType: Ocean View
 status: available
-image: ../../src/assets/images/sdbg/villa-4/01.jpg
+image: ../../src/assets/images/sdbg/villa-4/08.jpg
 galleryImages:
   - ../../src/assets/images/sdbg/villa-4/01.jpg
   - ../../src/assets/images/sdbg/villa-4/02.jpg
