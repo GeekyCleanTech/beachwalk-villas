@@ -143,8 +143,8 @@ the body content is the villa description rendered on the detail page.
 ### Add/remove amenities per villa
 Update the `unitAmenities` array in each villa's MDX frontmatter.
 
-### Add pricing
-Add `nightlyRate`, `weeklyRate`, or `monthlyRate` to any villa's frontmatter.
+### Pricing
+Pricing is intentionally not shown on the site; booking buttons link to Guesty, which displays rates.
 
 ### Update brand colors & fonts
 The canonical design tokens live in `src/styles/global.css` under `@theme`

@@ -46,7 +46,7 @@ unitAmenities:
     complimentary, dedicated parking space.
   - >-
     **Occupancy Specs:** Sleeps 2 guests in bedroom; maximum occupancy up to 3
-    guests (additional fees apply).
+    guests.
 metaDescription: >-
   Beachwalk Villas | Garden View Villa #3 in Carlsbad, CA. Garden View Villa #3
   is an intimate, ground-floor coastal haven designed for those seeking a

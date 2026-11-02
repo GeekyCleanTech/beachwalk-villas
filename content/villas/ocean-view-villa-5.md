@@ -50,7 +50,7 @@ unitAmenities:
     complimentary, dedicated parking spaces.
   - >-
     **Occupancy Specs:** Sleeps 6 guests in bedrooms; maximum occupancy up to 10
-    guests (additional fees apply).
+    guests.
 metaDescription: >-
   Beachwalk Villas | Ocean View Penthouse #5 in Carlsbad, CA. Indulge in the
   pinnacle of Carlsbad coastal luxury in Ocean View Villa #5, a spectacular

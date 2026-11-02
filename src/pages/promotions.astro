@@ -9,7 +9,7 @@ import Hero from "../components/Hero.astro";
   description="Check out the latest promotions and special offers at Beachwalk Villas in Carlsbad, CA."
 >
   <Hero
-    eyebrow="Save on your stay"
+    eyebrow="Special offers"
     headline="Promotions & Special Offers"
     subheadline="Exclusive deals for your perfect coastal getaway."
     bgImage="/images/promotions-img-01.jpg"
@@ -22,8 +22,8 @@ import Hero from "../components/Hero.astro";
         <span class="eyebrow">Current deals</span>
         <h2 class="section-heading">Current offers</h2>
         <p class="section-subheading mt-3">
-          Take advantage of our seasonal promotions and extended stay discounts.
-          Contact us to learn more about current availability.
+          Take advantage of our seasonal promotions and extended stay offers.
+          Use the booking button to see current availability.
         </p>
       </div>
 
@@ -31,9 +31,9 @@ import Hero from "../components/Hero.astro";
         {
           [
             {
-              title: "Extended Stay Discount",
+              title: "Extended Stays",
               description:
-                "Stay 7+ nights and save. Ask about our weekly and monthly rates for significant savings on longer visits.",
+                "Planning a longer visit? Weekly and monthly stays are available. Check booking for details.",
               image: "/images/promotions-img-01.jpg",
               badge: "Weekly & Monthly",
             },
@@ -47,14 +47,14 @@ import Hero from "../components/Hero.astro";
             {
               title: "Seasonal Specials",
               description:
-                "Enjoy the best of Carlsbad in the off-season with reduced rates and fewer crowds.",
+                "Enjoy the best of Carlsbad in the off-season with fewer crowds.",
               image: "/images/promotions-img-03.jpg",
-              badge: "Off-Season Savings",
+              badge: "Off-Season",
             },
             {
               title: "Return Guest Offer",
               description:
-                "Stayed with us before? Contact us directly for returning guest appreciation rates.",
+                "Stayed with us before? Contact us directly to learn about returning guest offers.",
               image: "/images/promotions-img-04.jpg",
               badge: "Loyalty Reward",
             },
@@ -85,15 +85,6 @@ import Hero from "../components/Hero.astro";
         }
       </div>
 
-      <!-- Promotional banner -->
-      <div class="space-y-4">
-        <img
-          src="/images/BYE-BYE-SPRING-2026.png"
-          alt="Spring 2026 promotion"
-          class="w-full rounded-card shadow-[var(--shadow-soft)]"
-          loading="lazy"
-        />
-      </div>
     </div>
   </section>
 </SiteLayout>

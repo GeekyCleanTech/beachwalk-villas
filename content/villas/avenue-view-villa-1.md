@@ -52,7 +52,7 @@ unitAmenities:
     complimentary, dedicated parking space.
   - >-
     **Occupancy Specs:** Comfortably hosts 4 guests in dedicated bedding;
-    maximum allowable occupancy up to 6 guests (additional fees apply).
+    maximum allowable occupancy up to 6 guests.
 metaDescription: >-
   Beachwalk Villas | Avenue View Villa #1 in Carlsbad, CA. Experience the
   quintessential Carlsbad coastal lifestyle in Avenue View Villa #1. This
