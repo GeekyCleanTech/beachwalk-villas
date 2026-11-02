@@ -47,7 +47,7 @@ unitAmenities:
     complimentary, dedicated parking space.
   - >-
     **Occupancy Specs:** Sleeps 5 guests in bedrooms; maximum occupancy up to 8
-    guests (additional fees apply).
+    guests.
 metaDescription: >-
   Beachwalk Villas | Ocean Front Villa #6 in Carlsbad, CA. Uncover a front-row
   view of the Pacific in Ocean Front Villa #6, an exquisite two-level residence.

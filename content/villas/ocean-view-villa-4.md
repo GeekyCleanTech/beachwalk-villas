@@ -51,7 +51,7 @@ unitAmenities:
     complimentary, dedicated parking space.
   - >-
     **Occupancy Specs:** Hosts 4 guests in bedding; maximum occupancy up to 6
-    guests (additional fees apply).
+    guests.
 metaDescription: >-
   Beachwalk Villas | Ocean View Villa #4 in Carlsbad, CA. Perched on the third
   floor, Ocean View Villa #4 is a single-level coastal masterpiece. Boasting an
