@@ -99,9 +99,14 @@ const year = new Date().getFullYear();
       class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50"
     >
       <p>&copy; {year} {site.name}. All rights reserved.</p>
-      <a href="/reservation-policies/" class="hover:text-white/80 transition-colors">
-        Booking Policies
-      </a>
+      <div class="flex gap-4">
+        <a href="/reservation-policies/" class="hover:text-white/80 transition-colors">
+          Booking Policies
+        </a>
+        <a href="/sitemap/" class="hover:text-white/80 transition-colors">
+          Site Map
+        </a>
+      </div>
     </div>
   </div>
 </footer>
