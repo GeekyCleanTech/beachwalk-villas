@@ -161,20 +161,28 @@ Typography: **Fraunces** (serif display) + **Inter** (body/UI), loaded in `BaseL
 Shared site data (phone, nav, sister properties, type labels) lives in `src/data/site.ts`.
 
 ### Contact form
-The contact / inquiry form (`src/components/ContactForm.astro`) submits to
-[Web3Forms](https://web3forms.com), which works on a fully static site.
-Create a free access key (point it at the destination inbox) and set
-`PUBLIC_WEB3FORMS_KEY` (see `.env.example`). With a key set, submissions post via
-fetch with inline success/error feedback; without one, the form falls back to
-opening the visitor's email client so nothing breaks in dev/preview.
+The contact / inquiry form (`src/components/ContactForm.astro`) prepares a
+plain-text email locally for `reservations@beachwalkvillas.net`. Visitors enter
+their first and last names, contact email, guest count, message, and any optional
+phone, villa, or date details. They review the draft, then open their own email
+application and press Send. The form is shared with villa detail pages and
+preserves the preselected villa.
+
+No email-service key, AI key, or backend submission is required. Copy actions
+and selectable previews retain the complete subject and body if clipboard
+access or the email-app handoff fails, or if the encoded draft exceeds the
+documented mailto policy. Any writing tools in the visitor's email application
+remain optional and user controlled. Preparing or opening a draft does not
+establish delivery. General contact links continue to use `site.email`.
 
 ## TODO Before Launch
 - [x] Confirm exact brand hex colors (sand/teal/coral palette applied)
 - [x] Add phone number — `760-720-1400 ext. 1` (see `src/data/site.ts`)
 - [x] Add Google Maps embed to Contact page (3100 Ocean St, Carlsbad, CA 92008)
 - [x] Link sister properties to their live Redwood La Jolla pages
-- [x] Wire up form handling (Web3Forms — add `PUBLIC_WEB3FORMS_KEY`)
-- [ ] Create the Web3Forms access key and set it in the deploy env
+- [x] Prepare inquiry drafts locally with review, open, and copy actions
+- [ ] Verify draft handoff in supported desktop and mobile email applications
+- [ ] Confirm the `reservations@beachwalkvillas.net` inbox is provisioned
 - [ ] Confirm the `info@beachwalkvillas.net` email address
 - [ ] Verify all villa gallery image assignments match actual photos
 - [ ] Test all redirects from old WP URLs

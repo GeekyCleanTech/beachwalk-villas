@@ -1,6 +1,6 @@
 ---
-// src/components/ContactForm.astro
 import { site } from "../data/site";
+import { CONTACT_RECIPIENT } from "../lib/contact-draft";
 
 interface Props {
   title?: string;
@@ -8,15 +8,10 @@ interface Props {
   preselectVilla?: string;
 }
 const {
-  title = "Send Us a Message",
+  title = "Prepare an Email Inquiry",
   showVillaSelect = false,
   preselectVilla,
 } = Astro.props;
-
-// Web3Forms access key — static-site friendly form delivery.
-// Set PUBLIC_WEB3FORMS_KEY in your env (see .env.example). When unset, the
-// form gracefully falls back to opening the visitor's email client.
-const formKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
 
 const villas = [
   "Poolside Studio #9",
@@ -34,158 +29,276 @@ const villas = [
 const fieldClass =
   "w-full rounded-xl border border-brand-border bg-sand/40 px-4 py-3 text-sm text-navy placeholder:text-brand-muted/70 focus:outline-none focus:ring-2 focus:ring-seafoam focus:border-seafoam transition";
 const labelClass = "block text-sm font-semibold text-navy mb-1.5";
+const errorClass = "mt-1 text-sm text-terracotta";
+const buttonFocusClass = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-seafoam disabled:opacity-60";
 ---
 
 <div class="card p-8 md:p-10">
   <h2 class="font-serif text-h2 mb-2">{title}</h2>
-  <p class="text-sm text-brand-muted mb-7">
+  <p class="text-sm text-brand-muted mb-3">
     Prefer to talk? Call us at
     <a href={site.phoneHref} class="text-seafoam font-semibold hover:underline">{site.phone}</a>.
   </p>
+  <p id="contact-form-help" class="text-sm text-brand-muted mb-5">
+    We’ll prepare an email using your answers. You can review it before opening your email app.
+  </p>
+  <p id="contact-form-enhancement" class="text-sm text-brand-muted mb-5">
+    Enable JavaScript to use this draft form. You can also email
+    <a href={`mailto:${CONTACT_RECIPIENT}`} class={`text-seafoam font-semibold underline break-all ${buttonFocusClass}`}>{CONTACT_RECIPIENT}</a> directly.
+  </p>
 
-  <form
-    id="contact-form"
-    method="POST"
-    action="https://api.web3forms.com/submit"
-    class="space-y-5"
-    data-form-key={formKey}
-    data-fallback-email={site.email}
-  >
-    <!-- Web3Forms config -->
-    <input type="hidden" name="access_key" value={formKey} />
-    <input type="hidden" name="subject" value="New inquiry from the Beachwalk Villas website" />
-    <input type="hidden" name="from_name" value="Beachwalk Villas Website" />
-    <!-- Honeypot (hidden from real users) -->
-    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" aria-hidden="true" />
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div>
-        <label for="name" class={labelClass}>Full Name *</label>
-        <input id="name" name="name" type="text" required aria-required="true" class={fieldClass} placeholder="Jane Smith" />
-      </div>
-      <div>
-        <label for="email" class={labelClass}>Email *</label>
-        <input id="email" name="email" type="email" required aria-required="true" class={fieldClass} placeholder="jane@email.com" />
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div>
-        <label for="phone" class={labelClass}>Phone</label>
-        <input id="phone" name="phone" type="tel" class={fieldClass} placeholder="(760) 555-0100" />
+  <!-- Disabled until the client handlers attach: no native submission can leak answers. -->
+  <form id="contact-form" class="space-y-5" aria-describedby="contact-form-help" novalidate>
+    <fieldset id="contact-form-fields" disabled class="space-y-5">
+      <legend class="sr-only">Your inquiry details</legend>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label for="firstName" class={labelClass}>First Name *</label>
+          <input id="firstName" name="firstName" type="text" autocomplete="given-name" required class={fieldClass} placeholder="Jane" aria-describedby="firstName-error" />
+          <p id="firstName-error" class={errorClass} hidden></p>
+        </div>
+        <div>
+          <label for="lastName" class={labelClass}>Last Name *</label>
+          <input id="lastName" name="lastName" type="text" autocomplete="family-name" required class={fieldClass} placeholder="Smith" aria-describedby="lastName-error" />
+          <p id="lastName-error" class={errorClass} hidden></p>
+        </div>
       </div>
 
-      {
-        showVillaSelect && (
-          <div>
-            <label for="villa" class={labelClass}>Villa of Interest</label>
-            <select id="villa" name="villa" class={fieldClass}>
-              <option value="">Select a villa…</option>
-              {villas.map((v) => (
-                <option value={v} selected={v === preselectVilla}>
-                  {v}
-                </option>
-              ))}
-            </select>
-          </div>
-        )
-      }
-    </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label for="email" class={labelClass}>Email *</label>
+          <input id="email" name="email" type="email" autocomplete="email" required class={fieldClass} placeholder="jane@email.com" aria-describedby="email-error" />
+          <p id="email-error" class={errorClass} hidden></p>
+        </div>
+        <div>
+          <label for="phone" class={labelClass}>Phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" class={fieldClass} placeholder="(760) 555-0100" />
+        </div>
+      </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label for="guests" class={labelClass}>Number of Guests *</label>
+          <input id="guests" name="guests" type="number" inputmode="numeric" min="1" step="1" required class={fieldClass} placeholder="2" aria-describedby="guests-error" />
+          <p id="guests-error" class={errorClass} hidden></p>
+        </div>
+        {
+          showVillaSelect && (
+            <div>
+              <label for="villa" class={labelClass}>Villa of Interest</label>
+              <select id="villa" name="villa" class={fieldClass}>
+                <option value="">Select a villa…</option>
+                {villas.map((villa) => (
+                  <option value={villa} selected={villa === preselectVilla}>{villa}</option>
+                ))}
+              </select>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label for="checkin" class={labelClass}>Check-In Date</label>
+          <input id="checkin" name="checkin" type="date" class={fieldClass} aria-describedby="checkin-error" />
+          <p id="checkin-error" class={errorClass} hidden></p>
+        </div>
+        <div>
+          <label for="checkout" class={labelClass}>Check-Out Date</label>
+          <input id="checkout" name="checkout" type="date" class={fieldClass} aria-describedby="checkout-error" />
+          <p id="checkout-error" class={errorClass} hidden></p>
+        </div>
+      </div>
+
       <div>
-        <label for="checkin" class={labelClass}>Check-In Date</label>
-        <input id="checkin" name="checkin" type="date" class={fieldClass} />
+        <label for="message" class={labelClass}>Message *</label>
+        <textarea id="message" name="message" rows={5} required class={`${fieldClass} resize-y`} aria-describedby="message-error" placeholder="Tell us about your stay, questions, or special requests…"></textarea>
+        <p id="message-error" class={errorClass} hidden></p>
+      </div>
+
+      {preselectVilla && !showVillaSelect && <input type="hidden" name="villa" value={preselectVilla} />}
+
+      <button id="prepare-email" type="submit" class={`btn btn-primary w-full sm:w-auto ${buttonFocusClass}`}>Prepare Email Draft</button>
+    </fieldset>
+
+    <p id="form-status" role="status" aria-live="polite" class="text-sm font-medium text-brand-muted" hidden></p>
+
+    <section id="email-draft" aria-labelledby="email-draft-title" class="border-t border-brand-border pt-6 space-y-5" hidden>
+      <h3 id="email-draft-title" tabindex="-1" class={`font-serif text-h3 ${buttonFocusClass}`}>Your draft is ready</h3>
+      <p class="text-sm text-navy">
+        <strong>Recipient:</strong>
+        <span class="break-all select-text">{CONTACT_RECIPIENT}</span>
+      </p>
+      <div>
+        <label for="draft-subject" class={labelClass}>Subject</label>
+        <textarea id="draft-subject" rows={2} readonly class={`${fieldClass} resize-y`}></textarea>
       </div>
       <div>
-        <label for="checkout" class={labelClass}>Check-Out Date</label>
-        <input id="checkout" name="checkout" type="date" class={fieldClass} />
+        <label for="draft-message" class={labelClass}>Message preview</label>
+        <textarea id="draft-message" rows={15} readonly class={`${fieldClass} resize-y`}></textarea>
       </div>
-    </div>
-
-    <div>
-      <label for="message" class={labelClass}>Message</label>
-      <textarea
-        id="message"
-        name="message"
-        rows={5}
-        class={`${fieldClass} resize-none`}
-        placeholder="Tell us about your stay, questions, or special requests…"
-      ></textarea>
-    </div>
-
-    {
-      preselectVilla && !showVillaSelect && (
-        <input type="hidden" name="villa" value={preselectVilla} />
-      )
-    }
-
-    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-      <button type="submit" class="btn btn-primary w-full sm:w-auto">Send Message</button>
-      <p id="form-status" role="status" aria-live="polite" class="hidden text-sm font-medium"></p>
-    </div>
+      <p id="draft-long-notice" class="text-sm text-navy" hidden>
+        This draft is too long to reliably pass to an email app. Copy the complete subject and message.
+        “Open My Email App” will open a new email addressed to {CONTACT_RECIPIENT}, without inserting the draft text.
+      </p>
+      <p id="draft-open-help" class="text-sm text-brand-muted">
+        Open your email app, review the details, and press Send. If your app includes AI writing tools,
+        you can use them to refine the wording before sending.
+      </p>
+      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+        <button id="open-email" type="button" disabled aria-describedby="draft-open-help" class={`btn btn-primary ${buttonFocusClass}`}>Open My Email App</button>
+        <button id="copy-subject" type="button" disabled class={`btn btn-outline ${buttonFocusClass}`}>Copy Subject</button>
+        <button id="copy-message" type="button" disabled class={`btn btn-outline ${buttonFocusClass}`}>Copy Message</button>
+      </div>
+      <p id="draft-copy-help" class="text-sm text-brand-muted">
+        If your email app does not open or copying is unavailable, select the subject and message above
+        and copy them manually into a new email to {CONTACT_RECIPIENT}.
+      </p>
+    </section>
   </form>
 </div>
 
 <script>
+  import { CONTACT_RECIPIENT, prepareEmailDraft } from "../lib/contact-draft";
+  import type { EmailDraft, InquiryFields, InquiryErrors } from "../lib/contact-draft";
+
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
-  const statusEl = document.getElementById("form-status");
+  const fieldset = document.getElementById("contact-form-fields") as HTMLFieldSetElement | null;
+  const status = document.getElementById("form-status");
+  const preview = document.getElementById("email-draft");
+  const subjectPreview = document.getElementById("draft-subject") as HTMLTextAreaElement | null;
+  const messagePreview = document.getElementById("draft-message") as HTMLTextAreaElement | null;
+  const openButton = document.getElementById("open-email") as HTMLButtonElement | null;
+  const copySubjectButton = document.getElementById("copy-subject") as HTMLButtonElement | null;
+  const copyMessageButton = document.getElementById("copy-message") as HTMLButtonElement | null;
+  const longNotice = document.getElementById("draft-long-notice");
 
-  if (form && statusEl) {
-    const key = form.dataset.formKey || "";
-    const fallbackEmail = form.dataset.fallbackEmail || "";
-    const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-
-    const setStatus = (msg: string, kind: "ok" | "err" | "info") => {
-      statusEl.textContent = msg;
-      statusEl.classList.remove("hidden", "text-seafoam", "text-terracotta", "text-brand-muted");
-      statusEl.classList.add(
-        kind === "ok" ? "text-seafoam" : kind === "err" ? "text-terracotta" : "text-brand-muted",
-      );
+  if (form && fieldset && status && preview && subjectPreview && messagePreview && openButton && copySubjectButton && copyMessageButton && longNotice) {
+    const fields: (keyof InquiryFields)[] = ["firstName", "lastName", "email", "phone", "villa", "checkin", "checkout", "guests", "message"];
+    type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+    const controlFor = (name: string): FormControl | null => {
+      const control = form.elements.namedItem(name);
+      return control instanceof HTMLInputElement || control instanceof HTMLSelectElement || control instanceof HTMLTextAreaElement ? control : null;
+    };
+    const readValues = (): InquiryFields => {
+      const data = new FormData(form);
+      return Object.fromEntries(fields.map((name) => [name, String(data.get(name) ?? "")])) as unknown as InquiryFields;
+    };
+    const setStatus = (message: string, isError = false) => {
+      status.textContent = message;
+      status.hidden = false;
+      status.classList.toggle("text-terracotta", isError);
+      status.classList.toggle("text-brand-muted", !isError);
+    };
+    const clearError = (name: string) => {
+      const control = controlFor(name);
+      control?.setCustomValidity("");
+      control?.removeAttribute("aria-invalid");
+      const error = document.getElementById(`${name}-error`);
+      if (error) { error.textContent = ""; error.hidden = true; }
     };
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
+    let draft: EmailDraft | null = null;
+    let preparedValues = "";
+    const invalidateDraft = () => {
+      if (!draft) return;
+      draft = null;
+      preparedValues = "";
+      preview.hidden = true;
+      subjectPreview.value = messagePreview.value = "";
+      longNotice.hidden = true;
+      openButton.disabled = copySubjectButton.disabled = copyMessageButton.disabled = true;
+      setStatus("Your answers changed. Prepare your email draft again.");
+    };
+    const currentDraft = (): EmailDraft | null => {
+      // Also catches autofill or programmatic edits that did not emit an event.
+      if (JSON.stringify(readValues()) !== preparedValues) invalidateDraft();
+      return draft;
+    };
 
-      // Honeypot — silently drop bot submissions
-      if (data.get("botcheck")) return;
+    const handleEdit = (event: Event) => {
+      const target = event.target;
+      if (target instanceof HTMLInputElement || target instanceof HTMLSelectElement || target instanceof HTMLTextAreaElement) {
+        if (!fields.includes(target.name as keyof InquiryFields)) return;
+        clearError(target.name);
+        if (target.name === "checkin") clearError("checkout");
+        invalidateDraft();
+      }
+    };
+    form.addEventListener("input", handleEdit);
+    form.addEventListener("change", handleEdit);
 
-      // No form provider configured → fall back to the visitor's email client
-      if (!key) {
-        const lines: string[] = [];
-        for (const [k, v] of data.entries()) {
-          if (["access_key", "botcheck", "subject", "from_name"].includes(k)) continue;
-          if (typeof v === "string" && v.trim()) lines.push(`${k}: ${v}`);
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      fields.forEach(clearError);
+      const result = prepareEmailDraft(readValues());
+      const errors: InquiryErrors = result.ok ? {} : { ...result.errors };
+      for (const name of fields) {
+        const control = controlFor(name);
+        if (control && !control.validity.valid && !errors[name]) errors[name] = control.validationMessage;
+      }
+      if (Object.keys(errors).length || !result.ok) {
+        invalidateDraft();
+        for (const name of fields) {
+          const message = errors[name];
+          if (!message) continue;
+          const control = controlFor(name);
+          control?.setCustomValidity(message);
+          control?.setAttribute("aria-invalid", "true");
+          const error = document.getElementById(`${name}-error`);
+          if (error) { error.textContent = message; error.hidden = false; }
         }
-        const subject = encodeURIComponent("Beachwalk Villas inquiry");
-        const body = encodeURIComponent(lines.join("\n"));
-        window.location.href = `mailto:${fallbackEmail}?subject=${subject}&body=${body}`;
-        setStatus("Opening your email app…", "info");
+        setStatus("Please check the highlighted fields before preparing your draft.", true);
+        form.reportValidity();
         return;
       }
 
-      submitBtn?.setAttribute("disabled", "true");
-      setStatus("Sending…", "info");
-
-      try {
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: data,
-        });
-        const json = await res.json();
-        if (res.ok && json.success) {
-          form.reset();
-          setStatus("Thanks! Your message has been sent — we'll be in touch shortly.", "ok");
-        } else {
-          setStatus("Something went wrong. Please call us or email directly.", "err");
-        }
-      } catch {
-        setStatus("Network error. Please call us or email directly.", "err");
-      } finally {
-        submitBtn?.removeAttribute("disabled");
+      for (const name of fields) {
+        const control = controlFor(name);
+        if (control) control.value = result.values[name];
       }
+      draft = result.draft;
+      preparedValues = JSON.stringify(readValues());
+      subjectPreview.value = draft.subject;
+      messagePreview.value = draft.body;
+      longNotice.hidden = !draft.exceedsMailtoPolicy;
+      openButton.setAttribute("aria-describedby", draft.exceedsMailtoPolicy ? "draft-open-help draft-long-notice" : "draft-open-help");
+      preview.hidden = false;
+      openButton.disabled = copySubjectButton.disabled = copyMessageButton.disabled = false;
+      setStatus("Your draft is ready.");
+      document.getElementById("email-draft-title")?.focus();
     });
+
+    openButton.addEventListener("click", () => {
+      const current = currentDraft();
+      if (!current) return;
+      // Long drafts deliberately open only the fixed recipient, as explained above.
+      window.location.href = current.exceedsMailtoPolicy ? `mailto:${CONTACT_RECIPIENT}` : current.mailto;
+      setStatus(current.exceedsMailtoPolicy
+        ? "Copy the complete subject and message into your email app, review them, and press Send."
+        : "Review the draft in your email app and press Send. If it did not open, use the copy options.");
+    });
+
+    const copyDraftPart = async (part: "subject" | "body") => {
+      const current = currentDraft();
+      if (!current) return;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+        await navigator.clipboard.writeText(current[part]);
+        if (currentDraft() === current) setStatus(part === "subject" ? "Subject copied." : "Message copied.");
+      } catch {
+        if (currentDraft() !== current) return;
+        const target = part === "subject" ? subjectPreview : messagePreview;
+        target.focus();
+        target.select();
+        setStatus("Automatic copying is unavailable. Copy the selected text manually and paste it into your email app.");
+      }
+    };
+    copySubjectButton.addEventListener("click", () => { void copyDraftPart("subject"); });
+    copyMessageButton.addEventListener("click", () => { void copyDraftPart("body"); });
+
+    fieldset.disabled = false;
+    const enhancementNote = document.getElementById("contact-form-enhancement");
+    if (enhancementNote) enhancementNote.hidden = true;
   }
 </script>
