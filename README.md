@@ -173,7 +173,7 @@ and selectable previews retain the complete subject and body if clipboard
 access or the email-app handoff fails, or if the encoded draft exceeds the
 documented mailto policy. Any writing tools in the visitor's email application
 remain optional and user controlled. Preparing or opening a draft does not
-establish delivery. General contact links continue to use `site.email`.
+establish delivery. The site-wide contact links (footer, contact page) use `site.email`, which is the same reservations address.
 
 ## TODO Before Launch
 - [x] Confirm exact brand hex colors (sand/teal/coral palette applied)
@@ -183,7 +183,6 @@ establish delivery. General contact links continue to use `site.email`.
 - [x] Prepare inquiry drafts locally with review, open, and copy actions
 - [ ] Verify draft handoff in supported desktop and mobile email applications
 - [ ] Confirm the `reservations@beachwalkvillas.net` inbox is provisioned
-- [ ] Confirm the `info@beachwalkvillas.net` email address
 - [ ] Verify all villa gallery image assignments match actual photos
 - [ ] Test all redirects from old WP URLs
 - [ ] Submit sitemap to Google Search Console after launch

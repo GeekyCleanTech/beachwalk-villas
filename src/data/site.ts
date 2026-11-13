@@ -1,4 +1,5 @@
 // src/data/site.ts — single source of truth for shared site data
+import { CONTACT_RECIPIENT } from "../lib/contact-draft";
 
 export const site = {
   name: "Beachwalk Villas",
@@ -9,8 +10,8 @@ export const site = {
   phone: "760-720-1400 ext. 1",
   phoneHref: "tel:+17607201400", // ext. dialed after connection
   telephoneIntl: "+1-760-720-1400", // E.164-ish, for structured data
-  email: "info@beachwalkvillas.net",
-  emailHref: "mailto:info@beachwalkvillas.net",
+  email: CONTACT_RECIPIENT,
+  emailHref: `mailto:${CONTACT_RECIPIENT}`,
   // Structured postal address (3100 Ocean St, Carlsbad, CA 92008)
   addressParts: {
     street: "3100 Ocean St",
