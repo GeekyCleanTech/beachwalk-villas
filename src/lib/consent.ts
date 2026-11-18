@@ -10,7 +10,7 @@ export const CONSENT_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 export interface ConsentChoice {
   /** Always true — strictly necessary storage needs no consent. Recorded for clarity. */
   necessary: true;
-  /** Google Analytics 4 (via Google Tag Manager). */
+  /** Analytics: Google Analytics 4 (via Google Tag Manager) and Microsoft Clarity. */
   analytics: boolean;
   /** Epoch milliseconds when the visitor made the choice. */
   timestamp: number;
@@ -101,6 +101,16 @@ export function hasGlobalPrivacyControl(nav: { globalPrivacyControl?: boolean } 
 /** Google Analytics cookie names: `_ga`, `_gid`, `_gat*`, and `_ga_<container>`. */
 export function isGoogleAnalyticsCookie(name: string): boolean {
   return name === "_ga" || name === "_gid" || name.startsWith("_gat") || name.startsWith("_ga_");
+}
+
+/** Microsoft Clarity first-party cookies: `_clck` (user) and `_clsk` (session). */
+export function isClarityCookie(name: string): boolean {
+  return name === "_clck" || name === "_clsk";
+}
+
+/** Any cookie set by the analytics tools this site loads after consent. */
+export function isAnalyticsCookie(name: string): boolean {
+  return isGoogleAnalyticsCookie(name) || isClarityCookie(name);
 }
 
 /** Hostnames to try when expiring a cookie: the host itself and each parent domain. */

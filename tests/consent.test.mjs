@@ -5,6 +5,8 @@ import {
   CONSENT_VERSION,
   cookieDomainCandidates,
   hasGlobalPrivacyControl,
+  isAnalyticsCookie,
+  isClarityCookie,
   isGoogleAnalyticsCookie,
   makeConsent,
   parseConsent,
@@ -75,6 +77,14 @@ test("only Google Analytics cookies are recognised for cleanup", () => {
   for (const name of ["bwv_consent_v1", "session", "ga", "_gaming"]) {
     assert.equal(isGoogleAnalyticsCookie(name), false, name);
   }
+});
+
+test("Clarity cookies are recognised and included in analytics cleanup", () => {
+  assert.equal(isClarityCookie("_clck"), true);
+  assert.equal(isClarityCookie("_clsk"), true);
+  assert.equal(isClarityCookie("_clock"), false);
+  for (const name of ["_ga", "_ga_ABC", "_clck", "_clsk"]) assert.equal(isAnalyticsCookie(name), true, name);
+  for (const name of ["bwv_consent_v1", "keep"]) assert.equal(isAnalyticsCookie(name), false, name);
 });
 
 test("cookie domain candidates cover host and parents, never a bare TLD", () => {

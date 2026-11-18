@@ -5,7 +5,8 @@
 //
 // Behaviour (see src/lib/consent.ts for the pure logic and tests):
 //  - Google Consent Mode v2 defaults are all "denied" before anything else.
-//  - Google Tag Manager (GA4) is NOT loaded until the visitor accepts analytics
+//  - Google Tag Manager (GA4) and Microsoft Clarity are NOT loaded until the
+//    visitor accepts analytics
 //    ("basic" consent mode — no cookieless pings before consent).
 //  - "Accept" and "Reject" are identical in size and style on purpose.
 //  - A Global Privacy Control signal is honored as a rejection, silently.
@@ -17,6 +18,7 @@ import { site } from "../data/site";
 <div
   id="consent-banner"
   data-gtm-id={site.gtmId}
+  data-clarity-id={site.clarityId}
   role="dialog"
   aria-labelledby="consent-title"
   aria-describedby="consent-desc"
@@ -26,7 +28,8 @@ import { site } from "../data/site";
   <h2 id="consent-title" class="font-serif text-lg text-navy">Your privacy choices</h2>
   <p id="consent-desc" class="mt-2 text-sm leading-relaxed text-brand-muted">
     We use essential storage to run this site. With your permission we also use Google
-    Analytics to see which pages guests find useful. Choose "Accept" to allow analytics or
+    Analytics and Microsoft Clarity to see which pages guests find useful and how the site
+    is used. Choose "Accept" to allow analytics or
     "Reject" to decline. We never use advertising cookies.
     See our <a href="/privacy-policy/" class="underline text-seafoam">Privacy Policy</a>.
   </p>
@@ -42,7 +45,7 @@ import { site } from "../data/site";
     <label class="flex cursor-pointer items-start justify-between gap-4">
       <span>
         <span class="block font-semibold text-navy">Analytics</span>
-        <span class="block text-brand-muted">Google Analytics 4, via Google Tag Manager. Anonymous usage statistics.</span>
+        <span class="block text-brand-muted">Google Analytics 4 (usage statistics) and Microsoft Clarity (anonymized session recordings and heatmaps).</span>
       </span>
       <input
         id="consent-analytics"
@@ -73,7 +76,7 @@ import { site } from "../data/site";
     CONSENT_STORAGE_KEY,
     cookieDomainCandidates,
     hasGlobalPrivacyControl,
-    isGoogleAnalyticsCookie,
+    isAnalyticsCookie,
     makeConsent,
     parseConsent,
     toGoogleConsent,
@@ -85,6 +88,7 @@ import { site } from "../data/site";
 
   const banner = document.getElementById("consent-banner") as HTMLElement | null;
   const gtmId = banner?.dataset.gtmId ?? "";
+  const clarityId = banner?.dataset.clarityId ?? "";
 
   // --- storage (wrapped: Safari private mode / blocked storage can throw) ---
   function readStored(): ConsentChoice | null {
@@ -121,11 +125,34 @@ import { site } from "../data/site";
     document.head.appendChild(s);
   }
 
+  let clarityLoaded = false;
+  function loadClarity(): void {
+    if (clarityLoaded || !clarityId) return;
+    clarityLoaded = true;
+    // Microsoft's standard Clarity bootstrap, run only after opt-in.
+    type ClarityFn = ((...a: unknown[]) => void) & { q?: unknown[] };
+    const c = window as unknown as { clarity?: ClarityFn };
+    c.clarity =
+      c.clarity ||
+      function (...a: unknown[]) {
+        (c.clarity!.q = c.clarity!.q || []).push(a);
+      };
+    const t = document.createElement("script");
+    t.async = true;
+    t.src = `https://www.clarity.ms/tag/${encodeURIComponent(clarityId)}`;
+    document.head.appendChild(t);
+  }
+
+  function loadAnalytics(): void {
+    loadGtm();
+    loadClarity();
+  }
+
   function deleteAnalyticsCookies(): void {
     const names = document.cookie
       .split(";")
       .map((c) => c.split("=")[0].trim())
-      .filter(isGoogleAnalyticsCookie);
+      .filter(isAnalyticsCookie);
     const hosts = cookieDomainCandidates(location.hostname);
     for (const name of names) {
       document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
@@ -138,7 +165,7 @@ import { site } from "../data/site";
   function apply(choice: ConsentChoice | null): void {
     gtag("consent", "update", toGoogleConsent(choice));
     if (choice?.analytics) {
-      loadGtm();
+      loadAnalytics();
     } else {
       deleteAnalyticsCookies();
     }
@@ -147,7 +174,7 @@ import { site } from "../data/site";
   // Defaults first — before any Google script can exist on the page.
   const stored = readStored();
   gtag("consent", "default", toGoogleConsent(stored));
-  if (stored?.analytics) loadGtm();
+  if (stored?.analytics) loadAnalytics();
 
   // --- banner UI ---
   const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T | null;

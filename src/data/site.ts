@@ -14,6 +14,9 @@ export const site = {
   // Google Tag Manager container (GA4 only). Loaded by ConsentBanner.astro
   // after the visitor opts in to analytics — never directly from the layout.
   gtmId: "GTM-T8XCTLZX",
+  // Microsoft Clarity project id (session replay / heatmaps). Also loaded only
+  // after the visitor opts in to analytics.
+  clarityId: "zfqbv5ni81",
   // Operator named in the privacy policy.
   operator: "Capital Asset Management",
   privacyPolicyUpdated: "November 18, 2026",

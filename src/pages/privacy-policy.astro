@@ -45,7 +45,7 @@ const sections = [
           </li>
           <li>We use it to answer you, take and manage your stay, and keep the site running.</li>
           <li>
-            Google Analytics only runs if you say yes. You can change your mind any time using
+            Google Analytics and Microsoft Clarity only run if you say yes. You can change your mind any time using
             <button type="button" data-consent-open class="underline text-seafoam cursor-pointer">Cookie Settings</button>.
           </li>
           <li>We do not sell your personal information and we do not run advertising cookies.</li>
@@ -116,6 +116,12 @@ const sections = [
             approximate location, device and browser details, and how you arrived at the site.
           </li>
           <li>
+            <strong>Microsoft Clarity.</strong> Only with your consent: anonymized session
+            recordings and heatmaps showing how visitors move, click and scroll on our pages, plus
+            device, browser and approximate location. Clarity masks text typed into form fields by
+            default; please still avoid putting sensitive details into this site's forms.
+          </li>
+          <li>
             <strong>Fonts.</strong> This site loads its typefaces from Google Fonts, so your browser
             sends your IP address and browser details to Google when a page loads.
           </li>
@@ -133,7 +139,7 @@ const sections = [
         <h2 id="cookies" class="font-serif text-h3 text-navy">Cookies and analytics</h2>
         <p>
           When you first visit, a banner asks whether you allow analytics. Until you choose, no
-          analytics code is loaded. The "Accept" and "Reject" buttons carry equal weight,
+          Google Analytics or Microsoft Clarity code is loaded. The "Accept" and "Reject" buttons carry equal weight,
           and rejecting does not limit your use of the site. If your browser sends a Global Privacy
           Control signal, we treat it as a rejection.
         </p>
@@ -164,6 +170,13 @@ const sections = [
                 <td class="p-3">Analytics (only with consent)</td>
               </tr>
               <tr class="border-t border-brand-border">
+                <td class="p-3"><code>_clck</code>, <code>_clsk</code>, <code>CLID</code>, <code>MUID</code>, <code>SM</code>, <code>ANONCHK</code>, <code>MR</code></td>
+                <td class="p-3">Microsoft Clarity</td>
+                <td class="p-3">Tell visitors and sessions apart so recordings and heatmaps make sense</td>
+                <td class="p-3">Session to 1 year</td>
+                <td class="p-3">Analytics (only with consent)</td>
+              </tr>
+              <tr class="border-t border-brand-border">
                 <td class="p-3">Google Maps cookies</td>
                 <td class="p-3">Google</td>
                 <td class="p-3">Run the embedded map</td>
@@ -178,7 +191,8 @@ const sections = [
         </p>
         <p>
           Withdrawing consent stops further analytics collection and deletes the Google Analytics
-          cookies this site can reach. Our booking platform runs on its own website and uses its own
+          and Clarity cookies this site can reach. Cookies Microsoft sets on its own domain can only
+          be removed in your browser settings. Our booking platform runs on its own website and uses its own
           cookies under its own policy.
         </p>
 
@@ -202,6 +216,7 @@ const sections = [
           <li><strong>Guesty</strong> — reservation and payment platform.</li>
           <li><strong>Cloudflare</strong> — website hosting, security and (optionally) privacy-friendly statistics.</li>
           <li><strong>Google</strong> — Analytics and Tag Manager (with consent), Fonts, and Maps (when you load it).</li>
+          <li><strong>Microsoft</strong> — Clarity session analytics (with consent).</li>
           <li><strong>{site.operator}</strong> and its property-management staff and vendors who need the information to serve your stay.</li>
           <li>Professional advisers, insurers, and authorities when the law requires it or to protect rights and safety.</li>
           <li>A successor, if the business or property is sold or reorganized.</li>
@@ -212,6 +227,7 @@ const sections = [
           <li>Inquiries that do not become reservations: up to 2 years.</li>
           <li>Reservation and payment records: up to 7 years, for tax, accounting and legal reasons.</li>
           <li>Google Analytics data: up to 14 months.</li>
+          <li>Microsoft Clarity: session recordings for about 30 days and aggregated reports for up to 13 months.</li>
           <li>Your cookie choice: 12 months, then we ask again.</li>
         </ul>
         <p>We delete or de-identify information once it is no longer needed for these purposes.</p>
@@ -241,7 +257,7 @@ const sections = [
         <p>
           <strong>Categories collected in the past 12 months:</strong> identifiers (name, email,
           phone, IP address); commercial information (reservations); internet activity (pages
-          viewed, if you consent to analytics); approximate geolocation; government ID and payment
+          viewed, clicks and scrolling, if you consent to analytics); approximate geolocation; government ID and payment
           details (only when you book and check in). The sources, purposes and recipients are as
           described above.
         </p>
@@ -257,7 +273,7 @@ const sections = [
         <p>Our legal bases for using your information are:</p>
         <ul>
           <li><strong>Contract</strong> — to respond to your inquiry and provide the stay you book.</li>
-          <li><strong>Consent</strong> — for Google Analytics. You can withdraw it at any time without affecting earlier use.</li>
+          <li><strong>Consent</strong> — for Google Analytics and Microsoft Clarity. You can withdraw it at any time without affecting earlier use.</li>
           <li><strong>Legitimate interests</strong> — to secure and operate the site and the property.</li>
           <li><strong>Legal obligation</strong> — tax, accounting and safety requirements.</li>
         </ul>
