@@ -175,6 +175,14 @@ documented mailto policy. Any writing tools in the visitor's email application
 remain optional and user controlled. Preparing or opening a draft does not
 establish delivery. General contact links continue to use `site.email`.
 
+### Privacy policy & consent banner
+- Policy page: `src/pages/privacy-policy.astro` (operator name, date, and GTM id live in `src/data/site.ts`).
+- Banner: `src/components/ConsentBanner.astro`, mounted from `BaseLayout.astro`; pure logic and tests in `src/lib/consent.ts` / `tests/consent.test.mjs`.
+- Google Tag Manager (GA4) and Microsoft Clarity are **not** in the layout head. The banner sets Consent Mode v2 defaults to denied and loads both only after the visitor accepts analytics (IDs live in `src/data/site.ts`). Do not add a GTM `<noscript>` iframe or a direct tracking script — either bypasses consent. New trackers should be loaded from `ConsentBanner.astro` and added to the policy's cookie table.
+- Any `[data-consent-open]` element reopens the banner (footer "Cookie Settings" does).
+- The Google Maps embed on `/contact-us/` is click-to-load. If you add other third-party embeds, load them the same way and list them in the policy.
+- Bump `CONSENT_VERSION` in `src/lib/consent.ts` and `privacyPolicyUpdated` in `site.ts` when the policy materially changes, to re-ask visitors.
+
 ## TODO Before Launch
 - [x] Confirm exact brand hex colors (sand/teal/coral palette applied)
 - [x] Add phone number — `760-720-1400 ext. 1` (see `src/data/site.ts`)

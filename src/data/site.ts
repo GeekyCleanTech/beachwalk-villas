@@ -11,6 +11,15 @@ export const site = {
   telephoneIntl: "+1-760-720-1400", // E.164-ish, for structured data
   email: "info@beachwalkvillas.net",
   emailHref: "mailto:info@beachwalkvillas.net",
+  // Google Tag Manager container (GA4 only). Loaded by ConsentBanner.astro
+  // after the visitor opts in to analytics — never directly from the layout.
+  gtmId: "GTM-T8XCTLZX",
+  // Microsoft Clarity project id (session replay / heatmaps). Also loaded only
+  // after the visitor opts in to analytics.
+  clarityId: "zfqbv5ni81",
+  // Operator named in the privacy policy.
+  operator: "Capital Asset Management",
+  privacyPolicyUpdated: "November 18, 2026",
   // Structured postal address (3100 Ocean St, Carlsbad, CA 92008)
   addressParts: {
     street: "3100 Ocean St",
@@ -34,6 +43,7 @@ export const navLinks = [
 export const footerLinks = [
   { label: "Health & Safety", href: "/health-and-safety/" },
   { label: "Booking Policies", href: "/reservation-policies/" },
+  { label: "Privacy Policy", href: "/privacy-policy/" },
 ];
 
 // View-type → display label + badge style

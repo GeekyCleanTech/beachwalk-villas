@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node --test tests/contact-draft.test.mjs",
+    "test": "node --test tests/contact-draft.test.mjs tests/consent.test.mjs",
     "astro": "astro"
   },
   "dependencies": {
