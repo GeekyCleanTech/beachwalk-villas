@@ -91,17 +91,44 @@ import { site } from "../data/site";
   <section class="bg-brand-surface pb-20 reveal">
     <div class="container-site">
       <div class="overflow-hidden rounded-card shadow-[var(--shadow-soft)] border border-brand-border">
-        <iframe
-          title="Map of Beachwalk Villas — 3100 Ocean St, Carlsbad, CA"
-          src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&output=embed`}
-          width="100%"
-          height="420"
-          style="border:0;"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
+        <!-- Click-to-load: Google is not contacted until the visitor asks for the map. -->
+        <div
+          id="map-embed"
+          data-src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&output=embed`}
+          data-title="Map of Beachwalk Villas — 3100 Ocean St, Carlsbad, CA"
+          class="flex h-[420px] flex-col items-center justify-center gap-4 bg-sand px-6 text-center"
+        >
+          <p class="max-w-md text-sm text-brand-muted">
+            Loading the interactive map connects your browser to Google, which may set cookies.
+            See our <a href="/privacy-policy/" class="underline text-seafoam">Privacy Policy</a>.
+          </p>
+          <button type="button" id="map-load" class="btn btn-primary">Load interactive map</button>
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapsQuery)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm underline text-seafoam"
+          >
+            Or open in Google Maps
+          </a>
+        </div>
       </div>
     </div>
   </section>
 </SiteLayout>
+
+<script>
+  const holder = document.getElementById("map-embed");
+  document.getElementById("map-load")?.addEventListener("click", () => {
+    if (!holder) return;
+    const frame = document.createElement("iframe");
+    frame.title = holder.dataset.title ?? "Map";
+    frame.src = holder.dataset.src ?? "";
+    frame.width = "100%";
+    frame.height = "420";
+    frame.style.border = "0";
+    frame.referrerPolicy = "no-referrer-when-downgrade";
+    frame.allowFullscreen = true;
+    holder.replaceWith(frame);
+  });
+</script>

@@ -1,0 +1,328 @@
+---
+// src/pages/privacy-policy.astro
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Hero from "../components/Hero.astro";
+import { site } from "../data/site";
+
+const sections = [
+  { id: "who-we-are", label: "Who we are" },
+  { id: "what-we-collect", label: "Information we collect" },
+  { id: "cookies", label: "Cookies and analytics" },
+  { id: "how-we-use", label: "How we use information" },
+  { id: "sharing", label: "Who we share it with" },
+  { id: "retention", label: "How long we keep it" },
+  { id: "your-choices", label: "Your choices" },
+  { id: "california", label: "California residents" },
+  { id: "eea-uk", label: "Visitors from the EEA and UK" },
+  { id: "children", label: "Children" },
+  { id: "security", label: "Security" },
+  { id: "changes", label: "Changes to this policy" },
+  { id: "contact", label: "Contact us" },
+];
+---
+
+<SiteLayout
+  title="Privacy Policy"
+  description="How Beachwalk Villas in Carlsbad, CA collects, uses, and protects your information, and the choices you have about cookies and analytics."
+>
+  <Hero
+    eyebrow="Your information"
+    headline="Privacy Policy"
+    subheadline={`Last updated ${site.privacyPolicyUpdated}`}
+    bgImage="/images/beachwalk-featured-images.jpg"
+    size="medium"
+  />
+
+  <section class="section-pad bg-sand">
+    <div class="container-site max-w-3xl">
+      <!-- Plain-language summary -->
+      <div class="card p-7 mb-10">
+        <h2 class="font-serif text-h3 text-navy mb-3">The short version</h2>
+        <ul class="policy-list text-sm text-brand-muted">
+          <li>
+            We collect what you give us (an inquiry or a reservation) and a small amount of
+            technical data when you visit this site.
+          </li>
+          <li>We use it to answer you, take and manage your stay, and keep the site running.</li>
+          <li>
+            Google Analytics only runs if you say yes. You can change your mind any time using
+            <button type="button" data-consent-open class="underline text-seafoam cursor-pointer">Cookie Settings</button>.
+          </li>
+          <li>We do not sell your personal information and we do not run advertising cookies.</li>
+          <li>Questions or requests: <a href={site.emailHref} class="underline text-seafoam">{site.email}</a>.</li>
+        </ul>
+      </div>
+
+      <!-- Contents -->
+      <nav aria-label="Contents" class="mb-10">
+        <h2 class="font-serif text-lg text-navy mb-3">Contents</h2>
+        <ol class="columns-1 sm:columns-2 gap-8 list-decimal pl-5 text-sm space-y-1.5 text-brand-muted">
+          {sections.map((s) => (
+            <li><a href={`#${s.id}`} class="underline text-seafoam">{s.label}</a></li>
+          ))}
+        </ol>
+      </nav>
+
+      <div class="prose-coastal policy">
+        <h2 id="who-we-are" class="font-serif text-h3 text-navy">Who we are</h2>
+        <p>
+          This website, beachwalkvillas.net, is operated for {site.name}, a {site.operator}
+          property located at {site.address}. In this policy, "we", "us" and "our" mean
+          {site.name} and {site.operator}. We are the business responsible for your personal
+          information described here.
+        </p>
+        <p>
+          This policy covers this website and the reservation inquiries and stays handled through
+          it. It does not cover other websites we link to, including our booking platform and the
+          websites of our sister properties.
+        </p>
+
+        <h2 id="what-we-collect" class="font-serif text-h3 text-navy">Information we collect</h2>
+        <h3 class="font-serif text-lg text-navy">Information you give us</h3>
+        <ul>
+          <li>
+            <strong>Inquiries.</strong> If you use our contact form, it prepares an email draft in
+            your own email application. We only receive it if you press Send. The draft can include
+            your name, email address, phone number, guest count, preferred villa and dates, and your
+            message. If you email or call us directly, we receive what you share.
+          </li>
+          <li>
+            <strong>Reservations.</strong> When you book, the booking platform we use (Guesty) and
+            we collect details such as your name, contact information, stay dates, number of guests
+            and payment information, and, at check-in, a government-issued ID as described in our
+            <a href="/reservation-policies/">Reservation Policies</a>. Payment cards are processed by
+            our booking and payment providers; we do not store full card numbers on this website.
+          </li>
+          <li>
+            <strong>Communications.</strong> Records of our correspondence with you, including
+            requests about this policy.
+          </li>
+        </ul>
+
+        <h3 class="font-serif text-lg text-navy">Information collected automatically</h3>
+        <ul>
+          <li>
+            <strong>Hosting and security logs.</strong> Our hosting provider, Cloudflare, processes
+            your IP address, browser type and the pages you request in order to deliver the site and
+            protect it from abuse.
+          </li>
+          <li>
+            <strong>Privacy-friendly traffic statistics.</strong> We may use Cloudflare Web
+            Analytics, which does not use cookies and does not track you across other sites, to
+            count visits and see which pages are popular.
+          </li>
+          <li>
+            <strong>Google Analytics 4.</strong> Only with your consent (see below): pages viewed,
+            approximate location, device and browser details, and how you arrived at the site.
+          </li>
+          <li>
+            <strong>Fonts.</strong> This site loads its typefaces from Google Fonts, so your browser
+            sends your IP address and browser details to Google when a page loads.
+          </li>
+          <li>
+            <strong>Maps.</strong> The Google Map on our contact page loads only after you click
+            "Load interactive map". When you do, your browser connects to Google, which may set
+            cookies.
+          </li>
+        </ul>
+        <p>
+          We do not knowingly collect "sensitive personal information" through this website beyond
+          the ID and payment details you provide when booking and checking in.
+        </p>
+
+        <h2 id="cookies" class="font-serif text-h3 text-navy">Cookies and analytics</h2>
+        <p>
+          When you first visit, a banner asks whether you allow analytics. Until you choose, no
+          analytics code is loaded. The "Accept" and "Reject" buttons carry equal weight,
+          and rejecting does not limit your use of the site. If your browser sends a Global Privacy
+          Control signal, we treat it as a rejection.
+        </p>
+        <div class="overflow-x-auto my-6">
+          <table class="w-full text-left text-sm border border-brand-border bg-white">
+            <thead class="bg-sand-dark text-navy">
+              <tr>
+                <th class="p-3 font-semibold">Name</th>
+                <th class="p-3 font-semibold">Provider</th>
+                <th class="p-3 font-semibold">Purpose</th>
+                <th class="p-3 font-semibold">Duration</th>
+                <th class="p-3 font-semibold">Type</th>
+              </tr>
+            </thead>
+            <tbody class="align-top">
+              <tr class="border-t border-brand-border">
+                <td class="p-3"><code>bwv_consent_v1</code></td>
+                <td class="p-3">{site.name} (this site)</td>
+                <td class="p-3">Remembers your cookie choice</td>
+                <td class="p-3">12 months</td>
+                <td class="p-3">Strictly necessary (local storage)</td>
+              </tr>
+              <tr class="border-t border-brand-border">
+                <td class="p-3"><code>_ga</code>, <code>_ga_*</code></td>
+                <td class="p-3">Google Analytics 4 via Google Tag Manager</td>
+                <td class="p-3">Tells returning visitors apart and measures page views and sessions</td>
+                <td class="p-3">Up to 2 years</td>
+                <td class="p-3">Analytics (only with consent)</td>
+              </tr>
+              <tr class="border-t border-brand-border">
+                <td class="p-3">Google Maps cookies</td>
+                <td class="p-3">Google</td>
+                <td class="p-3">Run the embedded map</td>
+                <td class="p-3">Set by Google</td>
+                <td class="p-3">Only after you load the map</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <button type="button" data-consent-open class="btn btn-primary">Change cookie settings</button>
+        </p>
+        <p>
+          Withdrawing consent stops further analytics collection and deletes the Google Analytics
+          cookies this site can reach. Our booking platform runs on its own website and uses its own
+          cookies under its own policy.
+        </p>
+
+        <h2 id="how-we-use" class="font-serif text-h3 text-navy">How we use information</h2>
+        <ul>
+          <li>To answer inquiries and provide information about availability and our villas.</li>
+          <li>To take, confirm, manage and support reservations, including check-in and payment.</li>
+          <li>To keep guests, staff and the property safe, and to enforce our house rules and policies.</li>
+          <li>To operate, secure and improve this website.</li>
+          <li>To meet legal, tax and accounting obligations and to handle disputes.</li>
+        </ul>
+        <p>We do not use your information for automated decisions that have legal or similarly significant effects.</p>
+
+        <h2 id="sharing" class="font-serif text-h3 text-navy">Who we share it with</h2>
+        <p>
+          We do not sell your personal information, and we do not share it for cross-context
+          behavioral advertising. We share it only with service providers who help us run the
+          business, under their own privacy commitments:
+        </p>
+        <ul>
+          <li><strong>Guesty</strong> — reservation and payment platform.</li>
+          <li><strong>Cloudflare</strong> — website hosting, security and (optionally) privacy-friendly statistics.</li>
+          <li><strong>Google</strong> — Analytics and Tag Manager (with consent), Fonts, and Maps (when you load it).</li>
+          <li><strong>{site.operator}</strong> and its property-management staff and vendors who need the information to serve your stay.</li>
+          <li>Professional advisers, insurers, and authorities when the law requires it or to protect rights and safety.</li>
+          <li>A successor, if the business or property is sold or reorganized.</li>
+        </ul>
+
+        <h2 id="retention" class="font-serif text-h3 text-navy">How long we keep it</h2>
+        <ul>
+          <li>Inquiries that do not become reservations: up to 2 years.</li>
+          <li>Reservation and payment records: up to 7 years, for tax, accounting and legal reasons.</li>
+          <li>Google Analytics data: up to 14 months.</li>
+          <li>Your cookie choice: 12 months, then we ask again.</li>
+        </ul>
+        <p>We delete or de-identify information once it is no longer needed for these purposes.</p>
+
+        <h2 id="your-choices" class="font-serif text-h3 text-navy">Your choices</h2>
+        <ul>
+          <li>Change analytics consent at any time with Cookie Settings in the footer of every page.</li>
+          <li>Block or delete cookies in your browser settings. Parts of third-party embeds may stop working.</li>
+          <li>Turn on Global Privacy Control in your browser or extension; we honor it.</li>
+          <li>Ask to access, correct or delete your information using the contact details below.</li>
+          <li>Unsubscribe from any marketing email using the link in it. We do not send marketing email from this website's contact form.</li>
+        </ul>
+
+        <h2 id="california" class="font-serif text-h3 text-navy">California residents</h2>
+        <p>
+          If you live in California, the California Consumer Privacy Act (as amended by the CPRA)
+          gives you these rights, subject to legal exceptions:
+        </p>
+        <ul>
+          <li>Know what personal information we collect, use, disclose, and how.</li>
+          <li>Request a copy of the personal information we hold about you.</li>
+          <li>Request that we correct inaccurate information or delete your information.</li>
+          <li>Opt out of the sale or sharing of personal information. We do not sell or share it.</li>
+          <li>Limit the use of sensitive personal information. We use it only to provide the services you request.</li>
+          <li>Not be treated differently for using these rights.</li>
+        </ul>
+        <p>
+          <strong>Categories collected in the past 12 months:</strong> identifiers (name, email,
+          phone, IP address); commercial information (reservations); internet activity (pages
+          viewed, if you consent to analytics); approximate geolocation; government ID and payment
+          details (only when you book and check in). The sources, purposes and recipients are as
+          described above.
+        </p>
+        <p>
+          To make a request, email <a href={site.emailHref}>{site.email}</a> or call
+          {site.phone}. We will confirm receipt, verify your identity by matching details you
+          already gave us, and respond within 45 days. An authorized agent may submit a request on
+          your behalf with your written permission. If we deny a request, you may reply to ask us to
+          reconsider.
+        </p>
+
+        <h2 id="eea-uk" class="font-serif text-h3 text-navy">Visitors from the EEA and UK</h2>
+        <p>Our legal bases for using your information are:</p>
+        <ul>
+          <li><strong>Contract</strong> — to respond to your inquiry and provide the stay you book.</li>
+          <li><strong>Consent</strong> — for Google Analytics. You can withdraw it at any time without affecting earlier use.</li>
+          <li><strong>Legitimate interests</strong> — to secure and operate the site and the property.</li>
+          <li><strong>Legal obligation</strong> — tax, accounting and safety requirements.</li>
+        </ul>
+        <p>
+          You may also request access, rectification, erasure, restriction or portability, and
+          object to processing based on legitimate interests. Our service providers are based in, or
+          transfer data to, the United States; where required they rely on safeguards such as the
+          EU-U.S. Data Privacy Framework or Standard Contractual Clauses. You can complain to your
+          local data protection authority, though we would like the chance to help first.
+        </p>
+
+        <h2 id="children" class="font-serif text-h3 text-navy">Children</h2>
+        <p>
+          This website is not directed to children under 13, and reservations may be made only by
+          adults who meet our age requirement. We do not knowingly collect information from
+          children. If you believe we have, contact us and we will delete it.
+        </p>
+
+        <h2 id="security" class="font-serif text-h3 text-navy">Security</h2>
+        <p>
+          This site is served over HTTPS and we limit access to personal information to people who
+          need it. No method of transmission or storage is perfectly secure, so we cannot guarantee
+          absolute security. Email sent from your own email application is not encrypted by this
+          site, so please do not include payment card numbers or ID numbers in an email.
+        </p>
+
+        <h2 id="changes" class="font-serif text-h3 text-navy">Changes to this policy</h2>
+        <p>
+          We may update this policy as our practices or the law change. The "last updated" date at
+          the top shows the current version. If a change affects how we use cookies, we will ask for
+          your choice again.
+        </p>
+
+        <h2 id="contact" class="font-serif text-h3 text-navy">Contact us</h2>
+        <address class="not-italic">
+          {site.name}, a {site.operator} property<br />
+          {site.address}<br />
+          Email: <a href={site.emailHref}>{site.email}</a><br />
+          Phone: <a href={site.phoneHref}>{site.phone}</a>
+        </address>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style is:global>
+  .policy a:not(.btn),
+  .policy-list a {
+    color: var(--color-seafoam);
+    text-decoration: underline;
+  }
+  .policy ul,
+  .policy-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.1rem;
+  }
+  .policy li,
+  .policy-list li {
+    margin-bottom: 0.4rem;
+  }
+  .policy strong {
+    color: var(--color-navy);
+  }
+  .policy code {
+    font-size: 0.85em;
+  }
+</style>
